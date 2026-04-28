@@ -1,16 +1,14 @@
 <template>
   <nav class="scroll-nav" :class="{ 'is-visible': isVisible }" aria-label="Section quick navigation">
-    <a href="#top" class="logo-pill" aria-label="Back to top">
-      <img class="logo-image" src="/artham.png" alt="ARTHAM" />
+    <a href="#top" class="logo-pill" aria-label="Back to top">SGC</a>
+    <a href="#about" class="nav-pill">About</a>
+    <a href="#speakers" class="nav-pill nav-pill-muted">
+      Speakers
+      <span class="badge-new">SOON</span>
     </a>
-    <a href="#tickets" class="nav-pill">Program</a>
-    <a href="#lineup" class="nav-pill">Lineup</a>
-    <a href="#lineup" class="nav-pill nav-pill-muted">
-      Leadership Events
-      <span class="badge-new">NEW</span>
-    </a>
-    <a href="#lineup" class="nav-pill">Partners</a>
-    <a href="https://ti.to/ae-events/ae-conference/with/conference-pass" class="nav-pill nav-pill-cta">Tickets</a>
+    <a href="#agenda" class="nav-pill">Agenda</a>
+    <a href="#venue" class="nav-pill">Venue</a>
+    <a href="#tickets" class="nav-pill nav-pill-cta">Tickets</a>
   </nav>
 </template>
 
@@ -23,10 +21,7 @@ let onResize;
 
 onMounted(() => {
   const firstSection = document.querySelector('.hero-shell');
-
-  if (!firstSection) {
-    return;
-  }
+  if (!firstSection) return;
 
   const updateVisibility = () => {
     const heroBottom = firstSection.getBoundingClientRect().bottom;
@@ -38,18 +33,12 @@ onMounted(() => {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize);
-
   updateVisibility();
 });
 
 onBeforeUnmount(() => {
-  if (onScroll) {
-    window.removeEventListener('scroll', onScroll);
-  }
-
-  if (onResize) {
-    window.removeEventListener('resize', onResize);
-  }
+  if (onScroll) window.removeEventListener('scroll', onScroll);
+  if (onResize) window.removeEventListener('resize', onResize);
 });
 </script>
 
@@ -92,8 +81,7 @@ onBeforeUnmount(() => {
 }
 
 .logo-pill {
-  width: 38px;
-  height: 38px;
+  padding: 0.5rem 0.8rem;
   border-radius: 999px;
   text-decoration: none;
   background: rgb(255 255 255 / 92%);
@@ -101,73 +89,25 @@ onBeforeUnmount(() => {
   display: grid;
   place-items: center;
   box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+  font-weight: 800;
+  font-size: 0.8rem;
+  color: #202225;
+  letter-spacing: 0.05em;
 }
 
-.logo-image {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  display: block;
-}
-
-.nav-pill-muted {
-  background: #6a6f77;
-  color: #fff;
-}
-
-.badge-new {
-  font-size: 0.6rem;
-  font-weight: 700;
-  line-height: 1;
-  padding: 0.2rem 0.34rem;
-  border-radius: 999px;
-  background: #7e47d3;
-  color: #fff;
-}
-
-.nav-pill-cta {
-  margin-left: auto;
-  background: #ff4d10;
-  color: #fff;
-}
+.nav-pill-muted { background: #6a6f77; color: #fff; }
+.badge-new { font-size: 0.6rem; font-weight: 700; line-height: 1; padding: 0.2rem 0.34rem; border-radius: 999px; background: #7e47d3; color: #fff; }
+.nav-pill-cta { margin-left: auto; background: #ff4d10; color: #fff; }
 
 @media (max-width: 1280px) {
-  .scroll-nav {
-    width: calc(100% - 1rem);
-    left: 0.5rem;
-    transform: translateX(0) translateY(-12px);
-    overflow-x: auto;
-    top: 10px;
-    padding-bottom: 0.25rem;
-    scrollbar-width: none;
-  }
-
-  .scroll-nav::-webkit-scrollbar {
-    display: none;
-  }
-
-  .nav-pill-cta {
-    margin-left: 0;
-  }
-
-  .scroll-nav.is-visible {
-    transform: translateX(0) translateY(0);
-  }
+  .scroll-nav { width: calc(100% - 1rem); left: 0.5rem; transform: translateX(0) translateY(-12px); overflow-x: auto; top: 10px; padding-bottom: 0.25rem; scrollbar-width: none; }
+  .scroll-nav::-webkit-scrollbar { display: none; }
+  .nav-pill-cta { margin-left: 0; }
+  .scroll-nav.is-visible { transform: translateX(0) translateY(0); }
 }
 
 @media (max-width: 900px) {
-  .scroll-nav {
-    gap: 0.36rem;
-  }
-
-  .nav-pill {
-    padding: 0.52rem 0.88rem;
-    font-size: 0.88rem;
-  }
-
-  .logo-pill {
-    width: 34px;
-    height: 34px;
-  }
+  .scroll-nav { gap: 0.36rem; }
+  .nav-pill { padding: 0.52rem 0.88rem; font-size: 0.88rem; }
 }
 </style>

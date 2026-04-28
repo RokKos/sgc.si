@@ -1,95 +1,57 @@
 ---
-import { siAnthropic, siGrammarly, siIntercom, siLoom, siVercel } from 'simple-icons';
-
-const renderIcon = (path) => `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="${path}"></path></svg>`;
-
-const primaryBrands = [
-  { name: 'Intercom', svg: renderIcon(siIntercom.path), color: `#${siIntercom.hex}` },
-  { name: 'Lovable', fallback: 'LV', color: '#ff5e62' },
-  { name: 'Atlassian Loom', svg: renderIcon(siLoom.path), color: `#${siLoom.hex}` },
-  { name: 'Anthropic', svg: renderIcon(siAnthropic.path), color: `#${siAnthropic.hex}` },
-  { name: 'Vercel', svg: renderIcon(siVercel.path), color: `#${siVercel.hex}` }
-];
-
-const secondaryBrands = [
-  { name: 'Grammarly', svg: renderIcon(siGrammarly.path), color: `#${siGrammarly.hex}` },
-  { name: 'Qonto', fallback: 'QT', color: '#546eff' },
-  { name: 'Skyscanner', fallback: 'SK', color: '#00a3e0' }
-];
-
-const aftermovieYouTubeId = 'srQwyArPnP8';
+const aftermovieYouTubeId = 'JZ9CqWAJoYg';
 const aftermovieEmbedUrl = `https://www.youtube.com/embed/${aftermovieYouTubeId}?autoplay=1&mute=1&loop=1&playlist=${aftermovieYouTubeId}&controls=1&modestbranding=1&rel=0`;
 const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeId}`;
 ---
 
-<section class="noise-stage" id="lineup" aria-labelledby="noise-stage-title">
+<section class="noise-stage" id="about" aria-labelledby="noise-stage-title">
   <div class="noise-shell container">
-    <span class="noise-kicker reveal-line" style="--reveal-delay: 0s;">Beyond The Hype</span>
+    <span class="noise-kicker reveal-line" style="--reveal-delay: 0s;">About The Conference</span>
     <h2 id="noise-stage-title" class="noise-title reveal-line" style="--reveal-delay: 0.12s;">
-      Learn Directly From
-      <span>The Teams Shipping AI</span>
+      Where Game Developers
+      <span>Come Together</span>
     </h2>
     <p class="noise-copy reveal-line" style="--reveal-delay: 0.24s;">
-      Hear how leading AI organizations build reliable copilots, agent workflows, and production-grade model experiences.
+      Slovenia Games Conference is a one-day event where industry professionals and enthusiasts celebrate the games industry as a whole. Whether you're a programmer, artist, designer, business person, producer, career seeker, or recruiter — you'll find what you're looking for.
     </p>
 
-    <article class="video-card" aria-label="Aftermovie teaser">
+    <article class="video-card" aria-label="Conference highlights">
       <iframe
         class="video-frame"
         src={aftermovieEmbedUrl}
-        title="Conference aftermovie"
+        title="Conference highlights"
         loading="lazy"
-        aria-label="Conference aftermovie"
+        aria-label="Conference highlights video"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
         allowfullscreen
       ></iframe>
-      <a class="video-pill" href={aftermovieWatchUrl} target="_blank" rel="noopener noreferrer" aria-label="Watch AI summit highlights on YouTube">Watch 2025 AI Highlights</a>
+      <a class="video-pill" href={aftermovieWatchUrl} target="_blank" rel="noopener noreferrer" aria-label="Watch conference highlights on YouTube">Watch Highlights</a>
     </article>
 
     <section class="brand-showcase" aria-labelledby="brand-showcase-title">
-      <p id="brand-showcase-title" class="brand-note reveal-line" style="--reveal-delay: 0.36s;">AI Teams Featured In 2025</p>
+      <p id="brand-showcase-title" class="brand-note reveal-line" style="--reveal-delay: 0.36s;">What You'll Experience</p>
 
-      <div class="brand-row reveal-line" style="--reveal-delay: 0.48s;">
-        {
-          primaryBrands.map((brand, index) => (
-            <span
-              class="brand-icon"
-              aria-label={brand.name}
-              title={brand.name}
-              style={`--brand-tone: ${brand.color}; --icon-delay: ${0.74 + index * 0.08}s;`}
-            >
-              {
-                brand.svg ? (
-                  <span class="brand-logo" set:html={brand.svg}></span>
-                ) : (
-                  <span class="brand-fallback">{brand.fallback}</span>
-                )
-              }
-            </span>
-          ))
-        }
-      </div>
-
-      <div class="brand-row brand-row-subtle reveal-line" style="--reveal-delay: 0.58s;">
-        {
-          secondaryBrands.map((brand, index) => (
-            <span
-              class="brand-icon"
-              aria-label={brand.name}
-              title={brand.name}
-              style={`--brand-tone: ${brand.color}; --icon-delay: ${1.1 + index * 0.08}s;`}
-            >
-              {
-                brand.svg ? (
-                  <span class="brand-logo" set:html={brand.svg}></span>
-                ) : (
-                  <span class="brand-fallback">{brand.fallback}</span>
-                )
-              }
-            </span>
-          ))
-        }
-        <span class="brand-icon brand-icon-more" aria-label="And more brands" style="--icon-delay: 1.36s;">+</span>
+      <div class="feature-grid reveal-line" style="--reveal-delay: 0.48s;">
+        <div class="feature-item">
+          <span class="feature-icon">🎮</span>
+          <p>Talks & Panels</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🤝</span>
+          <p>Networking</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">💼</span>
+          <p>Career Opportunities</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🎨</span>
+          <p>Game Showcases</p>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">📈</span>
+          <p>Business Insights</p>
+        </div>
       </div>
     </section>
   </div>
@@ -106,8 +68,6 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
 
 <script>
   const noiseStage = document.querySelector('.noise-stage');
-  const videoEl = document.querySelector('video.js-noise-video');
-
   if (noiseStage) {
     const stageObserver = new IntersectionObserver(
       ([entry]) => {
@@ -117,50 +77,7 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
       },
       { threshold: 0.25 }
     );
-
     stageObserver.observe(noiseStage);
-  }
-
-  if (videoEl) {
-    const tryPlay = () => {
-      const playPromise = videoEl.play();
-      if (playPromise && typeof playPromise.catch === 'function') {
-        playPromise.catch(() => {
-          // Ignore autoplay rejections silently.
-        });
-      }
-    };
-
-    videoEl.muted = true;
-    videoEl.defaultMuted = true;
-    videoEl.playsInline = true;
-
-    const retryPlay = () => {
-      if (!videoEl.paused) return;
-      tryPlay();
-      window.setTimeout(() => {
-        if (videoEl.paused) tryPlay();
-      }, 350);
-    };
-
-    videoEl.addEventListener('loadeddata', retryPlay);
-    videoEl.addEventListener('canplay', retryPlay);
-    videoEl.addEventListener('mouseenter', tryPlay);
-
-    tryPlay();
-    window.requestAnimationFrame(tryPlay);
-    window.setTimeout(tryPlay, 250);
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          retryPlay();
-        }
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
-    );
-
-    observer.observe(videoEl);
   }
 </script>
 
@@ -175,17 +92,7 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
   margin-top: -340px;
   padding: 260px 0 3.8rem;
   clip-path: polygon(
-    0 16%,
-    8% 14%,
-    22% 12%,
-    36% 10%,
-    50% 9%,
-    64% 10%,
-    78% 12%,
-    92% 14%,
-    100% 16%,
-    100% 100%,
-    0 100%
+    0 16%, 8% 14%, 22% 12%, 36% 10%, 50% 9%, 64% 10%, 78% 12%, 92% 14%, 100% 16%, 100% 100%, 0 100%
   );
   animation: gradient-shift 12.9s ease-in-out infinite alternate;
 }
@@ -215,15 +122,13 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
   max-width: 15ch;
 }
 
-.noise-title span {
-  color: #ff4f12;
-}
+.noise-title span { color: #ff4f12; }
 
 .noise-copy {
   margin: 0.85rem auto 0;
   font-size: clamp(1rem, 1.55vw, 1.75rem);
   color: #d7dde2;
-  max-width: 45ch;
+  max-width: 55ch;
 }
 
 .video-card {
@@ -266,10 +171,7 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
   opacity: 0;
   transform: translate3d(0, 18px, 0);
   filter: blur(8px);
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s cubic-bezier(0.2, 0.75, 0.2, 1),
-    filter 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.75, 0.2, 1), filter 0.8s ease;
   transition-delay: var(--reveal-delay, 0s);
   will-change: opacity, transform, filter;
 }
@@ -296,113 +198,31 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
   max-width: 980px;
 }
 
-.brand-showcase::before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -34px;
-  transform: translateX(-50%);
-  width: min(960px, 95vw);
-  height: 320px;
-  background: repeating-radial-gradient(
-    ellipse at 50% 100%,
-    rgba(186, 194, 201, 0.15) 0 1px,
-    transparent 1px 20px
-  );
-  opacity: 0.42;
-  pointer-events: none;
-}
-
-.brand-row {
+.feature-grid {
   margin-top: 1.55rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   flex-wrap: wrap;
-  color: #f4f7fa;
-  font-weight: 700;
-  font-size: clamp(1.05rem, 1.9vw, 2rem);
-  letter-spacing: 0.01em;
-  position: relative;
-  z-index: 1;
 }
 
-.brand-icon {
-  width: 56px;
-  height: 56px;
-  border-radius: 999px;
-  display: inline-flex;
+.feature-item {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  background: linear-gradient(160deg, color-mix(in srgb, var(--brand-tone, #365067) 52%, #0d1620 48%), rgba(8, 15, 24, 0.92));
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  opacity: 0;
-  transform: translate3d(0, 14px, 0) scale(0.82);
-  filter: blur(6px);
-  will-change: transform, opacity, filter;
-  transition:
-    transform 0.26s cubic-bezier(0.2, 0.8, 0.2, 1),
-    box-shadow 0.26s ease,
-    border-color 0.26s ease,
-    background 0.26s ease;
+  gap: 0.5rem;
 }
 
-.noise-stage.is-visible .brand-icon {
-  animation: icon-reveal 0.62s cubic-bezier(0.2, 0.78, 0.18, 1) forwards;
-  animation-delay: var(--icon-delay, 0s);
+.feature-icon {
+  font-size: 2rem;
 }
 
-.brand-icon:hover {
-  transform: translate3d(0, -4px, 0) scale(1.06);
-  border-color: color-mix(in srgb, var(--brand-tone, #7da6c6) 62%, #eef4f8 38%);
-  box-shadow:
-    0 8px 22px color-mix(in srgb, var(--brand-tone, #54718b) 42%, transparent 58%),
-    inset 0 0 0 1px rgba(255, 255, 255, 0.14);
-}
-
-.brand-icon:hover .brand-logo,
-.brand-icon:hover .brand-fallback,
-.brand-icon:hover.brand-icon-more {
-  transform: scale(1.08);
-}
-
-.brand-logo {
-  width: 24px;
-  height: 24px;
+.feature-item p {
+  margin: 0;
   color: #eef4f8;
-  transition: transform 0.26s ease;
-}
-
-.brand-logo :global(svg) {
-  width: 100%;
-  height: 100%;
-  display: block;
-  fill: currentColor;
-}
-
-.brand-fallback {
-  font-size: 0.75rem;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: 0.06em;
-  color: #ecf3f7;
-  text-transform: uppercase;
-  transition: transform 0.26s ease;
-}
-
-.brand-icon-more {
-  font-size: 1.7rem;
-  line-height: 1;
-  color: #f4f7fa;
-  font-weight: 600;
-}
-
-.brand-row-subtle {
-  margin-top: 1rem;
-  color: #cfd7dd;
-  font-size: clamp(0.95rem, 1.55vw, 1.6rem);
+  font-weight: 700;
+  font-size: 1rem;
 }
 
 .decor {
@@ -413,325 +233,60 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
 }
 
 .decor-left {
-  width: 500px;
-  height: 500px;
+  width: 500px; height: 500px;
   border: 26px solid rgba(255, 74, 17, 0.75);
-  left: -260px;
-  top: 370px;
-  box-shadow:
-    inset 0 0 0 10px rgba(255, 255, 255, 0.74),
-    inset 0 0 0 44px rgba(0, 0, 0, 0.4);
+  left: -260px; top: 370px;
+  box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.74), inset 0 0 0 44px rgba(0, 0, 0, 0.4);
   animation: float-left 6.4s ease-in-out infinite;
 }
 
 .decor-right {
-  width: 580px;
-  height: 580px;
+  width: 580px; height: 580px;
   border: 38px solid rgba(255, 74, 17, 0.74);
-  right: -200px;
-  top: 150px;
+  right: -200px; top: 150px;
   box-shadow: inset 0 0 0 10px rgba(255, 255, 255, 0.28);
   animation: float-right 7.9s ease-in-out infinite;
 }
 
-.cross {
-  position: absolute;
-  width: 95px;
-  height: 95px;
-  opacity: 0.6;
-  z-index: 1;
-}
+.cross { position: absolute; width: 95px; height: 95px; opacity: 0.6; z-index: 1; }
+.cross::before, .cross::after { content: ""; position: absolute; background: rgba(255, 74, 17, 0.72); }
+.cross::before { width: 2px; height: 100%; left: 50%; top: 0; }
+.cross::after { height: 2px; width: 100%; top: 50%; left: 0; }
+.cross-left { left: 50px; bottom: 120px; animation: cross-pulse 3.3s ease-in-out infinite; }
+.cross-right { right: 70px; top: 260px; animation: cross-pulse 3.7s ease-in-out infinite; }
 
-.cross::before,
-.cross::after {
-  content: "";
-  position: absolute;
-  background: rgba(255, 74, 17, 0.72);
-}
+.noise-dot { position: absolute; border-radius: 999px; pointer-events: none; z-index: 1; }
+.noise-dot-a { width: 18px; height: 18px; left: 22%; top: 190px; background: rgba(255, 255, 255, 0.82); box-shadow: 0 0 0 10px rgba(255, 79, 18, 0.18); animation: dot-bob 3.6s ease-in-out infinite; }
+.noise-dot-b { width: 28px; height: 28px; right: 19%; bottom: 170px; background: rgba(255, 79, 18, 0.9); box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.08); animation: dot-bob 4.3s ease-in-out infinite reverse; }
 
-.cross::before {
-  width: 2px;
-  height: 100%;
-  left: 50%;
-  top: 0;
-}
+.noise-arc { position: absolute; pointer-events: none; z-index: 1; border: 3px solid rgba(255, 255, 255, 0.22); border-radius: 999px; }
+.noise-arc-a { width: 180px; height: 180px; right: 24%; top: 120px; border-left-color: transparent; border-bottom-color: transparent; transform: rotate(14deg); animation: arc-sway 5.6s ease-in-out infinite; }
+.noise-arc-b { width: 120px; height: 120px; left: 10%; bottom: 90px; border-right-color: transparent; border-top-color: transparent; transform: rotate(-18deg); opacity: 0.45; animation: arc-sway 5s ease-in-out infinite reverse; }
 
-.cross::after {
-  height: 2px;
-  width: 100%;
-  top: 50%;
-  left: 0;
-}
-
-.cross-left {
-  left: 50px;
-  bottom: 120px;
-  animation: cross-pulse 3.3s ease-in-out infinite;
-}
-
-.cross-right {
-  right: 70px;
-  top: 260px;
-  animation: cross-pulse 3.7s ease-in-out infinite;
-}
-
-.noise-dot {
-  position: absolute;
-  border-radius: 999px;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.noise-dot-a {
-  width: 18px;
-  height: 18px;
-  left: 22%;
-  top: 190px;
-  background: rgba(255, 255, 255, 0.82);
-  box-shadow: 0 0 0 10px rgba(255, 79, 18, 0.18);
-  animation: dot-bob 3.6s ease-in-out infinite;
-}
-
-.noise-dot-b {
-  width: 28px;
-  height: 28px;
-  right: 19%;
-  bottom: 170px;
-  background: rgba(255, 79, 18, 0.9);
-  box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.08);
-  animation: dot-bob 4.3s ease-in-out infinite reverse;
-}
-
-.noise-arc {
-  position: absolute;
-  pointer-events: none;
-  z-index: 1;
-  border: 3px solid rgba(255, 255, 255, 0.22);
-  border-radius: 999px;
-}
-
-.noise-arc-a {
-  width: 180px;
-  height: 180px;
-  right: 24%;
-  top: 120px;
-  border-left-color: transparent;
-  border-bottom-color: transparent;
-  transform: rotate(14deg);
-  animation: arc-sway 5.6s ease-in-out infinite;
-}
-
-.noise-arc-b {
-  width: 120px;
-  height: 120px;
-  left: 10%;
-  bottom: 90px;
-  border-right-color: transparent;
-  border-top-color: transparent;
-  transform: rotate(-18deg);
-  opacity: 0.45;
-  animation: arc-sway 5s ease-in-out infinite reverse;
-}
-
-@keyframes gradient-shift {
-  0% {
-    background-position: 0% 35%;
-  }
-
-  100% {
-    background-position: 100% 65%;
-  }
-}
-
-@keyframes float-left {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-
-  50% {
-    transform: translate3d(10px, -10px, 0) rotate(2deg);
-  }
-}
-
-@keyframes float-right {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(0deg);
-  }
-
-  50% {
-    transform: translate3d(-12px, 12px, 0) rotate(-2deg);
-  }
-}
-
-@keyframes cross-pulse {
-  0%,
-  100% {
-    opacity: 0.45;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.85;
-    transform: scale(1.06);
-  }
-}
-
-@keyframes dot-bob {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  50% {
-    transform: translate3d(0, -10px, 0) scale(1.08);
-  }
-}
-
-@keyframes arc-sway {
-  0%,
-  100% {
-    transform: translate3d(0, 0, 0) rotate(14deg);
-  }
-
-  50% {
-    transform: translate3d(0, -8px, 0) rotate(8deg);
-  }
-}
-
-@keyframes icon-reveal {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 14px, 0) scale(0.82);
-    filter: blur(6px);
-  }
-
-  75% {
-    opacity: 1;
-    transform: translate3d(0, -2px, 0) scale(1.04);
-    filter: blur(0);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-    filter: blur(0);
-  }
-}
+@keyframes gradient-shift { 0% { background-position: 0% 35%; } 100% { background-position: 100% 65%; } }
+@keyframes float-left { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(10px, -10px, 0) rotate(2deg); } }
+@keyframes float-right { 0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg); } 50% { transform: translate3d(-12px, 12px, 0) rotate(-2deg); } }
+@keyframes cross-pulse { 0%, 100% { opacity: 0.45; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.06); } }
+@keyframes dot-bob { 0%, 100% { transform: translate3d(0, 0, 0) scale(1); } 50% { transform: translate3d(0, -10px, 0) scale(1.08); } }
+@keyframes arc-sway { 0%, 100% { transform: translate3d(0, 0, 0) rotate(14deg); } 50% { transform: translate3d(0, -8px, 0) rotate(8deg); } }
 
 @media (max-width: 900px) {
   .noise-stage {
-    margin-top: -120px;
-    padding-top: 120px;
-    clip-path: polygon(
-      0 14%,
-      8% 12%,
-      22% 10%,
-      36% 8%,
-      50% 7%,
-      64% 8%,
-      78% 10%,
-      92% 12%,
-      100% 14%,
-      100% 100%,
-      0 100%
-    );
+    margin-top: -120px; padding-top: 120px;
+    clip-path: polygon(0 14%, 8% 12%, 22% 10%, 36% 8%, 50% 7%, 64% 8%, 78% 10%, 92% 12%, 100% 14%, 100% 100%, 0 100%);
   }
-
-  .noise-shell {
-    padding-top: 4.6rem;
-  }
-
-  .decor-right {
-    width: 360px;
-    height: 360px;
-    border-width: 24px;
-    right: -140px;
-    top: 260px;
-  }
-
-  .decor-left {
-    width: 320px;
-    height: 320px;
-    border-width: 16px;
-    left: -160px;
-    top: 460px;
-  }
-
-  .brand-note {
-    font-size: 1.3rem;
-    letter-spacing: 0.14em;
-  }
-
-  .brand-row {
-    gap: 1rem;
-  }
-
-  .brand-icon {
-    width: 46px;
-    height: 46px;
-  }
-
-  .brand-logo {
-    width: 20px;
-    height: 20px;
-  }
-
-  .brand-fallback {
-    font-size: 0.66rem;
-  }
-
-  .noise-dot-a {
-    left: 12%;
-    top: 165px;
-    width: 14px;
-    height: 14px;
-  }
-
-  .noise-dot-b {
-    right: 12%;
-    bottom: 150px;
-    width: 22px;
-    height: 22px;
-  }
-
-  .noise-arc-a {
-    width: 128px;
-    height: 128px;
-    right: 14%;
-    top: 140px;
-  }
-
-  .noise-arc-b {
-    width: 88px;
-    height: 88px;
-    left: 4%;
-    bottom: 70px;
-  }
+  .noise-shell { padding-top: 4.6rem; }
+  .decor-right { width: 360px; height: 360px; border-width: 24px; right: -140px; top: 260px; }
+  .decor-left { width: 320px; height: 320px; border-width: 16px; left: -160px; top: 460px; }
+  .brand-note { font-size: 1.3rem; letter-spacing: 0.14em; }
+  .feature-grid { gap: 1rem; }
+  .noise-dot-a { left: 12%; top: 165px; width: 14px; height: 14px; }
+  .noise-dot-b { right: 12%; bottom: 150px; width: 22px; height: 22px; }
+  .noise-arc-a { width: 128px; height: 128px; right: 14%; top: 140px; }
+  .noise-arc-b { width: 88px; height: 88px; left: 4%; bottom: 70px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .brand-icon {
-    opacity: 1;
-    transform: none;
-    filter: none;
-    animation: none !important;
-    transition: none;
-  }
-
-  .brand-logo,
-  .brand-fallback,
-  .brand-icon-more {
-    transition: none;
-  }
-}
-
-@media (hover: none) {
-  .brand-icon:hover {
-    transform: none;
-    border-color: rgba(255, 255, 255, 0.22);
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06);
-  }
+  .reveal-line { opacity: 1; transform: none; filter: none; transition: none; }
 }
 </style>

@@ -5,50 +5,36 @@
     <div class="hero-grid-atmosphere" ref="gridOverlayRef" aria-hidden="true"></div>
 
     <div class="hero-top container" ref="heroTopRef">
-      <img class="hero-logo" src="/artham.png" alt="ARTHAM logo" />
-      <p class="hero-date">Sep 16 - 18, 2026 · Berlin & Online</p>
-      <h1 class="hero-title" ref="titleRef">ARTHAM AI<br />Summit</h1>
-      <p class="hero-copy">The premier gathering for AI product, engineering, and design leaders in Europe. 550 onsite spots. Applications open now.</p>
+      <p class="hero-date-big" ref="titleRef">17.10.2026</p>
+      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference</h1>
+      <p class="hero-copy">The annual gathering for game developers, designers, artists, and business professionals across the region. One day. Talks, networking, and the games industry celebrated as a whole.</p>
 
       <div class="hero-actions" ref="actionsRef">
-        <a href="/invite" class="cta cta-primary">
-          <span>Apply for an Invite</span>
+        <a href="#about" class="cta cta-primary">
+          <span>Learn More</span>
           <svg class="cta-icon cta-icon-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
             <path d="M3 8h8M10 5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
           </svg>
         </a>
-        <a href="/invite" class="cta cta-dark">
+        <!-- TODO: Enable when tickets go live -->
+        <!--
+        <a href="#tickets" class="cta cta-dark">
           <span>Get Tickets</span>
-          <svg class="cta-icon cta-icon-ticket" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M2.5 6.2a1 1 0 0 1 1-1h9a1 1 0 0 1 1 1v1.1a1.25 1.25 0 0 0 0 2.5V11a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V9.8a1.25 1.25 0 0 0 0-2.5V6.2Z" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-            <path d="M8 6.7v3.6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-          </svg>
         </a>
+        -->
       </div>
 
-      <p class="hero-subcopy">1,500+ people have already applied to join the 2026 AI Summit</p>
-
-      <div class="support-row" aria-label="Supporting brands">
-        <span class="support-label">Trusted by AI-first teams at</span>
-        <div class="support-logos">
-          <span>UserTesting</span>
-          <span>Figma</span>
-          <span>Intercom</span>
-          <span>Mobbin</span>
-          <span>Superhuman</span>
-          <span>GetYourGuide</span>
-        </div>
-      </div>
+      <p class="hero-subcopy">Connecting game developers from all over the region since 2016</p>
     </div>
 
-    <div class="hero-marquee" aria-label="AI summit moments">
+    <div class="hero-marquee" aria-label="Game development moments">
       <svg class="marquee-curve" viewBox="0 0 1440 220" preserveAspectRatio="none" role="presentation" aria-hidden="true">
         <path d="M0,0 L0,46 C320,108 1120,108 1440,46 L1440,0 Z"></path>
       </svg>
       <div class="marquee-track">
-        <img v-for="img in marqueeImages" :key="`a-${img}`" :src="img" alt="AI summit speaker" loading="lazy" />
-        <img v-for="img in marqueeImages" :key="`b-${img}`" :src="img" alt="AI summit speaker" loading="lazy" />
-        <img v-for="img in marqueeImages" :key="`c-${img}`" :src="img" alt="AI summit speaker" loading="lazy" />
+        <img v-for="img in marqueeImages" :key="`a-${img}`" :src="img" alt="Game development conference" loading="lazy" />
+        <img v-for="img in marqueeImages" :key="`b-${img}`" :src="img" alt="Game development conference" loading="lazy" />
+        <img v-for="img in marqueeImages" :key="`c-${img}`" :src="img" alt="Game development conference" loading="lazy" />
       </div>
       <svg class="marquee-curve-bottom" viewBox="0 0 1440 220" preserveAspectRatio="none" role="presentation" aria-hidden="true">
         <path d="M0,220 L0,174 C320,112 1120,112 1440,174 L1440,220 Z"></path>
@@ -67,18 +53,20 @@ const titleRef = ref(null);
 const actionsRef = ref(null);
 const gridOverlayRef = ref(null);
 
+const headingRef = ref(null);
+
 const marqueeImages = [
-  'https://images.pexels.com/photos/18999161/pexels-photo-18999161.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/9275222/pexels-photo-9275222.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/34594518/pexels-photo-34594518.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/34046711/pexels-photo-34046711.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/27692367/pexels-photo-27692367.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/3321796/pexels-photo-3321796.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/29284293/pexels-photo-29284293.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/34086480/pexels-photo-34086480.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/29708260/pexels-photo-29708260.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/10401279/pexels-photo-10401279.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/33121483/pexels-photo-33121483.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/7915357/pexels-photo-7915357.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/7862361/pexels-photo-7862361.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/7915286/pexels-photo-7915286.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/7915509/pexels-photo-7915509.jpeg?auto=compress&cs=tinysrgb&w=1200',
+  'https://images.pexels.com/photos/3861951/pexels-photo-3861951.jpeg?auto=compress&cs=tinysrgb&w=1200'
 ];
 
 onMounted(() => {
@@ -92,6 +80,10 @@ onMounted(() => {
     animate(titleRef.value, { opacity: [0, 1], y: [18, 0] }, { duration: 0.7, delay: 0.15 });
   }
 
+  if (headingRef.value) {
+    animate(headingRef.value, { opacity: [0, 1], y: [18, 0] }, { duration: 0.7, delay: 0.25 });
+  }
+
   if (actionsRef.value) {
     animate(actionsRef.value, { opacity: [0, 1], scale: [0.96, 1] }, { duration: 0.55, delay: 0.3 });
   }
@@ -99,7 +91,6 @@ onMounted(() => {
   if (heroRef.value && gridOverlayRef.value) {
     const updateGridShift = () => {
       const y = window.scrollY;
-      // Keep movement tiny so the grid reads as atmosphere only.
       const offsetX = (y * 0.04) % 8;
       const offsetY = (y * 0.03) % 6;
       gridOverlayRef.value.style.transform = `translate3d(${offsetX.toFixed(2)}px, ${offsetY.toFixed(2)}px, 0)`;
@@ -110,7 +101,6 @@ onMounted(() => {
     cleanupFns.push(() => window.removeEventListener('scroll', updateGridShift));
   }
 
-  // Add scroll-linked horizontal movement while keeping the loop seamless
   const marqueeTrack = document.querySelector('.marquee-track');
   if (marqueeTrack && heroRef.value) {
     const loopDistance = () => marqueeTrack.scrollWidth / 3;
@@ -120,14 +110,12 @@ onMounted(() => {
       const heroRect = heroRef.value.getBoundingClientRect();
       const heroBottom = heroRect.bottom;
 
-      // Keep the marquee filled while the hero is on screen
       if (heroBottom > 0) {
         const distance = loopDistance();
         if (!distance) return;
 
         marqueeTrack.style.animation = 'none';
 
-        // Move right as the page scrolls down, but wrap so the track never empties.
         const scrollOffset = ((window.scrollY * 0.5) % distance + distance) % distance;
         marqueeTrack.style.transform = `translateX(calc(-33.333% + ${scrollOffset}px))`;
 
@@ -194,23 +182,13 @@ onMounted(() => {
 }
 
 @keyframes hero-radial-drift-a {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  100% {
-    transform: translate3d(22px, -16px, 0) scale(1.03);
-  }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(22px, -16px, 0) scale(1.03); }
 }
 
 @keyframes hero-radial-drift-b {
-  0% {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-
-  100% {
-    transform: translate3d(-18px, 20px, 0) scale(1.04);
-  }
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(-18px, 20px, 0) scale(1.04); }
 }
 
 .hero-grid-atmosphere {
@@ -241,14 +219,6 @@ onMounted(() => {
   padding-bottom: 2.25rem;
 }
 
-.hero-logo {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 1rem;
-  object-fit: contain;
-  display: block;
-}
-
 .hero-date {
   margin: 0 0 0.65rem;
   text-transform: uppercase;
@@ -256,6 +226,16 @@ onMounted(() => {
   font-size: 0.86rem;
   color: #5d6467;
   font-weight: 600;
+}
+
+.hero-date-big {
+  margin: 0 0 0.4rem;
+  font-family: "Bebas Neue", "Arial Narrow", "Segoe UI", sans-serif;
+  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  color: #fc4d0f;
 }
 
 .hero-title {
@@ -270,7 +250,7 @@ onMounted(() => {
 
 .hero-copy {
   margin: 0.78rem auto 0;
-  max-width: 28ch;
+  max-width: 42ch;
   font-size: clamp(1rem, 1.35vw, 1.16rem);
   color: #24282a;
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
@@ -311,12 +291,6 @@ onMounted(() => {
   transform: translateY(0.2px);
 }
 
-.cta-icon-ticket {
-  width: 1.06rem;
-  height: 1.06rem;
-  transform: translateY(0.5px);
-}
-
 .cta-primary {
   background: #fc4d0f;
   color: #fff;
@@ -334,31 +308,6 @@ onMounted(() => {
   font-size: 0.92rem;
 }
 
-.support-row {
-  margin-top: 1.55rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
-
-.support-label {
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: #596063;
-  font-size: 0.85rem;
-}
-
-.support-logos {
-  display: flex;
-  gap: 1.2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  color: #303639;
-  font-weight: 700;
-}
-
 .hero-marquee {
   position: relative;
   overflow: hidden;
@@ -369,17 +318,7 @@ onMounted(() => {
   padding: 0;
   line-height: 0;
   clip-path: polygon(
-    0 0,
-    100% 0,
-    100% 89%,
-    92% 85%,
-    78% 81%,
-    64% 78%,
-    50% 76.5%,
-    36% 78%,
-    22% 81%,
-    8% 85%,
-    0 89%
+    0 0, 100% 0, 100% 89%, 92% 85%, 78% 81%, 64% 78%, 50% 76.5%, 36% 78%, 22% 81%, 8% 85%, 0 89%
   );
 }
 
@@ -393,13 +332,8 @@ onMounted(() => {
   pointer-events: none;
 }
 
-.marquee-curve path {
-  fill: #ffffff;
-}
-
-.marquee-curve-bottom {
-  display: none;
-}
+.marquee-curve path { fill: #ffffff; }
+.marquee-curve-bottom { display: none; }
 
 .marquee-track {
   position: relative;
@@ -424,91 +358,36 @@ onMounted(() => {
 }
 
 @keyframes marquee-slide {
-  from {
-    transform: translateX(0);
-  }
-
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
 @media (max-width: 900px) {
-  .hero-date {
-    letter-spacing: 0.16em;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .cta {
-    width: min(280px, 92vw);
-    justify-content: center;
-  }
-
-  .curve-divider {
-    display: none;
-  }
-
+  .hero-date { letter-spacing: 0.16em; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .cta { width: min(280px, 92vw); justify-content: center; }
   .hero-marquee {
     margin-bottom: -48px;
-    padding: 0;
     clip-path: polygon(
-      0 0,
-      100% 0,
-      100% 91%,
-      92% 87%,
-      78% 83%,
-      64% 80%,
-      50% 78.5%,
-      36% 80%,
-      22% 83%,
-      8% 87%,
-      0 91%
+      0 0, 100% 0, 100% 91%, 92% 87%, 78% 83%, 64% 80%, 50% 78.5%, 36% 80%, 22% 83%, 8% 87%, 0 91%
     );
   }
-
-  .marquee-curve {
-    height: 102px;
-  }
-
-  .marquee-curve-bottom {
-    height: 88px;
-  }
-
-  .marquee-track img {
-    height: 430px;
-  }
+  .marquee-curve { height: 102px; }
+  .marquee-track img { height: 430px; }
 }
 
 @media (max-width: 640px) {
-  .hero-radial {
-    opacity: 0.09;
-    filter: blur(28px);
-  }
-
+  .hero-radial { opacity: 0.09; filter: blur(28px); }
   .hero-grid-atmosphere {
     inset: 0 0 34% 0;
     opacity: 0.29;
     background-size: 34px 34px, 34px 34px, 100% 100%;
   }
-
-  .marquee-track img {
-    width: 58vw;
-    height: 340px;
-  }
+  .marquee-track img { width: 58vw; height: 340px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-radial {
-    animation: none;
-    transform: none;
-  }
-
-  .hero-grid-atmosphere {
-    transform: none !important;
-  }
+  .hero-radial { animation: none; transform: none; }
+  .hero-grid-atmosphere { transform: none !important; }
 }
 </style>
