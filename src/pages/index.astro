@@ -1,26 +1,113 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroSection from '../components/HeroSection.vue';
-import SectionScrollNav from '../components/SectionScrollNav.vue';
-import NoiseStageSection from '../components/NoiseStageSection.astro';
-import EventCards from '../components/EventCards.astro';
-import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro';
-import TestimonialsSection from '../components/TestimonialsSection.astro';
-import VenueCarouselSection from '../components/VenueCarouselSection.astro';
-import PreviousYearsVideoSection from '../components/PreviousYearsVideoSection.vue';
-import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Slovenia Games Conference 2026">
-  <SectionScrollNav client:load />
-  <main>
-    <HeroSection client:load />
-    <NoiseStageSection />
-    <EventCards />
-    <SpeakersShowcaseSection />
-    <TestimonialsSection />
-    <VenueCarouselSection />
-    <PreviousYearsVideoSection client:load />
+  <main class="coming-soon-page">
+    <section class="hero">
+      <div class="hero-overlay"></div>
+
+      <img
+        src="/sga-logo.png"
+        alt="Slovenia Games Association"
+        class="association-logo"
+      />
+
+      <div class="hero-content">
+        <img
+          src="/sgc-logo.png"
+          alt="Slovenia Games Conference"
+          class="sgc-logo"
+        />
+
+        <p class="coming-soon-text">Coming Soon</p>
+      </div>
+    </section>
   </main>
-  <Footer />
 </Layout>
+
+<style>
+  .coming-soon-page {
+    min-height: 100vh;
+    background: #0f1419;
+    color: white;
+  }
+
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: hidden;
+
+    background-image: url('/coming-soon-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.78)),
+      radial-gradient(circle at center, rgba(255, 79, 18, 0.22), transparent 55%);
+    z-index: 1;
+  }
+
+  .association-logo {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    z-index: 10;
+    width: min(20vw, 180px);
+    height: auto;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 2rem;
+    width: min(90vw, 1000px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .sgc-logo {
+    margin: 10rem 0 0;
+    width: min(65vw, 600px);
+    height: auto;
+    display: block;
+  }
+
+  .coming-soon-text {
+    margin: 5rem 0 0;
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: rgba(255, 111, 44, 0.95);
+  }
+
+  @media (max-width: 600px) {
+    .association-logo {
+      top: 1.25rem;
+      left: 1.25rem;
+      width: min(58vw, 220px);
+    }
+
+    .sgc-logo {
+      width: min(92vw, 520px);
+    }
+
+    .coming-soon-text {
+      letter-spacing: 0.16em;
+    }
+  }
+</style>
