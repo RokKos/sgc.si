@@ -20,7 +20,8 @@ import Layout from '../layouts/Layout.astro';
           class="sgc-logo"
         />
 
-        <p class="coming-soon-text">Coming Soon</p>
+        <p class="coming-soon-text">Coming to Ljubljana</p>
+        <p class="date-text">17th of October</p>
       </div>
     </section>
   </main>
@@ -76,7 +77,7 @@ import Layout from '../layouts/Layout.astro';
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 0;
   }
 
   .sgc-logo {
@@ -87,12 +88,23 @@ import Layout from '../layouts/Layout.astro';
   }
 
   .coming-soon-text {
-    margin: 5rem 0 0;
+    margin: 5rem 0 0.6rem;
     font-size: clamp(1.2rem, 3vw, 2rem);
     font-weight: 100;
     text-transform: uppercase;
     letter-spacing: 0.24em;
     color: rgba(255, 111, 44, 0.95);
+  }
+
+  .date-text {
+    margin: -0.5rem 0 0;
+    font-size: clamp(1.1rem, 2vw, 1.1rem);
+    font-weight: 100;
+    font-style: italic;
+    text-decoration: underline;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: rgba(255, 255, 255, 0.75);
   }
 
   @media (max-width: 600px) {
@@ -107,6 +119,10 @@ import Layout from '../layouts/Layout.astro';
     }
 
     .coming-soon-text {
+      letter-spacing: 0.16em;
+    }
+
+    .date-text {
       letter-spacing: 0.16em;
     }
   }
