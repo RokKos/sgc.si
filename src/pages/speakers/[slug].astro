@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { speakers } from '../../data/speakers';
+
+export function getStaticPaths() {
+  return speakers.map((speaker) => ({
+    params: { slug: speaker.slug },
+    props: { speaker },
+  }));
+}
+
+const { speaker } = Astro.props;
+---
+
+<Layout title={`${speaker.name} — SGC 2026`}>
+  <main class="speaker-page">
+    <div class="container speaker-wrap">
+      <div class="speaker-hero">
+        <img src={speaker.image} alt={speaker.name} class="speaker-photo" />
+        <div class="speaker-details">
+          <p class="speaker-company">{speaker.company}</p>
+          <h1 class="speaker-name">{speaker.name}</h1>
+          <p class="speaker-role">{speaker.role}</p>
+          <p class="speaker-bio">{speaker.bio}</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+.speaker-page {
+  min-height: 100vh;
+  background: #f7f6f4;
+  padding: 4rem 0 6rem;
+}
+
+.speaker-wrap {
+  width: min(900px, 94%);
+  margin: 0 auto;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+  color: #555b66;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.back-link:hover {
+  color: #ff6f2c;
+}
+
+.speaker-hero {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
+  background: #fff;
+  border-radius: 18px;
+  padding: 2.5rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
+}
+
+.speaker-photo {
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.speaker-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.speaker-company {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #ff6f2c;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.speaker-name {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #202328;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  line-height: 1;
+}
+
+.speaker-role {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #555b66;
+}
+
+.speaker-bio {
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #31363d;
+}
+
+@media (max-width: 640px) {
+  .speaker-hero {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+  }
+
+  .speaker-photo {
+    width: 160px;
+    height: 160px;
+  }
+}
+</style>
