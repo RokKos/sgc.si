@@ -14,14 +14,17 @@ const { speaker } = Astro.props;
 
 <Layout title={`${speaker.name} — SGC 2026`}>
   <main class="speaker-page">
-    <div class="container speaker-wrap">
-      <div class="speaker-hero">
-        <img src={speaker.image} alt={speaker.name} class="speaker-photo" />
-        <div class="speaker-details">
-          <p class="speaker-company">{speaker.company}</p>
-          <h1 class="speaker-name">{speaker.name}</h1>
-          <p class="speaker-role">{speaker.role}</p>
-          <p class="speaker-bio">{speaker.bio}</p>
+    <div class="speaker-hero-bg">
+      <div class="hero-overlay"></div>
+      <div class="container speaker-wrap">
+        <div class="speaker-hero">
+          <img src={speaker.image} alt={speaker.name} class="speaker-photo" />
+          <div class="speaker-details">
+            <p class="speaker-company">{speaker.company}</p>
+            <h1 class="speaker-name">{speaker.name}</h1>
+            <p class="speaker-role">{speaker.role}</p>
+            <p class="speaker-bio">{speaker.bio}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -31,11 +34,33 @@ const { speaker } = Astro.props;
 <style>
 .speaker-page {
   min-height: 100vh;
-  background: #f7f6f4;
+  background: #0f1419;
+}
+
+.speaker-hero-bg {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background-image: url('/coming-soon-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   padding: 4rem 0 6rem;
 }
 
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.78)),
+    radial-gradient(circle at center, rgba(255, 79, 18, 0.22), transparent 55%);
+  z-index: 1;
+}
+
 .speaker-wrap {
+  position: relative;
+  z-index: 2;
   width: min(900px, 94%);
   margin: 0 auto;
 }
@@ -44,7 +69,7 @@ const { speaker } = Astro.props;
   display: inline-block;
   margin-bottom: 2.5rem;
   font-size: 0.95rem;
-  color: #555b66;
+  color: rgba(255,255,255,0.6);
   text-decoration: none;
   transition: color 0.15s;
 }
@@ -57,10 +82,12 @@ const { speaker } = Astro.props;
   display: flex;
   gap: 3rem;
   align-items: flex-start;
-  background: #fff;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
   border-radius: 18px;
   padding: 2.5rem;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .speaker-photo {
@@ -91,7 +118,7 @@ const { speaker } = Astro.props;
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 500;
   letter-spacing: -0.03em;
-  color: #202328;
+  color: #ffffff;
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
   line-height: 1;
 }
@@ -99,14 +126,14 @@ const { speaker } = Astro.props;
 .speaker-role {
   margin: 0;
   font-size: 1.05rem;
-  color: #555b66;
+  color: rgba(255,255,255,0.6);
 }
 
 .speaker-bio {
   margin: 1rem 0 0;
   font-size: 1.05rem;
   line-height: 1.65;
-  color: #31363d;
+  color: rgba(255,255,255,0.8);
 }
 
 @media (max-width: 640px) {
