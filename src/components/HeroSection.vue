@@ -5,26 +5,8 @@
     <div class="hero-grid-atmosphere" ref="gridOverlayRef" aria-hidden="true"></div>
 
     <div class="hero-top container" ref="heroTopRef">
-      <p class="hero-date-big" ref="titleRef">17.10.2026</p>
-      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference</h1>
-      <p class="hero-copy">The annual gathering for game developers, designers, artists, and business professionals across the region. One day. Talks, networking, and the games industry celebrated as a whole.</p>
-
-      <div class="hero-actions" ref="actionsRef">
-        <a href="#about" class="cta cta-primary">
-          <span>Learn More</span>
-          <svg class="cta-icon cta-icon-arrow" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
-            <path d="M3 8h8M10 5l3 3-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-          </svg>
-        </a>
-        <!-- TODO: Enable when tickets go live -->
-        <!--
-        <a href="#tickets" class="cta cta-dark">
-          <span>Get Tickets</span>
-        </a>
-        -->
-      </div>
-
-      <p class="hero-subcopy">Connecting game developers from all over the region since 2016</p>
+      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2026</h1>
+      <p class="hero-date-big" ref="titleRef">17.10.2026 in Ljubljana</p>
     </div>
 
     <div class="hero-marquee" aria-label="Game development moments">
@@ -144,13 +126,17 @@ onMounted(() => {
 
 <style scoped>
 .hero-shell {
-  background: #ffffff;
+  background: #0f1419;
+  background-image: url('/coming-soon-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
   overflow: visible;
-  min-height: 100vh;
+  min-height: 130vh;
   display: flex;
   flex-direction: column;
-  padding-top: clamp(4.8rem, 8vw, 7.2rem);
+  padding-top: clamp(6rem, 10vw, 10rem);
 }
 
 .hero-radial {
@@ -216,7 +202,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-bottom: 2.25rem;
+  padding-bottom: 6rem;
 }
 
 .hero-date {
@@ -231,7 +217,7 @@ onMounted(() => {
 .hero-date-big {
   margin: 0 0 0.4rem;
   font-family: "Bebas Neue", "Arial Narrow", "Segoe UI", sans-serif;
-  font-size: clamp(2.8rem, 8vw, 6rem);
+  font-size: clamp(1.6rem, 4vw, 3rem);
   font-weight: 400;
   letter-spacing: 0.06em;
   line-height: 1;
@@ -246,13 +232,14 @@ onMounted(() => {
   letter-spacing: -0.02em;
   font-weight: 400;
   font-family: "Bebas Neue", "Arial Narrow", "Segoe UI", sans-serif;
+  color: #ffffff;
 }
 
 .hero-copy {
   margin: 0.78rem auto 0;
   max-width: 42ch;
   font-size: clamp(1rem, 1.35vw, 1.16rem);
-  color: #24282a;
+  color: rgba(255, 255, 255, 0.8);
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
 }
 
@@ -330,9 +317,10 @@ onMounted(() => {
   height: 136px;
   z-index: 2;
   pointer-events: none;
+  margin-bottom: 0;
 }
 
-.marquee-curve path { fill: #ffffff; }
+.marquee-curve path { fill: transparent; }
 .marquee-curve-bottom { display: none; }
 
 .marquee-track {

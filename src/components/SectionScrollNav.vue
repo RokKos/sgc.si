@@ -1,14 +1,13 @@
 <template>
   <nav class="scroll-nav" :class="{ 'is-visible': isVisible }" aria-label="Section quick navigation">
-    <a href="#top" class="logo-pill" aria-label="Back to top">SGC</a>
-    <a href="#about" class="nav-pill">About</a>
-    <a href="#speakers" class="nav-pill nav-pill-muted">
-      Speakers
-      <span class="badge-new">SOON</span>
+    <a href="/" class="sga-logo-link">
+      <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" />
     </a>
+    <a href="#top" class="logo-pill" style="margin-left: auto;" aria-label="Back to top">SGC</a>
+    <a href="#about" class="nav-pill">About</a>
+    <a href="#speakers" class="nav-pill">Speakers</a>
     <a href="#agenda" class="nav-pill">Agenda</a>
     <a href="#venue" class="nav-pill">Venue</a>
-    <a href="#tickets" class="nav-pill nav-pill-cta">Tickets</a>
   </nav>
 </template>
 
@@ -53,9 +52,9 @@ onBeforeUnmount(() => {
   align-items: center;
   width: min(1600px, calc(100% - 16px));
   gap: 0.45rem;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 220ms ease, transform 220ms ease;
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
 }
 
 .scroll-nav.is-visible {
@@ -93,6 +92,15 @@ onBeforeUnmount(() => {
   font-size: 0.8rem;
   color: #202225;
   letter-spacing: 0.05em;
+  margin-left: auto;
+}
+
+.sga-logo {
+  height: 65px;
+  width: auto;
+  display: block;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
 }
 
 .nav-pill-muted { background: #6a6f77; color: #fff; }
