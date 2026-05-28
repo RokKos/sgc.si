@@ -38,17 +38,16 @@ const gridOverlayRef = ref(null);
 const headingRef = ref(null);
 
 const marqueeImages = [
-  'https://images.pexels.com/photos/3861969/pexels-photo-3861969.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/7915357/pexels-photo-7915357.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/3861958/pexels-photo-3861958.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/7862361/pexels-photo-7862361.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/3861972/pexels-photo-3861972.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/442576/pexels-photo-442576.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/3861964/pexels-photo-3861964.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/7915286/pexels-photo-7915286.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/3861943/pexels-photo-3861943.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/7915509/pexels-photo-7915509.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/3861951/pexels-photo-3861951.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  '/oldSGCPhotos/carousel1.jpg',
+  '/oldSGCPhotos/carousel2.jpg',
+  '/oldSGCPhotos/carousel3.jpg',
+  '/oldSGCPhotos/carousel4.jpg',
+  '/oldSGCPhotos/carousel5.jpg',
+  '/oldSGCPhotos/carousel6.jpg',
+  '/oldSGCPhotos/carousel7.jpg',
+  '/oldSGCPhotos/carousel8.jpg',
+  '/oldSGCPhotos/carousel9.jpg',
+  '/oldSGCPhotos/carousel10.jpg',
 ];
 
 onMounted(() => {
