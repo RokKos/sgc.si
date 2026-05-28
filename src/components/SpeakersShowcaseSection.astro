@@ -32,7 +32,7 @@ const displaySpeakers = speakers;
 .speakers-showcase {
   background: #f7f6f4;
   position: relative;
-  padding: 5.1rem 0 5.5rem;
+  padding: 5.1rem 0 5rem;
 }
 
 .speakers-wrap {
@@ -42,10 +42,12 @@ const displaySpeakers = speakers;
 .section-head {
   display: block;
   margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .section-copy {
   max-width: 760px;
+  margin: 0 auto;
 }
 
 .section-copy h2 {
@@ -53,9 +55,12 @@ const displaySpeakers = speakers;
   font-size: clamp(2.2rem, 4.9vw, 4.25rem);
   line-height: 0.92;
   letter-spacing: -0.045em;
-  color: #202328;
   font-weight: 500;
   font-family: "Space Grotesk", "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: linear-gradient(90deg, #202328 0%, #ff4d10 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .section-copy p {
