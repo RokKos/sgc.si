@@ -10,6 +10,12 @@
         <p class="coming-soon-emoji" aria-hidden="true">🎟️</p>
         <h3>Coming Soon</h3>
         <p>Ticket details and pricing will be announced shortly. Stay tuned.</p>
+          <a href="https://forms.gle/Pu1PB6qJTeaPp1kM7"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="notify-btn">
+          Notify me when tickets go live →
+        </a>
       </div>
 
       <!-- TODO: Uncomment when tickets go live
@@ -108,6 +114,23 @@
   color: #cfd7dd;
   font-size: 1.05rem;
   line-height: 1.5;
+}
+
+.notify-btn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.75rem;
+  background: #ff4d10;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.notify-btn:hover {
+  background: #e03d00;
 }
 
 @media (max-width: 760px) {
