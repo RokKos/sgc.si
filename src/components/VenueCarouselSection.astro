@@ -36,11 +36,12 @@ const slides = [
     <aside class="venue-card" aria-labelledby="venue-title">
       <p class="kicker">The Venue</p>
       <h2 id="venue-title">Faculty of Computer and Information Science</h2>
+      <p class="venue-date">17.10.2026</p>
       <p class="address-title">Večna pot 113</p>
       <p class="address-sub">1000 Ljubljana, Slovenia</p>
       <a
         class="maps-link"
-        href="https://maps.google.com/?q=Ve%C4%8Dna+pot+113,+1000+Ljubljana"
+        href="https://maps.app.goo.gl/LGpkExHBmrYD3CdA8"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -80,6 +81,14 @@ const slides = [
 </script>
 
 <style>
+.venue-date {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ff4d10;
+}
 .venue-section { background: #ececec; padding: 0; }
 .venue-fullbleed { position: relative; width: 100vw; margin-left: calc(50% - 50vw); min-height: 100vh; height: 100vh; overflow: hidden; }
 .venue-slides { position: absolute; inset: 0; }
