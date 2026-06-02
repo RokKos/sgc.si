@@ -34,7 +34,6 @@ const heroTopRef = ref(null);
 const titleRef = ref(null);
 const actionsRef = ref(null);
 const gridOverlayRef = ref(null);
-
 const headingRef = ref(null);
 
 const marqueeImages = [
@@ -82,41 +81,6 @@ onMounted(() => {
     cleanupFns.push(() => window.removeEventListener('scroll', updateGridShift));
   }
 
-  const marqueeTrack = document.querySelector('.marquee-track');
-  if (marqueeTrack && heroRef.value) {
-    const loopDistance = () => marqueeTrack.scrollWidth / 3;
-    let scrollTimeout;
-
-    const handleScroll = () => {
-      const heroRect = heroRef.value.getBoundingClientRect();
-      const heroBottom = heroRect.bottom;
-
-      if (heroBottom > 0) {
-        const distance = loopDistance();
-        if (!distance) return;
-
-        marqueeTrack.style.animation = 'none';
-
-        const scrollOffset = ((window.scrollY * 0.5) % distance + distance) % distance;
-        marqueeTrack.style.transform = `translateX(calc(-33.333% + ${scrollOffset}px))`;
-
-        clearTimeout(scrollTimeout);
-        scrollTimeout = setTimeout(() => {
-          marqueeTrack.style.animation = '';
-          marqueeTrack.style.transform = '';
-        }, 1000);
-      }
-    };
-
-    handleScroll();
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    cleanupFns.push(() => {
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(scrollTimeout);
-    });
-  }
-
   return () => {
     cleanupFns.forEach((cleanup) => cleanup());
   };
@@ -132,7 +96,7 @@ onMounted(() => {
   background-repeat: no-repeat;
   position: relative;
   overflow: visible;
-  min-height: 130vh;
+  min-height: 180vh;
   display: flex;
   flex-direction: column;
   padding-top: clamp(6rem, 10vw, 10rem);
@@ -289,7 +253,7 @@ onMounted(() => {
 
 .hero-subcopy {
   margin: 0.5rem 0 0;
-  color: #3b4042;
+  color: rgba(255, 255, 255, 0.6);
   font-weight: 600;
   font-size: 0.92rem;
 }
@@ -298,10 +262,11 @@ onMounted(() => {
   position: relative;
   overflow: hidden;
   margin-top: auto;
-  margin-bottom: -74px;
+  margin-bottom: 0;
   background: transparent;
   z-index: 4;
   padding: 0;
+  padding-top: 4rem;
   line-height: 0;
   clip-path: polygon(
     0 0, 100% 0, 100% 89%, 92% 85%, 78% 81%, 64% 78%, 50% 76.5%, 36% 78%, 22% 81%, 8% 85%, 0 89%
@@ -316,7 +281,6 @@ onMounted(() => {
   height: 136px;
   z-index: 2;
   pointer-events: none;
-  margin-bottom: 0;
 }
 
 .marquee-curve path { fill: transparent; }
@@ -354,7 +318,7 @@ onMounted(() => {
   .hero-actions { flex-direction: column; align-items: center; }
   .cta { width: min(280px, 92vw); justify-content: center; }
   .hero-marquee {
-    margin-bottom: -48px;
+    margin-bottom: 0;
     clip-path: polygon(
       0 0, 100% 0, 100% 91%, 92% 87%, 78% 83%, 64% 80%, 50% 78.5%, 36% 80%, 22% 83%, 8% 87%, 0 91%
     );
