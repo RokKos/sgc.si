@@ -6,7 +6,7 @@
     <a href="#top" class="logo-pill" style="margin-left: auto;" aria-label="Back to top">SGC</a>
     <a href="#about" class="nav-pill">About</a>
     <a href="#speakers" class="nav-pill">Speakers</a>
-    <a href="#agenda" class="nav-pill">Agenda</a>
+    <a href="#agenda" class="nav-pill">Program</a>
     <a href="#venue" class="nav-pill">Venue</a>
   </nav>
 </template>
