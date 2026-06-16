@@ -346,6 +346,7 @@ onMounted(() => {
   .hero-shell {
     min-height: 100svh;
     overflow: hidden;
+    padding-top: 12rem;
   }
 
   .hero-top {

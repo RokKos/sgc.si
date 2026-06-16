@@ -1,13 +1,17 @@
 <template>
   <nav class="scroll-nav" :class="{ 'is-visible': isVisible }" aria-label="Section quick navigation">
-    <a href="/" class="sga-logo-link">
-      <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" />
-    </a>
-    <a href="#top" class="logo-pill" style="margin-left: auto;" aria-label="Back to top">SGC</a>
-    <a href="#about" class="nav-pill">About</a>
-    <a href="#speakers" class="nav-pill">Speakers</a>
-    <a href="#agenda" class="nav-pill">Program</a>
-    <a href="#venue" class="nav-pill">Venue</a>
+    <div class="nav-top">
+      <a href="/" class="sga-logo-link">
+        <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" />
+      </a>
+    </div>
+    <div class="nav-pills">
+      <a href="#top" class="logo-pill" aria-label="Back to top">SGC</a>
+      <a href="#about" class="nav-pill">About</a>
+      <a href="#speakers" class="nav-pill">Speakers</a>
+      <a href="#agenda" class="nav-pill">Program</a>
+      <a href="#venue" class="nav-pill">Venue</a>
+    </div>
   </nav>
 </template>
 
@@ -46,7 +50,7 @@ onBeforeUnmount(() => {
   position: fixed;
   top: 22px;
   left: 50%;
-  transform: translateX(-50%) translateY(-12px);
+  transform: translateX(-50%) translateY(0);
   z-index: 80;
   display: flex;
   align-items: center;
@@ -54,13 +58,23 @@ onBeforeUnmount(() => {
   gap: 0.45rem;
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
 }
 
 .scroll-nav.is-visible {
   opacity: 1;
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
+}
+
+.nav-top {
+  flex-shrink: 0;
+}
+
+.nav-pills {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-left: auto;
 }
 
 .nav-pill {
@@ -92,26 +106,29 @@ onBeforeUnmount(() => {
   font-size: 0.8rem;
   color: #202225;
   letter-spacing: 0.05em;
-  margin-left: auto;
 }
 
 .sga-logo {
   height: 65px;
   width: auto;
   display: block;
-  margin-right: 0.5rem;
+  flex-shrink: 0;
+}
+
+.sga-logo-link {
+  display: block;
   flex-shrink: 0;
 }
 
 .nav-pill-muted { background: #6a6f77; color: #fff; }
 .badge-new { font-size: 0.6rem; font-weight: 700; line-height: 1; padding: 0.2rem 0.34rem; border-radius: 999px; background: #7e47d3; color: #fff; }
-.nav-pill-cta { margin-left: auto; background: #ff4d10; color: #fff; }
+.nav-pill-cta { background: #ff4d10; color: #fff; }
 
 @media (max-width: 1280px) {
-  .scroll-nav { width: calc(100% - 1rem); left: 0.5rem; transform: translateX(0) translateY(-12px); overflow-x: auto; top: 10px; padding-bottom: 0.25rem; scrollbar-width: none; }
-  .scroll-nav::-webkit-scrollbar { display: none; }
-  .nav-pill-cta { margin-left: 0; }
+  .scroll-nav { width: calc(100% - 1rem); left: 0.5rem; transform: translateX(0) translateY(0); top: 10px; padding-bottom: 0.25rem; }
   .scroll-nav.is-visible { transform: translateX(0) translateY(0); }
+  .nav-pills { overflow-x: auto; scrollbar-width: none; }
+  .nav-pills::-webkit-scrollbar { display: none; }
 }
 
 @media (max-width: 900px) {
@@ -121,11 +138,54 @@ onBeforeUnmount(() => {
 
 @media (max-width: 640px) {
   .scroll-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    top: 8px;
     left: 0;
     width: 100%;
     transform: none;
     padding: 0 0.5rem;
+  }
+
+  .scroll-nav.is-visible {
+    transform: none;
+  }
+
+  .nav-top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .nav-pills {
+    display: flex;
+    justify-content: center;
+    gap: 0.36rem;
     overflow-x: auto;
+    scrollbar-width: none;
+    width: 100%;
+    margin-left: 0;
+    padding: 0 0.5rem;
+  }
+
+  .nav-pills::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sga-logo {
+    height: 40px;
+  }
+
+  .nav-pill {
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
+  }
+
+  .logo-pill {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    margin-left: 0;
   }
 }
 </style>
