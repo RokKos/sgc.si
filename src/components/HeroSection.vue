@@ -96,7 +96,7 @@ onMounted(() => {
   background-repeat: no-repeat;
   position: relative;
   overflow: visible;
-  min-height: 180vh;
+  min-height: 140vh;
   display: flex;
   flex-direction: column;
   padding-top: clamp(6rem, 10vw, 10rem);
