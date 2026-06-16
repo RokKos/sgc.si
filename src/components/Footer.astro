@@ -47,6 +47,14 @@
 </footer>
 
 <style>
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 2rem;
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
 .social-links {
   display: flex;
   gap: 0.6rem;
@@ -79,7 +87,16 @@
   filter: brightness(0) invert(1);
 }
 
-.footer-grid {
-  grid-template-columns: 2fr 1fr 1fr 1fr;
+@media (max-width: 640px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
 }
 </style>
