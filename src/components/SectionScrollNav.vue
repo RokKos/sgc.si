@@ -118,4 +118,14 @@ onBeforeUnmount(() => {
   .scroll-nav { gap: 0.36rem; }
   .nav-pill { padding: 0.52rem 0.88rem; font-size: 0.88rem; }
 }
+
+@media (max-width: 640px) {
+  .scroll-nav {
+    left: 0;
+    width: 100%;
+    transform: none;
+    padding: 0 0.5rem;
+    overflow-x: auto;
+  }
+}
 </style>

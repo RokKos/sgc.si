@@ -341,4 +341,26 @@ onMounted(() => {
   .hero-radial { animation: none; transform: none; }
   .hero-grid-atmosphere { transform: none !important; }
 }
+
+@media (max-width: 640px) {
+  .hero-shell {
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  .hero-top {
+    text-align: center;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .hero-title {
+    font-size: clamp(2.4rem, 11vw, 4rem);
+    line-height: 0.92;
+  }
+
+  .hero-date-big {
+    font-size: clamp(1rem, 4.5vw, 1.6rem);
+  }
+}
 </style>
