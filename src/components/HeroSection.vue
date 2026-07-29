@@ -5,7 +5,7 @@
     <div class="hero-grid-atmosphere" ref="gridOverlayRef" aria-hidden="true"></div>
 
     <div class="hero-top container" ref="heroTopRef">
-      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2026</h1>
+      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2027</h1>
       <p class="hero-date-big" ref="titleRef">17.10.2026 in Ljubljana</p>
     </div>
 
