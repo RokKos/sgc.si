@@ -6,7 +6,7 @@
 
     <div class="hero-top container" ref="heroTopRef">
       <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2027</h1>
-      <p class="hero-date-big" ref="titleRef">17.10.2026 in Ljubljana</p>
+      <p class="hero-date-big" ref="titleRef">20.02.2027 at FRI (Faculty of Computer Science and Informatics)</p>
     </div>
 
     <div class="hero-marquee" aria-label="Game development moments">
