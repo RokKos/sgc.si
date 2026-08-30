@@ -11,6 +11,7 @@
       <a href="#speakers" class="nav-pill">Speakers</a>
       <a href="#agenda" class="nav-pill">Program</a>
       <a href="#venue" class="nav-pill">Venue</a>
+      <a href="/sponsors" class="nav-pill">Sponsors</a>
     </div>
   </nav>
 </template>
