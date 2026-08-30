@@ -1,0 +1,154 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { sponsors, tierOrder } from '../data/sponsors';
+
+const groupedTiers = tierOrder
+  .map((tier) => ({ tier, items: sponsors.filter((s) => s.tier === tier) }));
+---
+
+<Layout title="Sponsors - Slovenia Games Conference 2027">
+  <Header />
+
+  <main class="sponsors-page">
+    <section class="sponsors-hero">
+      <div class="container sponsors-hero-inner">
+        <p class="eyebrow">Slovenia Games Conference 2027</p>
+        <h1>Sponsors</h1>
+        <p>
+          The Slovenia Games Conference is made possible by our partners and sponsors.
+          Thank you to everyone supporting the game development community in Slovenia.
+        </p>
+      </div>
+    </section>
+
+    <section class="sponsors-list-section" aria-label="Our sponsors">
+      <div class="container sponsors-wrap">
+        {groupedTiers.map((group) => (
+          <div class="tier-block">
+            <h2 class="tier-title">{group.tier}</h2>
+            {group.items.length === 0 && (
+              <div class="tier-empty">
+                <p>Sponsor slots available — interested in becoming a {group.tier} sponsor?</p>
+              </div>
+            )}
+            <div class="tier-sponsors">
+              {group.items.map((sponsor) => (
+                <article class="sponsor-card">
+                  <div class="sponsor-logo-wrap">
+                    <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
+                  </div>
+                  <div class="sponsor-body">
+                    <h3 class="sponsor-name">{sponsor.name}</h3>
+                    <p class="sponsor-desc">
+                      {sponsor.description || 'Description coming soon.'}
+                    </p>
+                    {sponsor.url && sponsor.url !== '#' && (
+                      <a
+                        href={sponsor.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="sponsor-link"
+                      >
+                        Visit website →
+                      </a>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.sponsors-page { background: #f7f6f4; min-height: 100vh; }
+.sponsors-hero { padding: 7.2rem 0 2.2rem; }
+.sponsors-hero-inner { width: min(1120px, 94%); }
+.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: #6a7278; }
+.sponsors-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.3rem, 6vw, 4.5rem); line-height: 0.94; letter-spacing: -0.03em; color: #1f2429; font-family: "Space Grotesk", "Segoe UI", sans-serif; }
+.sponsors-hero p { margin: 0.95rem 0 0; max-width: 60ch; color: #343b41; font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.55; }
+
+.sponsors-list-section { padding: 1rem 0 4.6rem; }
+.sponsors-wrap { width: min(1120px, 94%); }
+
+.tier-block { margin-top: 3rem; }
+.tier-block:first-child { margin-top: 1rem; }
+
+.tier-title {
+  margin: 0 0 1.4rem;
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  font-weight: 700;
+  color: #1f2429;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  padding-bottom: 0.7rem;
+  border-bottom: 2px solid #e2e0dc;
+}
+
+.tier-sponsors { display: grid; gap: 1.5rem; }
+
+.tier-empty {
+  border: 2px dashed #d8d6db;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1.6rem 2rem;
+  text-align: center;
+}
+
+.tier-empty p { margin: 0; color: #6a7278; font-size: 1rem; }
+
+.sponsor-card {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 2rem;
+  align-items: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.sponsor-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+}
+
+.sponsor-logo { max-width: 100%; max-height: 90px; width: auto; height: auto; object-fit: contain; }
+
+.sponsor-name {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #202328;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-weight: 600;
+}
+
+.sponsor-desc { margin: 0.6rem 0 0; color: #555b66; font-size: 1.02rem; line-height: 1.6; }
+
+.sponsor-link {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #ff4d10;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.98rem;
+}
+
+.sponsor-link:hover { text-decoration: underline; }
+
+@media (max-width: 640px) {
+  .sponsor-card { grid-template-columns: 1fr; gap: 1.2rem; text-align: center; padding: 1.6rem; }
+  .sponsor-logo-wrap { min-height: unset; }
+  .sponsor-link { margin-top: 0.8rem; }
+}
+</style>
