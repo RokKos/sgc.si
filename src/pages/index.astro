@@ -27,6 +27,20 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
     </section>
 
     <SpeakersShowcaseSection />
+
+    <section class="sponsors" aria-labelledby="sponsors-title">
+      <h2 id="sponsors-title" class="sponsors-title">In collaboration with</h2>
+      <div class="sponsor-logos">
+        <img
+          src="/SponsorLogos/GuardiarisLogo.png"
+          alt="Guardiaris"
+        />
+        <img
+          src="/SponsorLogos/UL_FRI_logoHOR-RGB_crna.png"
+          alt="UL FRI — Faculty of Computer and Information Science"
+        />
+      </div>
+    </section>
   </main>
 </Layout>
 
@@ -107,6 +121,36 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
     text-transform: uppercase;
     letter-spacing: 0.24em;
     color: rgba(255, 255, 255, 0.75);
+  }
+
+  .sponsors {
+    background: #f7f6f4;
+    padding: 0 1.5rem 5rem;
+    text-align: center;
+  }
+
+  .sponsors-title {
+    margin: 0 0 2.5rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #555b66;
+  }
+
+  .sponsor-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    flex-wrap: wrap;
+    transform: translateX(clamp(1.5rem, 5vw, 4rem));
+  }
+
+  .sponsor-logos img {
+    height: clamp(4rem, 7vw, 6.5rem);
+    width: auto;
+    object-fit: contain;
   }
 
   @media (max-width: 600px) {
