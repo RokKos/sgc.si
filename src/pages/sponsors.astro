@@ -34,29 +34,27 @@ const groupedTiers = tierOrder
               </div>
             )}
             <div class="tier-sponsors">
-              {group.items.map((sponsor) => (
-                <article class="sponsor-card">
-                  <div class="sponsor-logo-wrap">
-                    <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
-                  </div>
-                  <div class="sponsor-body">
-                    <h3 class="sponsor-name">{sponsor.name}</h3>
-                    <p class="sponsor-desc">
-                      {sponsor.description || 'Description coming soon.'}
-                    </p>
-                    {sponsor.url && sponsor.url !== '#' && (
-                      <a
-                        href={sponsor.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        class="sponsor-link"
-                      >
-                        Visit website →
-                      </a>
-                    )}
-                  </div>
-                </article>
-              ))}
+              {group.items.map((sponsor) => {
+                const hasLink = sponsor.url && sponsor.url !== '#';
+                const CardTag = hasLink ? 'a' : 'article';
+                const linkProps = hasLink
+                  ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' }
+                  : {};
+                return (
+                  <CardTag class={`sponsor-card${hasLink ? ' is-link' : ''}`} {...linkProps}>
+                    <div class="sponsor-logo-wrap">
+                      <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
+                    </div>
+                    <div class="sponsor-body">
+                      <h3 class="sponsor-name">{sponsor.name}</h3>
+                      <p class="sponsor-desc">
+                        {sponsor.description || 'Description coming soon.'}
+                      </p>
+                      {hasLink && <span class="sponsor-link">Visit website →</span>}
+                    </div>
+                  </CardTag>
+                );
+              })}
             </div>
           </div>
         ))}
@@ -114,6 +112,22 @@ const groupedTiers = tierOrder
   border-radius: 16px;
   padding: 2rem;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.05);
+  color: inherit;
+  text-decoration: none;
+}
+
+.sponsor-card.is-link {
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.sponsor-card.is-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.sponsor-card.is-link:hover .sponsor-link {
+  text-decoration: underline;
 }
 
 .sponsor-logo-wrap {

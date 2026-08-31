@@ -17,14 +17,14 @@ export const sponsors: Sponsor[] = [
     name: 'Guardiaris',
     tier: 'General',
     logo: '/SponsorLogos/GuardiarisLogo.png',
-    url: '#',
+    url: 'https://www.guardiaris.com',
     description: '',
   },
   {
     name: 'UL FRI — Faculty of Computer and Information Science',
     tier: 'Platinum',
     logo: '/SponsorLogos/UL_FRI_logoHOR-RGB_crna.png',
-    url: '#',
+    url: 'https://www.fri.uni-lj.si/sl',
     description: '',
   },
 ];
