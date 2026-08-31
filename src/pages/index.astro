@@ -14,6 +14,14 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
         class="association-logo"
       />
 
+      <div class="top-sponsor-logos">
+        <img src="/SponsorLogos/guardiarisWhiteLogo.png" alt="Guardiaris" />
+        <img
+          src="/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png"
+          alt="UL FRI — Faculty of Computer and Information Science"
+        />
+      </div>
+
       <div class="hero-content">
         <img
           src="/sgc-logo.png"
@@ -23,24 +31,19 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
 
         <p class="coming-soon-text">20.02.2027</p>
         <p class="date-text">FRI (Faculty of Computer Science and Informatics)</p>
+        <p class="location-text">Ljubljana, Slovenia</p>
+
+        <div class="hero-sponsor-logos">
+          <img src="/SponsorLogos/guardiarisWhiteLogo.png" alt="Guardiaris" />
+          <img
+            src="/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png"
+            alt="UL FRI — Faculty of Computer and Information Science"
+          />
+        </div>
       </div>
     </section>
 
     <SpeakersShowcaseSection />
-
-    <section class="sponsors" aria-labelledby="sponsors-title">
-      <h2 id="sponsors-title" class="sponsors-title">In collaboration with</h2>
-      <div class="sponsor-logos">
-        <img
-          src="/SponsorLogos/GuardiarisLogo.png"
-          alt="Guardiaris"
-        />
-        <img
-          src="/SponsorLogos/UL_FRI_logoHOR-RGB_crna.png"
-          alt="UL FRI — Faculty of Computer and Information Science"
-        />
-      </div>
-    </section>
   </main>
 </Layout>
 
@@ -86,6 +89,24 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
     user-select: none;
   }
 
+  .top-sponsor-logos {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 2rem);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .top-sponsor-logos img {
+    height: clamp(1.8rem, 3vw, 2.8rem);
+    width: auto;
+    object-fit: contain;
+  }
+
   .hero-content {
     position: relative;
     z-index: 2;
@@ -123,22 +144,17 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
     color: rgba(255, 255, 255, 0.75);
   }
 
-  .sponsors {
-    background: #f7f6f4;
-    padding: 0 1.5rem 5rem;
-    text-align: center;
-  }
-
-  .sponsors-title {
-    margin: 0 0 2.5rem;
-    font-size: clamp(1rem, 2vw, 1.25rem);
-    font-weight: 500;
+  .location-text {
+    margin: 0.4rem 0 0;
+    font-size: clamp(1rem, 1.8vw, 1.1rem);
+    font-weight: 100;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    color: #555b66;
+    letter-spacing: 0.24em;
+    color: rgba(255, 255, 255, 0.75);
   }
 
-  .sponsor-logos {
+  .hero-sponsor-logos {
+    margin: 3rem 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,17 +163,32 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
     transform: translateX(clamp(1.5rem, 5vw, 4rem));
   }
 
-  .sponsor-logos img {
-    height: clamp(4rem, 7vw, 6.5rem);
+  .hero-sponsor-logos img {
+    height: clamp(2.4rem, 4.5vw, 3.6rem);
     width: auto;
     object-fit: contain;
+  }
+
+  /* Guardiaris is the main sponsor — show it larger */
+  .hero-sponsor-logos img:first-child {
+    height: clamp(3.6rem, 6.5vw, 5.4rem);
   }
 
   @media (max-width: 600px) {
     .association-logo {
       top: 1.25rem;
       left: 1.25rem;
-      width: min(58vw, 220px);
+      width: min(42vw, 180px);
+    }
+
+    .top-sponsor-logos {
+      top: 1.35rem;
+      right: 1.25rem;
+      gap: 0.75rem;
+    }
+
+    .top-sponsor-logos img {
+      height: 1.5rem;
     }
 
     .sgc-logo {
@@ -168,7 +199,8 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
       letter-spacing: 0.16em;
     }
 
-    .date-text {
+    .date-text,
+    .location-text {
       letter-spacing: 0.16em;
     }
   }
