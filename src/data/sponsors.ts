@@ -29,4 +29,12 @@ export const sponsors: Sponsor[] = [
     description:
       'The Faculty of Computer and Information Science at the University of Ljubljana is Slovenia\'s leading educational and research institution for computer and information science. Founded in 1996, it educates undergraduate and graduate computer science experts while conducting research that tackles contemporary challenges. Through its academic programs, public events, and community outreach, the faculty plays a central role in advancing digital literacy and innovation across Slovenia.',
   },
+  {
+    name: 'Triternion',
+    tier: 'Gold',
+    logo: '/SponsorLogos/triternion-logo1.png',
+    url: 'https://triternion.com',
+    description:
+      'Triternion is an independent game studio based in Ljubljana, Slovenia, best known for Mordhau, the acclaimed medieval multiplayer combat game. With a small, dedicated international team pushing the boundaries of what melee combat can feel like in games, Triternion continues to build on its reputation for polish and craftsmanship from right here in Slovenia.',
+  },
 ];
