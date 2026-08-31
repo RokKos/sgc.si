@@ -41,7 +41,7 @@ const groupedTiers = tierOrder
                   ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' }
                   : {};
                 return (
-                  <CardTag class={`sponsor-card${hasLink ? ' is-link' : ''}`} {...linkProps}>
+                  <CardTag class={`sponsor-card tier-${group.tier.toLowerCase()}${hasLink ? ' is-link' : ''}`} {...linkProps}>
                     <div class="sponsor-logo-wrap">
                       <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
                     </div>
@@ -138,6 +138,10 @@ const groupedTiers = tierOrder
 }
 
 .sponsor-logo { max-width: 100%; max-height: 90px; width: auto; height: auto; object-fit: contain; }
+
+/* General tier (main sponsor) — larger logo */
+.tier-general .sponsor-logo-wrap { min-height: 150px; }
+.tier-general .sponsor-logo { max-height: 150px; }
 
 .sponsor-name {
   margin: 0;
