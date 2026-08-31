@@ -34,11 +34,17 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
         <p class="location-text">Ljubljana, Slovenia</p>
 
         <div class="hero-sponsor-logos">
-          <img src="/SponsorLogos/guardiarisWhiteLogo.png" alt="Guardiaris" />
-          <img
-            src="/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png"
-            alt="UL FRI — Faculty of Computer and Information Science"
-          />
+          <div class="hero-sponsor-row">
+            <img class="logo-guardiaris" src="/SponsorLogos/guardiarisWhiteLogo.png" alt="Guardiaris" />
+          </div>
+          <div class="hero-sponsor-row">
+            <img
+              class="logo-fri"
+              src="/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png"
+              alt="UL FRI — Faculty of Computer and Information Science"
+            />
+            <img class="logo-triternion" src="/SponsorLogos/triternion-logo-white.png" alt="Triternion" />
+          </div>
         </div>
       </div>
     </section>
@@ -156,22 +162,35 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
   .hero-sponsor-logos {
     margin: 3rem 0 0;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.2rem;
+  }
+
+  .hero-sponsor-row {
+    display: flex;
     align-items: center;
     justify-content: center;
     gap: clamp(2.5rem, 6vw, 5rem);
     flex-wrap: wrap;
-    transform: translateX(clamp(1.5rem, 5vw, 4rem));
   }
 
-  .hero-sponsor-logos img {
-    height: clamp(2.4rem, 4.5vw, 3.6rem);
+  .hero-sponsor-row img {
     width: auto;
     object-fit: contain;
   }
 
-  /* Guardiaris is the main sponsor — show it larger */
-  .hero-sponsor-logos img:first-child {
-    height: clamp(3.6rem, 6.5vw, 5.4rem);
+  /* Guardiaris is the main sponsor — most exposed */
+  .logo-guardiaris {
+    height: clamp(5rem, 9vw, 7.5rem);
+  }
+
+  .logo-fri {
+    height: clamp(2.4rem, 4.5vw, 3.6rem);
+  }
+
+  .logo-triternion {
+    height: clamp(1.9rem, 3.6vw, 2.9rem);
   }
 
   @media (max-width: 600px) {
