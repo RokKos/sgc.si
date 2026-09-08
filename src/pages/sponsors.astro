@@ -45,6 +45,7 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
                     : {};
                   return (
                     <CardTag class={`sponsor-card tier-${group.tier.toLowerCase()}${hasLink ? ' is-link' : ''}`} {...linkProps}>
+                      {group.tier === 'General' && <span class="main-badge">Main Sponsor</span>}
                       <div class="sponsor-logo-wrap">
                         <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
                       </div>
@@ -235,8 +236,25 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 .sponsor-logo { max-width: 100%; max-height: 90px; width: auto; height: auto; object-fit: contain; }
 
 /* General tier (main sponsor) — larger logo */
+.tier-general { position: relative; }
 .tier-general .sponsor-logo-wrap { min-height: 150px; }
 .tier-general .sponsor-logo { max-height: 150px; }
+
+.main-badge {
+  position: absolute;
+  top: -0.9rem;
+  left: 2rem;
+  background: #1f2429;
+  color: #fff;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.22);
+}
 
 /* Gold tier — slightly smaller logo */
 .tier-gold .sponsor-logo { max-height: 70px; max-width: 78%; }
@@ -266,6 +284,8 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
   .sponsor-card { grid-template-columns: 1fr; gap: 1.2rem; text-align: center; padding: 1.6rem; }
   .sponsor-logo-wrap { min-height: unset; }
   .sponsor-link { margin-top: 0.8rem; }
+
+  .main-badge { left: 50%; transform: translateX(-50%); }
 
   .venue-card { grid-template-columns: 1fr; gap: 1.4rem; text-align: center; padding: 2.2rem 1.6rem 1.8rem; }
   .venue-badge { left: 50%; transform: translateX(-50%); }
