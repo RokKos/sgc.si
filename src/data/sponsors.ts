@@ -1,4 +1,4 @@
-export type SponsorTier = 'General' | 'Platinum' | 'Gold' | 'Silver' | 'Bronze';
+export type SponsorTier = 'General' | 'Platinum' | 'Gold' | 'Silver' | 'Bronze' | 'Venue';
 
 export interface Sponsor {
   name: string;
@@ -8,7 +8,8 @@ export interface Sponsor {
   description: string;
 }
 
-// Tiers render top-to-bottom in this order. Only tiers with sponsors are shown.
+// Regular sponsorship tiers, rendered top-to-bottom in this order.
+// 'Venue' is handled separately in its own special section, so it is not listed here.
 export const tierOrder: SponsorTier[] = ['General', 'Platinum', 'Gold', 'Silver', 'Bronze'];
 
 // TODO: descriptions and website URLs to be provided — fill in `description` and `url`.
@@ -23,7 +24,7 @@ export const sponsors: Sponsor[] = [
   },
   {
     name: 'UL FRI — Faculty of Computer and Information Science',
-    tier: 'Platinum',
+    tier: 'Venue',
     logo: '/SponsorLogos/UL_FRI_logoHOR-RGB_crna.png',
     url: 'https://www.fri.uni-lj.si/sl',
     description:
@@ -31,7 +32,7 @@ export const sponsors: Sponsor[] = [
   },
   {
     name: 'Triternion',
-    tier: 'Gold',
+    tier: 'Platinum',
     logo: '/SponsorLogos/triternion-logo1.png',
     url: 'https://triternion.com',
     description:

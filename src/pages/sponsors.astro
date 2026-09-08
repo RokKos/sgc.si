@@ -6,6 +6,8 @@ import { sponsors, tierOrder } from '../data/sponsors';
 
 const groupedTiers = tierOrder
   .map((tier) => ({ tier, items: sponsors.filter((s) => s.tier === tier) }));
+
+const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 ---
 
 <Layout title="Sponsors - Slovenia Games Conference 2027">
@@ -26,37 +28,63 @@ const groupedTiers = tierOrder
     <section class="sponsors-list-section" aria-label="Our sponsors">
       <div class="container sponsors-wrap">
         {groupedTiers.map((group) => (
-          <div class="tier-block">
-            <h2 class="tier-title">{group.tier}</h2>
-            {group.items.length === 0 && (
-              <div class="tier-empty">
-                <p>Sponsor slots available — interested in becoming a {group.tier} sponsor?</p>
+          <>
+            <div class="tier-block">
+              <h2 class="tier-title">{group.tier}</h2>
+              {group.items.length === 0 && (
+                <div class="tier-empty">
+                  <p>Sponsor slots available — interested in becoming a {group.tier} sponsor?</p>
+                </div>
+              )}
+              <div class="tier-sponsors">
+                {group.items.map((sponsor) => {
+                  const hasLink = sponsor.url && sponsor.url !== '#';
+                  const CardTag = hasLink ? 'a' : 'article';
+                  const linkProps = hasLink
+                    ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' }
+                    : {};
+                  return (
+                    <CardTag class={`sponsor-card tier-${group.tier.toLowerCase()}${hasLink ? ' is-link' : ''}`} {...linkProps}>
+                      <div class="sponsor-logo-wrap">
+                        <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
+                      </div>
+                      <div class="sponsor-body">
+                        <h3 class="sponsor-name">{sponsor.name}</h3>
+                        <p class="sponsor-desc">
+                          {sponsor.description || 'Description coming soon.'}
+                        </p>
+                        {hasLink && <span class="sponsor-link">Visit website →</span>}
+                      </div>
+                    </CardTag>
+                  );
+                })}
               </div>
-            )}
-            <div class="tier-sponsors">
-              {group.items.map((sponsor) => {
-                const hasLink = sponsor.url && sponsor.url !== '#';
-                const CardTag = hasLink ? 'a' : 'article';
-                const linkProps = hasLink
-                  ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' }
-                  : {};
-                return (
-                  <CardTag class={`sponsor-card tier-${group.tier.toLowerCase()}${hasLink ? ' is-link' : ''}`} {...linkProps}>
-                    <div class="sponsor-logo-wrap">
-                      <img src={sponsor.logo} alt={sponsor.name} class="sponsor-logo" />
+            </div>
+
+            {group.tier === 'General' && venueSponsors.map((sponsor) => {
+              const hasLink = sponsor.url && sponsor.url !== '#';
+              const CardTag = hasLink ? 'a' : 'article';
+              const linkProps = hasLink
+                ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' }
+                : {};
+              return (
+                <div class="venue-section" aria-label="Venue sponsor">
+                  <CardTag class={`venue-card${hasLink ? ' is-link' : ''}`} {...linkProps}>
+                    <span class="venue-badge">Venue Sponsor</span>
+                    <div class="venue-logo-wrap">
+                      <img src={sponsor.logo} alt={sponsor.name} class="venue-logo" />
                     </div>
-                    <div class="sponsor-body">
-                      <h3 class="sponsor-name">{sponsor.name}</h3>
-                      <p class="sponsor-desc">
-                        {sponsor.description || 'Description coming soon.'}
-                      </p>
+                    <div class="venue-body">
+                      <h2 class="venue-name">{sponsor.name}</h2>
+                      <p class="venue-note">Proud host of Slovenia Games Conference 2027, providing the venue for the event.</p>
+                      <p class="venue-desc">{sponsor.description || 'Description coming soon.'}</p>
                       {hasLink && <span class="sponsor-link">Visit website →</span>}
                     </div>
                   </CardTag>
-                );
-              })}
-            </div>
-          </div>
+                </div>
+              );
+            })}
+          </>
         ))}
       </div>
     </section>
@@ -75,6 +103,73 @@ const groupedTiers = tierOrder
 
 .sponsors-list-section { padding: 1rem 0 4.6rem; }
 .sponsors-wrap { width: min(1120px, 94%); }
+
+/* Venue sponsor — special highlighted section */
+.venue-section { margin-top: 3rem; }
+
+.venue-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.4rem;
+  align-items: center;
+  background: linear-gradient(135deg, #fff 0%, #fbf4f1 100%);
+  border: 2px solid #f0d9d0;
+  border-radius: 20px;
+  padding: 2.6rem 2.6rem 2.8rem;
+  box-shadow: 0 8px 30px rgba(196, 80, 47, 0.10), 0 2px 6px rgba(0, 0, 0, 0.05);
+  color: inherit;
+  text-decoration: none;
+}
+
+.venue-card.is-link {
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.venue-card.is-link:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px rgba(196, 80, 47, 0.16), 0 3px 10px rgba(0, 0, 0, 0.07);
+}
+
+.venue-card.is-link:hover .sponsor-link { text-decoration: underline; }
+
+.venue-badge {
+  position: absolute;
+  top: -0.9rem;
+  left: 2.6rem;
+  background: #c4502f;
+  color: #fff;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.42rem 0.95rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 12px rgba(196, 80, 47, 0.28);
+}
+
+.venue-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+}
+
+.venue-logo { max-width: 100%; max-height: 140px; width: auto; height: auto; object-fit: contain; }
+
+.venue-name {
+  margin: 0.3rem 0 0;
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  color: #202328;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.venue-note { margin: 0.7rem 0 0; color: #c4502f; font-weight: 600; font-size: 1.04rem; line-height: 1.5; }
+.venue-desc { margin: 0.6rem 0 0; color: #555b66; font-size: 1.02rem; line-height: 1.6; }
 
 .tier-block { margin-top: 3rem; }
 .tier-block:first-child { margin-top: 1rem; }
@@ -171,5 +266,9 @@ const groupedTiers = tierOrder
   .sponsor-card { grid-template-columns: 1fr; gap: 1.2rem; text-align: center; padding: 1.6rem; }
   .sponsor-logo-wrap { min-height: unset; }
   .sponsor-link { margin-top: 0.8rem; }
+
+  .venue-card { grid-template-columns: 1fr; gap: 1.4rem; text-align: center; padding: 2.2rem 1.6rem 1.8rem; }
+  .venue-badge { left: 50%; transform: translateX(-50%); }
+  .venue-logo-wrap { min-height: unset; }
 }
 </style>
