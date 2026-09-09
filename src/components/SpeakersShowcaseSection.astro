@@ -1,6 +1,14 @@
 ---
-import { speakers } from '../data/speakers';
+import { speakers, placeholderCount } from '../data/speakers';
+
+interface Props {
+  /** When false, speaker cards are rendered as static (non-clickable) elements. */
+  clickable?: boolean;
+}
+
+const { clickable = true } = Astro.props;
 const displaySpeakers = speakers;
+const placeholders = Array.from({ length: placeholderCount });
 ---
 
 <section class="speakers-showcase" id="speakers" aria-labelledby="speakers-title">
@@ -11,34 +19,42 @@ const displaySpeakers = speakers;
       </div>
     </div>
 
-    <div class="coming-soon-card">
-      <p class="coming-soon-emoji" aria-hidden="true">🎙️</p>
-      <h3>Coming Soon</h3>
-      <p>Speaker announcements are on the way. Stay tuned for the full lineup.</p>
-      <a href="https://forms.gle/Pu1PB6qJTeaPp1kM7"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="notify-btn">
-          Notify me when speakers are announced →
-        </a>
-    </div>
-
-    {/* TODO: Uncomment when speakers are confirmed
     <div class="speakers-grid">
-      {displaySpeakers.map((speaker) => (
-        <a href={`/speakers/${speaker.slug}`} class="speaker-card">
-          <div class="speaker-img-wrap">
-            <img src={speaker.image} alt={speaker.name} class="speaker-img" />
+      {displaySpeakers.map((speaker) => {
+        const CardTag = clickable ? 'a' : 'div';
+        const linkProps = clickable ? { href: `/speakers/${speaker.slug}` } : {};
+        return (
+          <CardTag class={`speaker-card${clickable ? '' : ' is-static'}`} {...linkProps}>
+            <div class="speaker-img-wrap">
+              <img src={speaker.image} alt={speaker.name} class="speaker-img" />
+            </div>
+            <div class="speaker-info">
+              <p class="speaker-name">{speaker.name}</p>
+              <p class="speaker-role">{speaker.role}</p>
+              <p class="speaker-company">{speaker.company}</p>
+              <p class="speaker-bio">{speaker.bioShort}</p>
+            </div>
+          </CardTag>
+        );
+      })}
+      {placeholders.map(() => (
+        <div class="speaker-card is-placeholder" aria-hidden="true">
+          <div class="speaker-img-wrap placeholder-img">
+            <span class="placeholder-emoji">🎙️</span>
           </div>
           <div class="speaker-info">
-            <p class="speaker-name">{speaker.name}</p>
-            <p class="speaker-role">{speaker.role}</p>
-            <p class="speaker-company">{speaker.company}</p>
+            <p class="speaker-name placeholder-text">Coming soon</p>
           </div>
-        </a>
+        </div>
       ))}
     </div>
-    */}
+
+    <a href="https://forms.gle/Pu1PB6qJTeaPp1kM7"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="notify-btn">
+        Notify me when new speakers are announced →
+      </a>
   </div>
 </section>
 
@@ -118,6 +134,7 @@ const displaySpeakers = speakers;
 .speakers-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 1fr;
   gap: 1.5rem;
 }
 
@@ -137,6 +154,14 @@ const displaySpeakers = speakers;
 .speaker-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 12px 32px rgba(0,0,0,0.14), 0 2px 8px rgba(0,0,0,0.08);
+}
+
+/* Non-clickable variant — no link affordance */
+.speaker-card.is-static { cursor: default; }
+
+.speaker-card.is-static:hover {
+  transform: none;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06);
 }
 
 .speaker-img-wrap {
@@ -175,6 +200,55 @@ const displaySpeakers = speakers;
   margin: 0.15rem 0 0;
   font-size: 0.82rem;
   color: #ff6f2c;
+  font-weight: 500;
+}
+
+.speaker-bio {
+  margin: 0.6rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  color: #555b66;
+}
+
+/* Empty placeholder cards — hint that more speakers are coming */
+.speaker-card.is-placeholder {
+  cursor: default;
+  box-shadow: none;
+  border: 2px dashed #d8d6db;
+  background: rgba(255, 255, 255, 0.45);
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem;
+}
+
+.speaker-card.is-placeholder:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.placeholder-img {
+  aspect-ratio: auto;
+  width: auto;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+}
+
+.placeholder-emoji {
+  font-size: 3.6rem;
+  opacity: 0.35;
+  filter: grayscale(1);
+}
+
+.speaker-card.is-placeholder .speaker-info {
+  padding: 0;
+}
+
+.placeholder-text {
+  color: #9aa0a8;
   font-weight: 500;
 }
 

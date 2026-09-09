@@ -17,15 +17,25 @@ const { speaker } = Astro.props;
     <div class="speaker-hero-bg">
       <div class="hero-overlay"></div>
       <div class="container speaker-wrap">
+        <a href="/speakers" class="back-link">← All speakers</a>
         <div class="speaker-hero">
           <img src={speaker.image} alt={speaker.name} class="speaker-photo" />
           <div class="speaker-details">
             <p class="speaker-company">{speaker.company}</p>
             <h1 class="speaker-name">{speaker.name}</h1>
             <p class="speaker-role">{speaker.role}</p>
+            {speaker.location && <p class="speaker-location">{speaker.location}</p>}
             <p class="speaker-bio">{speaker.bio}</p>
           </div>
         </div>
+
+        {speaker.talkTitle && (
+          <div class="speaker-talk">
+            <p class="talk-eyebrow">Talk</p>
+            <h2 class="talk-title">{speaker.talkTitle}</h2>
+            {speaker.talkDescription && <p class="talk-desc">{speaker.talkDescription}</p>}
+          </div>
+        )}
       </div>
     </div>
   </main>
@@ -129,7 +139,49 @@ const { speaker } = Astro.props;
   color: rgba(255,255,255,0.6);
 }
 
+.speaker-location {
+  margin: 0.35rem 0 0;
+  font-size: 0.92rem;
+  color: rgba(255,255,255,0.55);
+}
+
 .speaker-bio {
+  margin: 1rem 0 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.8);
+}
+
+.speaker-talk {
+  margin-top: 2rem;
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 18px;
+  padding: 2.2rem 2.5rem;
+}
+
+.talk-eyebrow {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #ff6f2c;
+}
+
+.talk-title {
+  margin: 0.5rem 0 0;
+  font-size: clamp(1.4rem, 2.6vw, 2rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  line-height: 1.1;
+}
+
+.talk-desc {
   margin: 1rem 0 0;
   font-size: 1.05rem;
   line-height: 1.65;

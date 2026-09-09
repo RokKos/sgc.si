@@ -1,12 +1,38 @@
-export const speakers = [
-    { name: 'Alex Novak', role: 'Game Director', company: 'Studio Zero', slug: 'alex-novak', image: 'https://i.pravatar.cc/300?img=1', bio: 'Alex has been directing games for over a decade, shipping titles across PC, console, and mobile platforms.Alex has been directing games for over a decade, shipping titles across PC, console, and mobile platforms.Alex has been directing games for over a decade, shipping titles across PC, console, and mobile platforms.' },
-    { name: 'Sara Kovač', role: 'Lead Designer', company: 'Pixel Forge', slug: 'sara-kovac', image: 'https://i.pravatar.cc/300?img=5', bio: 'Sara specialises in UX and level design, with a passion for building intuitive player experiences.' },
-    { name: 'Miha Zupan', role: 'Producer', company: 'Alpaca Games', slug: 'miha-zupan', image: 'https://i.pravatar.cc/300?img=3', bio: 'Miha has produced over 15 indie titles and mentors emerging studios across the region.' },
-    { name: 'Tina Mrak', role: 'CEO', company: 'Indie Hub', slug: 'tina-mrak', image: 'https://i.pravatar.cc/300?img=9', bio: 'Tina founded Indie Hub to support independent developers with funding, publishing, and community.' },
-    { name: 'Luka Bernik', role: 'Technical Artist', company: 'Render House', slug: 'luka-bernik', image: 'https://i.pravatar.cc/300?img=7', bio: 'Luka bridges art and engineering, specialising in shaders, VFX pipelines, and real-time rendering.' },
-    { name: 'Eva Horvat', role: 'Narrative Designer', company: 'Story Arc', slug: 'eva-horvat', image: 'https://i.pravatar.cc/300?img=20', bio: 'Eva crafts branching narratives and world-building systems for story-driven games.' },
-    { name: 'Rok Štefan', role: 'Sound Designer', company: 'WaveForm', slug: 'rok-stefan', image: 'https://i.pravatar.cc/300?img=12', bio: 'Rok creates immersive audio landscapes, from ambient soundscapes to adaptive music systems.' },
-    { name: 'Nina Pregelj', role: 'Art Director', company: 'Canvas X', slug: 'nina-pregelj', image: 'https://i.pravatar.cc/300?img=16', bio: 'Nina leads visual identity and art direction for games across multiple genres and platforms.' },
-    { name: 'Jure Kos', role: 'Business Developer', company: 'GameScale', slug: 'jure-kos', image: 'https://i.pravatar.cc/300?img=15', bio: 'Jure helps studios grow through partnerships, publishing deals, and market expansion strategies.' },
-    { name: 'Maja Furlan', role: 'Programmer', company: 'ByteCraft', slug: 'maja-furlan', image: 'https://i.pravatar.cc/300?img=25', bio: 'Maja specialises in gameplay systems and engine architecture, with a love for performance optimisation.' },
+export interface Speaker {
+  name: string;
+  role: string;
+  company: string;
+  slug: string;
+  image: string;
+  /** Short teaser shown on preview cards. */
+  bioShort: string;
+  /** Full bio shown on the speaker detail page. */
+  bio: string;
+  talkTitle?: string;
+  talkDescription?: string;
+  location?: string;
+}
+
+export const speakers: Speaker[] = [
+  {
+    name: 'Charlene Putney',
+    role: 'Games Writer & Teacher',
+    company: 'NEON AURELIUS',
+    slug: 'charlene-putney',
+    image: '/speakers/CharlenePutneyBioPic.jpg',
+    bioShort:
+      'Award-winning games writer and teacher whose credits include Divinity: Original Sin 2, Baldur’s Gate 3, NUTS, and Saltsea Chronicles.',
+    bio:
+      'Charlene Putney is an award-winning games writer and teacher. After working at Google and Facebook in management positions, she’s been writing for video games since 2013, including writing for Divinity: Original Sin 2, Baldur’s Gate 3, NUTS, and Saltsea Chronicles. These days, she is making games with her partner Martin Pichlmair as micro-studio NEON AURELIUS, including upcoming deckbuilder Sparrow Warfare. She has taught writing for games at Trinity College, DIT, ITU Copenhagen, KADK Copenhagen, and many conferences and events (including teaching quantum scientists at CERN about interactive fiction!).',
+    talkTitle: 'Writing For Games: A Few Tricks To Catch Lightning',
+    talkDescription:
+      'With over a decade of experience writing for games, Charlene’s work has always been infused with a “genuine cosmic weirdness” (VICE review). In this talk, she will offer some tips, tricks, and rituals for writing soul into your games: from the professional to the downright bizarre. Grounded with real examples, quick-hit inspiration, practical techniques and audience participation, the hope is for each attendee to leave the session with at least one gotta-do-it-now idea liberated from their own subconscious.',
+    location: 'Copenhagen, Denmark',
+  },
 ];
+
+/** Total number of speaker cards to show (confirmed speakers + "coming soon" placeholders). */
+export const totalSlots = 10;
+
+/** How many empty placeholder cards to render so the grid always shows `totalSlots` cards. */
+export const placeholderCount = Math.max(0, totalSlots - speakers.length);
