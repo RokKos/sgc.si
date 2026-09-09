@@ -9,7 +9,6 @@
       <a href="#top" class="logo-pill" aria-label="Back to top">SGC</a>
       <a href="#about" class="nav-pill">About</a>
       <a href="#speakers" class="nav-pill">Speakers</a>
-      <a href="#agenda" class="nav-pill">Program</a>
       <a href="#venue" class="nav-pill">Venue</a>
       <a href="/sponsors" class="nav-pill">Sponsors</a>
     </div>
