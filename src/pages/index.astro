@@ -33,6 +33,7 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
         <p class="date-text">FRI (Faculty of Computer Science and Informatics)</p>
         <p class="location-text">Ljubljana, Slovenia</p>
 
+        <p class="sponsor-label">Brought to you by</p>
         <div class="hero-sponsor-logos">
           <div class="hero-sponsor-row">
             <img class="logo-guardiaris" src="/SponsorLogos/guardiarisWhiteLogo.png" alt="Guardiaris" />
@@ -47,6 +48,11 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
           </div>
         </div>
       </div>
+
+      <a href="#speakers" class="scroll-hint" aria-label="Scroll down to speakers">
+        <span class="scroll-hint-label">Speakers</span>
+        <span class="scroll-hint-chevron" aria-hidden="true">↓</span>
+      </a>
     </section>
 
     <SpeakersShowcaseSection clickable={false} />
@@ -67,6 +73,7 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
     place-items: center;
     text-align: center;
     overflow: hidden;
+    padding-bottom: 2rem;
 
     background-image: url('/coming-soon-bg.jpg');
     background-size: cover;
@@ -125,14 +132,14 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
   }
 
   .sgc-logo {
-    margin: 10rem 0 0;
+    margin: 3rem 0 0;
     width: min(65vw, 600px);
     height: auto;
     display: block;
   }
 
   .coming-soon-text {
-    margin: 5rem 0 0.6rem;
+    margin: 2rem 0 0.6rem;
     font-size: clamp(1.2rem, 3vw, 2rem);
     font-weight: 100;
     text-transform: uppercase;
@@ -159,12 +166,58 @@ import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro
     color: rgba(255, 255, 255, 0.75);
   }
 
-  .hero-sponsor-logos {
+  .sponsor-label {
     margin: 3rem 0 0;
+    font-size: 0.78rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .hero-sponsor-logos {
+    margin: 1.5rem 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2.2rem;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 0.78rem;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 0.24em;
+    transform: translateX(-50%);
+    animation: scroll-bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-hint:hover {
+    color: rgba(255, 111, 44, 0.95);
+  }
+
+  .scroll-hint-chevron {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  @keyframes scroll-bounce {
+    0%, 100% { transform: translate(-50%, 0); }
+    50% { transform: translate(-50%, 8px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .scroll-hint { animation: none; }
   }
 
   .hero-sponsor-row {
