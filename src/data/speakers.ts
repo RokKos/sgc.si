@@ -29,6 +29,21 @@ export const speakers: Speaker[] = [
       'With over a decade of experience writing for games, Charlene’s work has always been infused with a “genuine cosmic weirdness” (VICE review). In this talk, she will offer some tips, tricks, and rituals for writing soul into your games: from the professional to the downright bizarre. Grounded with real examples, quick-hit inspiration, practical techniques and audience participation, the hope is for each attendee to leave the session with at least one gotta-do-it-now idea liberated from their own subconscious.',
     location: 'Copenhagen, Denmark',
   },
+  {
+    name: 'Eris Desquilbet',
+    role: 'Game Developer',
+    company: 'Punkcake Délicieux',
+    slug: 'eris-desquilbet',
+    image: '/speakers/ErisDesquilbetPic.jpg',
+    bioShort:
+      'Game Developer at Punkcake Délicieux who sees video games as a powerful tool to convey ideas, change minds, and make the world a little better.',
+    bio:
+      'Passionate about video game making since they’re 11, Eris works today as a Game Developer at Punkcake Délicieux. In their opinion, as the biggest entertainment industry, video game is a powerful tool to convey ideas, change minds, and make the world a little better.',
+    talkTitle: 'With great power comes great responsibility',
+    talkDescription:
+      'Let’s talk about why video games are political and why you should care!',
+    location: 'Angoulême, France',
+  },
 ];
 
 /** Total number of speaker cards to show (confirmed speakers + "coming soon" placeholders). */
