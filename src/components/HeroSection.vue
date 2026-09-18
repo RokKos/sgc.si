@@ -362,7 +362,7 @@ onMounted(() => {
   gap: 0;
   width: max-content;
   animation: marquee-slide 28s linear infinite;
-  transform: translateX(-33.333%);
+  transform: translateX(0);
   will-change: transform;
 }
 
@@ -379,7 +379,7 @@ onMounted(() => {
 
 @keyframes marquee-slide {
   from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  to { transform: translateX(-33.3333%); }
 }
 
 @media (max-width: 900px) {
