@@ -6,7 +6,30 @@
 
     <div class="hero-top container" ref="heroTopRef">
       <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2027</h1>
-      <p class="hero-date-big" ref="titleRef">20.02.2027 at FRI (Faculty of Computer Science and Informatics)</p>
+      <p class="hero-date-big" ref="titleRef">20.2.2027 at FRI (Faculty of Computer Science and Informatics)</p>
+
+      <div class="hero-sponsors">
+        <p class="hero-sponsors-label">Brought to you by</p>
+        <div class="hero-sponsors-row hero-sponsors-main">
+          <img
+            class="hero-logo-guardiaris"
+            src="/SponsorLogos/guardiarisWhiteLogo.png"
+            alt="Guardiaris"
+          />
+        </div>
+        <div class="hero-sponsors-row">
+          <img
+            class="hero-logo-fri"
+            src="/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png"
+            alt="UL FRI — Faculty of Computer and Information Science"
+          />
+          <img
+            class="hero-logo-triternion"
+            src="/SponsorLogos/triternion-logo-white.png"
+            alt="Triternion"
+          />
+        </div>
+      </div>
     </div>
 
     <div class="hero-marquee" aria-label="Game development moments">
@@ -165,6 +188,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-top: 5rem;
   padding-bottom: 6rem;
 }
 
@@ -185,6 +209,51 @@ onMounted(() => {
   letter-spacing: 0.06em;
   line-height: 1;
   color: #fc4d0f;
+}
+
+.hero-sponsors {
+  margin-top: 2.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.3rem;
+}
+
+.hero-sponsors-label {
+  margin: 0;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+}
+
+.hero-sponsors-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 4rem);
+  flex-wrap: wrap;
+}
+
+.hero-sponsors-row img {
+  width: auto;
+  object-fit: contain;
+}
+
+.hero-logo-guardiaris {
+  height: clamp(4.8rem, 8.5vw, 7.5rem);
+}
+
+.hero-logo-fri {
+  height: clamp(2.6rem, 4.4vw, 3.8rem);
+  opacity: 0.9;
+}
+
+.hero-logo-triternion {
+  height: clamp(2.2rem, 3.8vw, 3.1rem);
+  opacity: 0.9;
 }
 
 .hero-title {

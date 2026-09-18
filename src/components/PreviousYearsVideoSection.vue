@@ -14,7 +14,7 @@
           target="_blank"
           rel="noopener noreferrer"
           class="notify-btn">
-          Notify me when tickets go live →
+          Signup for newsletter →
         </a>
       </div>
 
