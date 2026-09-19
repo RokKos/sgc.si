@@ -1,14 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import SectionScrollNav from '../components/SectionScrollNav.vue';
 import Footer from '../components/Footer.astro';
 import { speakers, placeholderCount } from '../data/speakers';
+import { NAV_HOME_BASE } from '../data/site';
 
 const placeholders = Array.from({ length: placeholderCount });
 ---
 
 <Layout title="Speakers - Slovenia Games Conference 2027">
-  <Header />
+  <SectionScrollNav client:load theme="light" base={NAV_HOME_BASE} />
 
   <main class="speakers-page">
     <section class="speakers-hero">

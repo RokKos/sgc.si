@@ -1,15 +1,15 @@
 <template>
-  <nav class="scroll-nav" :class="{ 'is-visible': isVisible }" aria-label="Section quick navigation">
+  <nav class="scroll-nav" :class="{ 'is-visible': isVisible, 'theme-light': theme === 'light' }" aria-label="Section quick navigation">
     <div class="nav-top">
       <a href="/" class="sga-logo-link">
         <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" />
       </a>
     </div>
     <div class="nav-pills">
-      <a href="#top" class="logo-pill" aria-label="Back to top">SGC</a>
-      <a href="#about" class="nav-pill">About</a>
-      <a href="#speakers" class="nav-pill">Speakers</a>
-      <a href="#venue" class="nav-pill">Venue</a>
+      <a :href="`${base}#top`" class="logo-pill" aria-label="Back to top">SGC</a>
+      <a :href="`${base}#about`" class="nav-pill">About</a>
+      <a :href="`${base}#speakers`" class="nav-pill">Speakers</a>
+      <a :href="`${base}#venue`" class="nav-pill">Venue</a>
       <a href="/sponsors" class="nav-pill">Sponsors</a>
     </div>
   </nav>
@@ -17,6 +17,14 @@
 
 <script setup>
 import { onMounted, onBeforeUnmount, ref } from 'vue';
+
+defineProps({
+  theme: { type: String, default: 'dark' },
+  // Prefix for the section anchors. Empty = same-page scroll (used on the
+  // landing page that actually contains #about/#speakers/#venue). On sub-pages
+  // pass "/backup" so the pills navigate to those sections.
+  base: { type: String, default: '' },
+});
 
 const isVisible = ref(false);
 let onScroll;
@@ -118,6 +126,12 @@ onBeforeUnmount(() => {
 .sga-logo-link {
   display: block;
   flex-shrink: 0;
+}
+
+/* Light-background pages: darken the white logo so it stays legible */
+.scroll-nav.theme-light .sga-logo {
+  filter: brightness(0);
+  opacity: 0.82;
 }
 
 .nav-pill-muted { background: #6a6f77; color: #fff; }

@@ -1,8 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
+import SectionScrollNav from '../components/SectionScrollNav.vue';
 import Footer from '../components/Footer.astro';
 import { sponsors, tierOrder } from '../data/sponsors';
+import { NAV_HOME_BASE } from '../data/site';
 
 const groupedTiers = tierOrder
   .map((tier) => ({ tier, items: sponsors.filter((s) => s.tier === tier) }));
@@ -11,7 +12,7 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 ---
 
 <Layout title="Sponsors - Slovenia Games Conference 2027">
-  <Header />
+  <SectionScrollNav client:load theme="light" base={NAV_HOME_BASE} />
 
   <main class="sponsors-page">
     <section class="sponsors-hero">

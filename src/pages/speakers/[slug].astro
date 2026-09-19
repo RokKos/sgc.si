@@ -1,6 +1,8 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import SectionScrollNav from '../../components/SectionScrollNav.vue';
 import { speakers } from '../../data/speakers';
+import { NAV_HOME_BASE } from '../../data/site';
 
 export function getStaticPaths() {
   return speakers.map((speaker) => ({
@@ -13,6 +15,7 @@ const { speaker } = Astro.props;
 ---
 
 <Layout title={`${speaker.name} — SGC 2027`}>
+  <SectionScrollNav client:load base={NAV_HOME_BASE} />
   <main class="speaker-page">
     <div class="speaker-hero-bg">
       <div class="hero-overlay"></div>
