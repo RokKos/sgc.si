@@ -8,7 +8,7 @@ const lastUpdated = 'September 2026';
 ---
 
 <Layout title="Terms & Conditions - Slovenia Games Conference 2027">
-  <SectionScrollNav client:load theme="light" base={NAV_HOME_BASE} />
+  <SectionScrollNav client:load base={NAV_HOME_BASE} />
 
   <main class="legal-page">
     <section class="legal-hero">
@@ -132,22 +132,46 @@ const lastUpdated = 'September 2026';
 </Layout>
 
 <style>
-.legal-page { background: #f7f6f4; min-height: 100vh; }
+.legal-page {
+  position: relative;
+  min-height: 100vh;
+  background-color: #0f1419;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(255, 79, 18, 0.16), transparent 55%),
+    linear-gradient(180deg, rgba(10, 12, 15, 0.62), rgba(10, 12, 15, 0.88)),
+    url('/coming-soon-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
 
-.legal-hero { padding: 7.2rem 0 1.6rem; }
+.legal-hero { padding: 8.5rem 0 1.6rem; }
 .legal-hero-inner { width: min(820px, 94%); }
-.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: #6a7278; }
-.legal-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.3rem, 6vw, 4rem); line-height: 0.96; letter-spacing: -0.03em; color: #1f2429; font-family: "Space Grotesk", "Segoe UI", sans-serif; }
-.legal-updated { margin: 0.85rem 0 0; color: #6a7278; font-size: 0.92rem; }
+.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.55); }
+.legal-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.3rem, 6vw, 4rem); line-height: 0.96; letter-spacing: -0.03em; color: #ffffff; font-family: "Space Grotesk", "Segoe UI", sans-serif; }
+.legal-updated { margin: 0.85rem 0 0; color: rgba(255,255,255,0.5); font-size: 0.92rem; }
 
 .legal-body-section { padding: 1rem 0 5rem; }
-.legal-body { width: min(820px, 94%); color: #343b41; font-size: 1.02rem; line-height: 1.7; }
-.legal-body > p:first-child { font-size: 1.08rem; color: #2b3237; }
+.legal-body {
+  width: min(820px, 94%);
+  color: rgba(255,255,255,0.75);
+  font-size: 1.02rem;
+  line-height: 1.7;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 2.6rem 2.8rem 2.8rem;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.32);
+}
+.legal-body > p:first-child { font-size: 1.08rem; color: #ffffff; }
 
 .legal-body h2 {
   margin: 2.4rem 0 0.7rem;
   font-size: clamp(1.25rem, 2.4vw, 1.55rem);
-  color: #1f2429;
+  color: #ffffff;
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
   font-weight: 600;
   letter-spacing: -0.01em;
@@ -156,7 +180,8 @@ const lastUpdated = 'September 2026';
 .legal-body p { margin: 0.7rem 0 0; }
 .legal-body ul { margin: 0.7rem 0 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.45rem; }
 .legal-body li { line-height: 1.6; }
+.legal-body strong { color: #ffffff; font-weight: 600; }
 
-.legal-body a { color: #ff4d10; font-weight: 600; text-decoration: none; }
+.legal-body a { color: #ff8a5c; font-weight: 600; text-decoration: none; }
 .legal-body a:hover { text-decoration: underline; }
 </style>
