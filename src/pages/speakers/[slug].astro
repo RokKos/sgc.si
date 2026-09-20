@@ -20,25 +20,26 @@ const { speaker } = Astro.props;
     <div class="speaker-hero-bg">
       <div class="hero-overlay"></div>
       <div class="container speaker-wrap">
-        <a href="/speakers" class="back-link">← All speakers</a>
-        <div class="speaker-hero">
-          <img src={speaker.image} alt={speaker.name} class="speaker-photo" />
-          <div class="speaker-details">
-            <p class="speaker-company">{speaker.company}</p>
-            <h1 class="speaker-name">{speaker.name}</h1>
-            <p class="speaker-role">{speaker.role}</p>
-            {speaker.location && <p class="speaker-location">{speaker.location}</p>}
-            <p class="speaker-bio">{speaker.bio}</p>
+        <div class="speaker-card">
+          <div class="speaker-hero">
+            <img src={speaker.image} alt={speaker.name} class="speaker-photo" />
+            <div class="speaker-details">
+              <p class="speaker-company">{speaker.company}</p>
+              <h1 class="speaker-name">{speaker.name}</h1>
+              <p class="speaker-role">{speaker.role}</p>
+              {speaker.location && <p class="speaker-location">{speaker.location}</p>}
+              <p class="speaker-bio">{speaker.bio}</p>
+            </div>
           </div>
-        </div>
 
-        {speaker.talkTitle && (
-          <div class="speaker-talk">
-            <p class="talk-eyebrow">Talk</p>
-            <h2 class="talk-title">{speaker.talkTitle}</h2>
-            {speaker.talkDescription && <p class="talk-desc">{speaker.talkDescription}</p>}
-          </div>
-        )}
+          {speaker.talkTitle && (
+            <div class="speaker-talk">
+              <p class="talk-eyebrow">Talk</p>
+              <h2 class="talk-title">{speaker.talkTitle}</h2>
+              {speaker.talkDescription && <p class="talk-desc">{speaker.talkDescription}</p>}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   </main>
@@ -59,7 +60,7 @@ const { speaker } = Astro.props;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 4rem 0 6rem;
+  padding: 13rem 0 6rem;
 }
 
 .hero-overlay {
@@ -78,29 +79,19 @@ const { speaker } = Astro.props;
   margin: 0 auto;
 }
 
-.back-link {
-  display: inline-block;
-  margin-bottom: 2.5rem;
-  font-size: 0.95rem;
-  color: rgba(255,255,255,0.6);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.back-link:hover {
-  color: #ff6f2c;
-}
-
-.speaker-hero {
-  display: flex;
-  gap: 3rem;
-  align-items: flex-start;
+.speaker-card {
   background: rgba(255,255,255,0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 18px;
   padding: 2.5rem;
+}
+
+.speaker-hero {
+  display: flex;
+  gap: 3rem;
+  align-items: flex-start;
 }
 
 .speaker-photo {
@@ -156,13 +147,9 @@ const { speaker } = Astro.props;
 }
 
 .speaker-talk {
-  margin-top: 2rem;
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 18px;
-  padding: 2.2rem 2.5rem;
+  margin-top: 2.2rem;
+  padding-top: 2.2rem;
+  border-top: 1px solid rgba(255,255,255,0.14);
 }
 
 .talk-eyebrow {
