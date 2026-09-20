@@ -1,0 +1,162 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionScrollNav from '../components/SectionScrollNav.vue';
+import Footer from '../components/Footer.astro';
+import { NAV_HOME_BASE } from '../data/site';
+
+const lastUpdated = 'September 2026';
+---
+
+<Layout title="Terms & Conditions - Slovenia Games Conference 2027">
+  <SectionScrollNav client:load theme="light" base={NAV_HOME_BASE} />
+
+  <main class="legal-page">
+    <section class="legal-hero">
+      <div class="container legal-hero-inner">
+        <p class="eyebrow">Slovenia Games Conference 2027</p>
+        <h1>Terms &amp; Conditions</h1>
+        <p class="legal-updated">Last updated: {lastUpdated}</p>
+      </div>
+    </section>
+
+    <section class="legal-body-section">
+      <div class="container legal-body">
+        <p>
+          These Terms &amp; Conditions ("Terms") govern your access to and use of the
+          Slovenia Games Conference website (the "Site") and your registration for and
+          attendance at the Slovenia Games Conference 2027 (the "Conference"). The
+          Conference is organised by the Slovenia Games Association ("we", "us", or
+          "our"). By using the Site or registering for the Conference, you agree to these
+          Terms. If you do not agree, please do not use the Site or register for the event.
+        </p>
+
+        <h2>1. The Conference</h2>
+        <p>
+          The Slovenia Games Conference is an annual event dedicated to game development,
+          design, art, marketing, and business. The Conference takes place at the Faculty
+          of Computer and Information Science, Večna pot 113, 1000 Ljubljana, Slovenia. The
+          programme, speakers, schedule, and venue arrangements are subject to change.
+        </p>
+
+        <h2>2. Registration &amp; Tickets</h2>
+        <ul>
+          <li>Registration and, where applicable, a valid ticket are required to attend the Conference.</li>
+          <li>You agree to provide accurate and complete information when registering.</li>
+          <li>Tickets are issued for personal use and may not be resold or transferred for commercial gain without our prior written consent.</li>
+          <li>We reserve the right to refuse admission or registration at our discretion, including where these Terms or our Code of Conduct are breached.</li>
+        </ul>
+
+        <h2>3. Payments, Cancellations &amp; Refunds</h2>
+        <p>
+          Ticket prices and payment terms will be published on the Site when ticket sales
+          open. Unless required by applicable law or stated otherwise at the point of sale,
+          tickets are non-refundable. If the Conference is cancelled by the organisers, we
+          will offer either a transfer to a rescheduled date or a refund of the ticket price.
+          We are not responsible for any travel, accommodation, or other costs you incur.
+        </p>
+
+        <h2>4. Code of Conduct</h2>
+        <p>
+          We are committed to providing a friendly, safe, and welcoming environment for
+          everyone. Harassment, discrimination, or disruptive behaviour of any kind will not
+          be tolerated. Attendees who violate these standards may be removed from the
+          Conference without a refund and may be refused entry to future events. By attending,
+          you agree to follow the instructions of the organisers and venue staff.
+        </p>
+
+        <h2>5. Changes to the Programme</h2>
+        <p>
+          Speakers, sessions, schedules, and other programme details are indicative and may
+          change without notice. We will make reasonable efforts to keep the Site up to date,
+          but we do not guarantee that any particular speaker or session will take place.
+        </p>
+
+        <h2>6. Photography &amp; Recording</h2>
+        <p>
+          Photography, audio, and video recording may take place during the Conference for
+          promotional, archival, and educational purposes. By attending, you acknowledge that
+          you may appear in such materials and grant us the right to use them. If you do not
+          wish to be featured, please contact the organisers on site or by email in advance.
+        </p>
+
+        <h2>7. Intellectual Property</h2>
+        <p>
+          All content on the Site — including text, graphics, logos, and images — is owned by
+          the Slovenia Games Association or its licensors and is protected by applicable
+          intellectual property laws. You may not reproduce, distribute, or otherwise use this
+          content without our prior written permission. Materials presented by speakers remain
+          the property of their respective owners.
+        </p>
+
+        <h2>8. Third-Party Links</h2>
+        <p>
+          The Site may contain links to third-party websites and services (for example, ticket
+          providers, sponsors, or social media). We are not responsible for the content,
+          policies, or practices of those third parties. Accessing them is at your own risk and
+          subject to their terms.
+        </p>
+
+        <h2>9. Limitation of Liability</h2>
+        <p>
+          To the fullest extent permitted by law, we shall not be liable for any indirect,
+          incidental, or consequential loss or damage arising from your use of the Site or your
+          attendance at the Conference. Attendees are responsible for their own personal
+          belongings and conduct throughout the event.
+        </p>
+
+        <h2>10. Governing Law</h2>
+        <p>
+          These Terms are governed by the laws of the Republic of Slovenia. Any disputes arising
+          from or in connection with these Terms shall be subject to the exclusive jurisdiction
+          of the competent courts in Ljubljana, Slovenia.
+        </p>
+
+        <h2>11. Changes to These Terms</h2>
+        <p>
+          We may update these Terms from time to time. The current version will always be
+          available on this page, with the "Last updated" date shown above. Continued use of the
+          Site or attendance at the Conference after changes take effect constitutes acceptance
+          of the revised Terms.
+        </p>
+
+        <h2>12. Contact</h2>
+        <p>
+          If you have questions about these Terms, please contact us at
+          <a href="mailto:info@sgc.si">info@sgc.si</a>.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.legal-page { background: #f7f6f4; min-height: 100vh; }
+
+.legal-hero { padding: 7.2rem 0 1.6rem; }
+.legal-hero-inner { width: min(820px, 94%); }
+.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: #6a7278; }
+.legal-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.3rem, 6vw, 4rem); line-height: 0.96; letter-spacing: -0.03em; color: #1f2429; font-family: "Space Grotesk", "Segoe UI", sans-serif; }
+.legal-updated { margin: 0.85rem 0 0; color: #6a7278; font-size: 0.92rem; }
+
+.legal-body-section { padding: 1rem 0 5rem; }
+.legal-body { width: min(820px, 94%); color: #343b41; font-size: 1.02rem; line-height: 1.7; }
+.legal-body > p:first-child { font-size: 1.08rem; color: #2b3237; }
+
+.legal-body h2 {
+  margin: 2.4rem 0 0.7rem;
+  font-size: clamp(1.25rem, 2.4vw, 1.55rem);
+  color: #1f2429;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.legal-body p { margin: 0.7rem 0 0; }
+.legal-body ul { margin: 0.7rem 0 0; padding-left: 1.3rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.legal-body li { line-height: 1.6; }
+
+.legal-body a { color: #ff4d10; font-weight: 600; text-decoration: none; }
+.legal-body a:hover { text-decoration: underline; }
+</style>
