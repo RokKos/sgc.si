@@ -32,7 +32,6 @@ const placeholders = Array.from({ length: placeholderCount });
               <p class="speaker-name">{speaker.name}</p>
               <p class="speaker-role">{speaker.role}</p>
               <p class="speaker-company">{speaker.company}</p>
-              <p class="speaker-bio">{speaker.bioShort}</p>
             </div>
           </CardTag>
         );
@@ -133,9 +132,10 @@ const placeholders = Array.from({ length: placeholderCount });
 
 .speakers-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, minmax(0, 190px));
+  justify-content: center;
   grid-auto-rows: 1fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
 }
 
 .speaker-card {
@@ -178,7 +178,7 @@ const placeholders = Array.from({ length: placeholderCount });
 }
 
 .speaker-info {
-  padding: 1rem 1.1rem 1.2rem;
+  padding: 0.85rem 0.9rem 1rem;
   text-align: center;
 }
 
@@ -201,13 +201,6 @@ const placeholders = Array.from({ length: placeholderCount });
   font-size: 0.82rem;
   color: #ff6f2c;
   font-weight: 500;
-}
-
-.speaker-bio {
-  margin: 0.6rem 0 0;
-  font-size: 0.85rem;
-  line-height: 1.45;
-  color: #555b66;
 }
 
 /* Empty placeholder cards — hint that more speakers are coming */
@@ -271,16 +264,16 @@ const placeholders = Array.from({ length: placeholderCount });
 }
 
 @media (max-width: 1100px) {
-  .speakers-grid { grid-template-columns: repeat(4, 1fr); }
+  .speakers-grid { grid-template-columns: repeat(4, minmax(0, 190px)); }
 }
 
 @media (max-width: 820px) {
   .speakers-showcase { padding: 4rem 0 4.5rem; }
   .section-copy h2 { font-size: clamp(2rem, 7vw, 3.2rem); }
-  .speakers-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .speakers-grid { grid-template-columns: repeat(3, minmax(0, 170px)); gap: 1rem; }
 }
 
 @media (max-width: 520px) {
-  .speakers-grid { grid-template-columns: repeat(2, 1fr); }
+  .speakers-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 </style>
