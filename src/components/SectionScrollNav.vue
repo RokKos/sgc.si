@@ -56,13 +56,13 @@ onBeforeUnmount(() => {
 <style scoped>
 .scroll-nav {
   position: fixed;
-  top: 22px;
+  top: 2rem;
   left: 50%;
   transform: translateX(-50%) translateY(0);
   z-index: 80;
   display: flex;
   align-items: center;
-  width: min(1600px, calc(100% - 16px));
+  width: min(1600px, calc(100% - 4rem));
   gap: 0.45rem;
   opacity: 1;
   pointer-events: auto;
@@ -117,8 +117,8 @@ onBeforeUnmount(() => {
 }
 
 .sga-logo {
-  height: 65px;
-  width: auto;
+  width: min(20vw, 180px);
+  height: auto;
   display: block;
   flex-shrink: 0;
 }
@@ -139,7 +139,7 @@ onBeforeUnmount(() => {
 .nav-pill-cta { background: #ff4d10; color: #fff; }
 
 @media (max-width: 1280px) {
-  .scroll-nav { width: calc(100% - 1rem); left: 0.5rem; transform: translateX(0) translateY(0); top: 10px; padding-bottom: 0.25rem; }
+  .scroll-nav { width: calc(100% - 4rem); left: 2rem; transform: translateX(0) translateY(0); top: 2rem; padding-bottom: 0.25rem; }
   .scroll-nav.is-visible { transform: translateX(0) translateY(0); }
   .nav-pills { overflow-x: auto; scrollbar-width: none; }
   .nav-pills::-webkit-scrollbar { display: none; }
@@ -155,11 +155,11 @@ onBeforeUnmount(() => {
     flex-direction: column;
     align-items: center;
     gap: 0.5rem;
-    top: 8px;
+    top: 1.25rem;
     left: 0;
     width: 100%;
     transform: none;
-    padding: 0 0.5rem;
+    padding: 0 1.25rem;
   }
 
   .scroll-nav.is-visible {
@@ -188,7 +188,8 @@ onBeforeUnmount(() => {
   }
 
   .sga-logo {
-    height: 40px;
+    width: min(42vw, 180px);
+    height: auto;
   }
 
   .nav-pill {
