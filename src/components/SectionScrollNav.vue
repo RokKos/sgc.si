@@ -2,7 +2,7 @@
   <nav class="scroll-nav" :class="{ 'is-visible': isVisible, 'theme-light': theme === 'light' }" aria-label="Section quick navigation">
     <div class="nav-top">
       <a href="/" class="sga-logo-link">
-        <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" />
+        <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" width="222" height="60" />
       </a>
     </div>
     <div class="nav-pills">
@@ -119,6 +119,7 @@ onBeforeUnmount(() => {
 .sga-logo {
   width: min(20vw, 180px);
   height: auto;
+  aspect-ratio: 222 / 60;
   display: block;
   flex-shrink: 0;
 }
