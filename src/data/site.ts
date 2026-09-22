@@ -5,9 +5,8 @@
 // to `${NAV_HOME_BASE}#about` etc. so they jump to those sections on the
 // landing page.
 //
-// ⚠️ GO-LIVE: when the current `/backup` page replaces the homepage and is
-// served from `/`, change this to '/'. That makes the links resolve to
-// `/#about`, `/#speakers`, `/#venue`. Nothing else needs to change — the
-// landing page itself renders <SectionScrollNav> with no `base`, so it keeps
-// using bare same-page hashes for smooth scrolling.
-export const NAV_HOME_BASE = '/backup';
+// The landing page is served from `/`, so sub-page nav pills link to
+// `/#about`, `/#speakers`, `/#venue`. The landing page itself renders
+// <SectionScrollNav> with no `base`, so it uses bare same-page hashes for
+// smooth scrolling.
+export const NAV_HOME_BASE = '/';

@@ -21,8 +21,8 @@ import { onMounted, onBeforeUnmount, ref } from 'vue';
 defineProps({
   theme: { type: String, default: 'dark' },
   // Prefix for the section anchors. Empty = same-page scroll (used on the
-  // landing page that actually contains #about/#speakers/#venue). On sub-pages
-  // pass "/backup" so the pills navigate to those sections.
+  // landing page at `/` that actually contains #about/#speakers/#venue). On
+  // sub-pages pass NAV_HOME_BASE ("/") so the pills navigate to those sections.
   base: { type: String, default: '' },
 });
 
