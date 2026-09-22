@@ -305,6 +305,10 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 .sponsor-link:hover { text-decoration: underline; }
 
 @media (max-width: 640px) {
+  /* The mobile header wraps onto two rows, so it's taller — push the hero
+     down to leave clear space beneath it. */
+  .sponsors-hero { padding-top: 12rem; }
+
   .sponsor-card { grid-template-columns: 1fr; gap: 1.2rem; text-align: center; padding: 1.6rem; }
   .sponsor-logo-wrap { min-height: unset; }
   .sponsor-link { margin-top: 0.8rem; }
