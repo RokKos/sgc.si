@@ -210,17 +210,12 @@ onBeforeUnmount(() => {
 
   .nav-pills {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
-    gap: 0.36rem;
-    overflow-x: auto;
-    scrollbar-width: none;
+    gap: 0.45rem;
     width: 100%;
     margin-left: 0;
-    padding: 0 0.5rem;
-  }
-
-  .nav-pills::-webkit-scrollbar {
-    display: none;
+    padding: 0;
   }
 
   .sga-logo {
