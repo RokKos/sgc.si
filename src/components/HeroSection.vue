@@ -243,16 +243,18 @@ onMounted(() => {
 }
 
 .hero-logo-guardiaris {
-  height: clamp(4.8rem, 8.5vw, 7.5rem);
+  /* Main sponsor — kept at least 2x the size of every other sponsor logo
+     (largest other is FRI at up to 3.8rem). */
+  height: clamp(6rem, 10vw, 9rem);
 }
 
 .hero-logo-fri {
-  height: clamp(2.6rem, 4.4vw, 3.8rem);
+  height: clamp(2.1rem, 3.5vw, 3rem);
   opacity: 0.9;
 }
 
 .hero-logo-triternion {
-  height: clamp(2.2rem, 3.8vw, 3.1rem);
+  height: clamp(1.8rem, 3vw, 2.5rem);
   opacity: 0.9;
 }
 

@@ -66,6 +66,30 @@ onBeforeUnmount(() => {
   gap: 0.45rem;
   opacity: 1;
   pointer-events: auto;
+  /* Contained frosted bar so the header stays legible over any background
+     without a full-width band bleeding across the page. */
+  padding: 0.55rem 1.6rem;
+  border-radius: 18px;
+  background: linear-gradient(
+    180deg,
+    rgba(18, 22, 28, 0.55),
+    rgba(18, 22, 28, 0.34)
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+
+/* Light-theme pages sit on a bright background — use a lighter frosted panel. */
+.scroll-nav.theme-light {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.55),
+    rgba(255, 255, 255, 0.32)
+  );
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .scroll-nav.is-visible {
@@ -73,6 +97,7 @@ onBeforeUnmount(() => {
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
+
 
 .nav-top {
   flex-shrink: 0;
@@ -97,8 +122,13 @@ onBeforeUnmount(() => {
   font-weight: 700;
   font-size: 0.95rem;
   line-height: 1;
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.5), 0 8px 18px rgba(0, 0, 0, 0.2);
   white-space: nowrap;
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.nav-pill:hover {
+  transform: scale(1.08);
+  background: #ffffff;
 }
 
 .logo-pill {
@@ -109,11 +139,16 @@ onBeforeUnmount(() => {
   border: 1px solid rgba(255, 255, 255, 0.5);
   display: grid;
   place-items: center;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
   font-weight: 800;
   font-size: 0.8rem;
   color: #202225;
   letter-spacing: 0.05em;
+  transition: transform 0.16s ease, background 0.16s ease;
+}
+
+.logo-pill:hover {
+  transform: scale(1.08);
+  background: #ffffff;
 }
 
 .sga-logo {
@@ -140,7 +175,7 @@ onBeforeUnmount(() => {
 .nav-pill-cta { background: #ff4d10; color: #fff; }
 
 @media (max-width: 1280px) {
-  .scroll-nav { width: calc(100% - 4rem); left: 2rem; transform: translateX(0) translateY(0); top: 2rem; padding-bottom: 0.25rem; }
+  .scroll-nav { width: calc(100% - 4rem); left: 2rem; transform: translateX(0) translateY(0); top: 2rem; }
   .scroll-nav.is-visible { transform: translateX(0) translateY(0); }
   .nav-pills { overflow-x: auto; scrollbar-width: none; }
   .nav-pills::-webkit-scrollbar { display: none; }
@@ -157,10 +192,10 @@ onBeforeUnmount(() => {
     align-items: center;
     gap: 0.5rem;
     top: 1.25rem;
-    left: 0;
-    width: 100%;
+    left: 1rem;
+    width: calc(100% - 2rem);
     transform: none;
-    padding: 0 1.25rem;
+    padding: 0.7rem 0.9rem;
   }
 
   .scroll-nav.is-visible {
