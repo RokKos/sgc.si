@@ -6,7 +6,7 @@
 
     <div class="hero-top container" ref="heroTopRef">
       <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2027</h1>
-      <p class="hero-date-big" ref="titleRef">20.2.2027 at FRI (Faculty of Computer Science and Informatics)</p>
+      <p class="hero-date-big" ref="titleRef">20.2.2027 at FRI</p>
 
       <div class="hero-sponsors">
         <p class="hero-sponsors-label">Brought to you by</p>
