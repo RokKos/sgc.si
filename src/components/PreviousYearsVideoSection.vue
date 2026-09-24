@@ -3,7 +3,7 @@
     <div class="container tickets-wrap">
       <h2 id="tickets-title">TICKETS</h2>
       <p class="tickets-subtitle">
-        Ticket sales will open soon. Sign up below to be notified when they go live.
+        Secure your place at Slovenia Games Conference 2027.
       </p>
 
       <div class="ticket-bubble">
@@ -32,60 +32,16 @@
           </div>
         </div>
 
-        <div class="bubble-divider" aria-hidden="true"></div>
-
-        <div class="coming-soon-inner">
-          <p class="coming-soon-emoji" aria-hidden="true">🎟️</p>
-          <h3>Coming Soon</h3>
-          <p>Ticket details and pricing will be announced shortly. Stay tuned.</p>
-          <a href="https://forms.gle/Pu1PB6qJTeaPp1kM7"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="notify-btn">
-            Signup for newsletter →
-          </a>
-        </div>
+        <a
+          href="https://olaii.com/event/11304/slovenia-games-conference-2027/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tickets-link"
+        >Get tickets →</a>
       </div>
-
-      <!-- TODO: Uncomment when tickets go live
-      <div class="ticket-tabs" role="tablist" aria-label="Ticket categories">
-        <button
-          v-for="(category, index) in categories"
-          :key="category.key"
-          type="button"
-          class="ticket-tab"
-          :class="{ active: index === activeCategoryIndex }"
-          :aria-selected="index === activeCategoryIndex"
-          role="tab"
-          @click="selectCategory(index)"
-        >
-          {{ category.label }}
-        </button>
-      </div>
-
-      <div class="ticket-grid" aria-live="polite">
-        <article v-for="card in activeCategory.cards" :key="card.title" class="ticket-card">
-          <h3 class="card-title">{{ card.title }}</h3>
-          <p class="card-copy">{{ card.copy }}</p>
-          <div class="card-pricing">
-            <p class="price-new">{{ card.price }}</p>
-          </div>
-          <a class="card-cta" :href="card.ctaUrl || '#'">Get Ticket →</a>
-        </article>
-      </div>
-      -->
     </div>
   </section>
 </template>
-
-<script setup>
-// TODO: Uncomment and populate when tickets go live
-// import { computed, ref } from 'vue';
-// const categories = [];
-// const activeCategoryIndex = ref(0);
-// const activeCategory = computed(() => categories[activeCategoryIndex.value]);
-// function selectCategory(index) { activeCategoryIndex.value = index; }
-</script>
 
 <style scoped>
 .tickets-section {
@@ -117,7 +73,8 @@
 }
 
 .ticket-bubble {
-  max-width: 720px;
+  width: 100%;
+  max-width: 1120px;
   margin: 2.5rem auto 0;
   padding: 2rem 2rem 2.25rem;
   border-radius: 20px;
@@ -196,44 +153,22 @@
   line-height: 1;
 }
 
-.coming-soon-inner {
-  text-align: center;
-}
-
-.coming-soon-emoji {
-  margin: 0;
-  font-size: 3rem;
-}
-
-.coming-soon-inner h3 {
-  margin: 0.5rem 0 0;
-  font-size: 1.8rem;
-  color: #f2f4f7;
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
-}
-
-.coming-soon-inner p {
-  margin: 0.5rem 0 0;
-  color: #cfd7dd;
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-
-.notify-btn {
-  display: inline-block;
-  margin-top: 1.5rem;
-  padding: 0.75rem 1.75rem;
+.tickets-link {
+  display: block;
+  width: fit-content;
+  margin: 2rem auto 0;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
   background: #ff4d10;
   color: #fff;
   font-weight: 700;
-  font-size: 1rem;
-  border-radius: 999px;
   text-decoration: none;
-  transition: background 0.15s;
+  transition: background 0.16s ease, transform 0.16s ease;
 }
 
-.notify-btn:hover {
+.tickets-link:hover {
   background: #e03d00;
+  transform: translateY(-1px);
 }
 
 @media (max-width: 760px) {

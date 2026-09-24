@@ -11,6 +11,12 @@
       <a :href="`${base}#speakers`" class="nav-pill">Speakers</a>
       <a :href="`${base}#venue`" class="nav-pill">Venue</a>
       <a href="/sponsors" class="nav-pill">Sponsors</a>
+      <a
+        href="https://olaii.com/event/11304/slovenia-games-conference-2027/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="nav-pill nav-pill-cta"
+      >Tickets</a>
     </div>
   </nav>
 </template>
@@ -173,6 +179,7 @@ onBeforeUnmount(() => {
 .nav-pill-muted { background: #6a6f77; color: #fff; }
 .badge-new { font-size: 0.6rem; font-weight: 700; line-height: 1; padding: 0.2rem 0.34rem; border-radius: 999px; background: #7e47d3; color: #fff; }
 .nav-pill-cta { background: #ff4d10; color: #fff; }
+.nav-pill-cta:hover { background: #e03d00; }
 
 @media (max-width: 1280px) {
   .scroll-nav { width: calc(100% - 4rem); left: 2rem; transform: translateX(0) translateY(0); top: 2rem; }
