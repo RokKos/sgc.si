@@ -52,6 +52,9 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
                       </div>
                       <div class="sponsor-body">
                         <h3 class="sponsor-name">{sponsor.name}</h3>
+                        {group.tier === 'General' && (
+                          <p class="main-note">Main sponsor of Slovenia Games Conference 2027 — without their support this event wouldn’t be possible.</p>
+                        )}
                         <p class="sponsor-desc">
                           {sponsor.description || 'Description coming soon.'}
                         </p>
@@ -219,15 +222,15 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 
 .sponsor-card {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 2rem;
+  grid-template-columns: 300px 1fr;
+  gap: 2.4rem;
   align-items: center;
   background: rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 16px;
-  padding: 2rem;
+  padding: 2.6rem;
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
   color: inherit;
   text-decoration: none;
@@ -259,7 +262,11 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 
 .sponsor-logo { max-width: 100%; max-height: 90px; width: auto; height: auto; object-fit: contain; }
 
-/* General tier (main sponsor) — larger logo */
+/* All sponsor cards share the same 300px logo column (set on .sponsor-card) so
+   logos and text columns line up across every tier and the venue card. */
+.sponsor-logo-wrap { min-height: 130px; padding: 1.6rem; }
+
+/* General tier (main sponsor) — larger logo. */
 .tier-general { position: relative; }
 .tier-general .sponsor-logo-wrap { min-height: 150px; }
 .tier-general .sponsor-logo { max-height: 150px; }
@@ -267,7 +274,7 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 .main-badge {
   position: absolute;
   top: -0.9rem;
-  left: 2rem;
+  left: 2.6rem;
   background: #ff4d10;
   color: #fff;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
@@ -285,13 +292,16 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 
 .sponsor-name {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  line-height: 1.1;
   color: #ffffff;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .sponsor-desc { margin: 0.6rem 0 0; color: rgba(255,255,255,0.72); font-size: 1.02rem; line-height: 1.6; }
+
+.main-note { margin: 0.7rem 0 0; color: #ff8a5c; font-weight: 600; font-size: 1.04rem; line-height: 1.5; }
 
 .sponsor-link {
   display: inline-block;

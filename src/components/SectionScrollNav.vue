@@ -6,7 +6,7 @@
       </a>
     </div>
     <div class="nav-pills">
-      <a :href="`${base}#top`" class="logo-pill" aria-label="Back to top">SGC</a>
+      <a :href="`${base}#top`" class="logo-pill" aria-label="Back to top">Home</a>
       <a :href="`${base}#about`" class="nav-pill">About</a>
       <a :href="`${base}#speakers`" class="nav-pill">Speakers</a>
       <a :href="`${base}#venue`" class="nav-pill">Venue</a>
@@ -138,17 +138,18 @@ onBeforeUnmount(() => {
 }
 
 .logo-pill {
-  padding: 0.5rem 0.8rem;
+  padding: 0.58rem 1rem;
   border-radius: 999px;
   text-decoration: none;
-  background: rgb(255 255 255 / 92%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  font-size: 0.8rem;
+  background: #f1f1f1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1;
   color: #202225;
-  letter-spacing: 0.05em;
+  white-space: nowrap;
   transition: transform 0.16s ease, background 0.16s ease;
 }
 
@@ -236,8 +237,8 @@ onBeforeUnmount(() => {
   }
 
   .logo-pill {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.75rem;
+    padding: 0.45rem 0.7rem;
+    font-size: 0.8rem;
     margin-left: 0;
   }
 }
