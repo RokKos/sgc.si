@@ -43,6 +43,29 @@
       </div>
     </div>
   </section>
+
+  <section class="exhibitors-section" id="exhibitors" aria-labelledby="exhibitors-title">
+    <div class="container exhibitors-wrap">
+      <div class="exhibitors-card">
+        <p class="exhibitors-eyebrow">Exhibit &amp; Register</p>
+        <h2 id="exhibitors-title">Indie Developers &amp; Companies</h2>
+        <p class="exhibitors-subtitle">
+          Are you an indie developer or a company? Register to showcase your games,
+          host a booth, and connect with the community at Slovenia Games Conference 2027.
+        </p>
+        <p class="exhibitors-note">
+          Before purchasing tickets, please fill out the registration form.
+          Someone from SGC will then reach out to you.
+        </p>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfEXcg5rVaIoENJwr-kdw7fjCBxa_j8pXiTyDIJsSvVyDmoww/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="exhibitors-link"
+        >Register now →</a>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style scoped>
@@ -173,8 +196,85 @@
   transform: translateY(-1px);
 }
 
+/* Indie developers & companies registration */
+.exhibitors-section {
+  background: #1e2223;
+  padding: 0 0 5rem;
+  color: #eef1f2;
+}
+
+.exhibitors-wrap {
+  text-align: center;
+}
+
+.exhibitors-card {
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 3rem 2rem 3.25rem;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 77, 16, 0.14), rgba(255, 255, 255, 0.04));
+  border: 1px solid rgba(255, 77, 16, 0.3);
+}
+
+.exhibitors-eyebrow {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ff8a5c;
+}
+
+.exhibitors-card h2 {
+  margin: 0.5rem 0 0;
+  color: #f3f3f3;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+}
+
+.exhibitors-subtitle {
+  margin: 1rem auto 0;
+  max-width: 640px;
+  color: #d7dbde;
+  font-size: clamp(1rem, 1.4vw, 1.18rem);
+  line-height: 1.5;
+}
+
+.exhibitors-note {
+  margin: 1.25rem auto 0;
+  max-width: 620px;
+  color: #ff8a5c;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.exhibitors-link {
+  display: block;
+  width: fit-content;
+  margin: 1.5rem auto 0;
+  padding: 0.8rem 1.8rem;
+  border-radius: 999px;
+  background: #ff4d10;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.16s ease, transform 0.16s ease;
+}
+
+.exhibitors-link:hover {
+  background: #e03d00;
+  transform: translateY(-1px);
+}
+
 @media (max-width: 760px) {
   .tickets-section { padding: 2.4rem 0 3.6rem; }
+  .exhibitors-section { padding: 0 0 3.6rem; }
+  .exhibitors-card { padding: 2.25rem 1.5rem 2.5rem; }
   .ticket-bubble { padding: 1.5rem 1.25rem 1.75rem; }
   .bubble-cols { flex-direction: column; gap: 0; }
   .bubble-divider-v {

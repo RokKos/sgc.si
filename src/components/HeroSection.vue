@@ -6,7 +6,7 @@
 
     <div class="hero-top container" ref="heroTopRef">
       <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2027</h1>
-      <p class="hero-date-big" ref="titleRef">20.2.2027 at FRI</p>
+      <p class="hero-date-big" ref="titleRef">20.2.2027</p>
 
       <div class="hero-sponsors">
         <p class="hero-sponsors-label">Brought to you by</p>
@@ -202,7 +202,7 @@ onMounted(() => {
 }
 
 .hero-date-big {
-  margin: 0 0 0.4rem;
+  margin: 1.4rem 0 0.4rem;
   font-family: "Funnel Sans", "Arial Narrow", "Segoe UI", sans-serif;
   font-size: clamp(1.6rem, 4vw, 3rem);
   font-weight: 400;
