@@ -278,6 +278,9 @@ const aftermovieWatchUrl = `https://www.youtube.com/watch?v=${aftermovieYouTubeI
   .noise-shell { padding-top: 4.6rem; }
   .decor-right { width: 360px; height: 360px; border-width: 24px; right: -140px; top: 260px; }
   .decor-left { width: 320px; height: 320px; border-width: 16px; left: -160px; top: 460px; }
+  /* Rings sit behind the text on narrow screens — fade them back for legibility. */
+  .decor-left, .decor-right { opacity: 0.3; }
+  .noise-arc-a, .noise-arc-b { opacity: 0.25; }
   .brand-note { font-size: 1.3rem; letter-spacing: 0.14em; }
   .feature-grid { gap: 1rem; }
   .noise-dot-a { left: 12%; top: 165px; width: 14px; height: 14px; }
