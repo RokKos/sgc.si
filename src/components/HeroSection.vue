@@ -203,7 +203,7 @@ onMounted(() => {
 
 .hero-date-big {
   margin: 0 0 0.4rem;
-  font-family: "Bebas Neue", "Arial Narrow", "Segoe UI", sans-serif;
+  font-family: "Funnel Sans", "Arial Narrow", "Segoe UI", sans-serif;
   font-size: clamp(1.6rem, 4vw, 3rem);
   font-weight: 400;
   letter-spacing: 0.06em;
@@ -226,7 +226,7 @@ onMounted(() => {
   text-transform: uppercase;
   letter-spacing: 0.24em;
   color: rgba(255, 255, 255, 0.55);
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
 }
 
 .hero-sponsors-row {
@@ -265,7 +265,7 @@ onMounted(() => {
   font-size: clamp(3.2rem, 10.2vw, 8.3rem);
   letter-spacing: -0.02em;
   font-weight: 400;
-  font-family: "Bebas Neue", "Arial Narrow", "Segoe UI", sans-serif;
+  font-family: "Funnel Sans", "Arial Narrow", "Segoe UI", sans-serif;
   color: #ffffff;
 }
 
@@ -274,7 +274,7 @@ onMounted(() => {
   max-width: 42ch;
   font-size: clamp(1rem, 1.35vw, 1.16rem);
   color: rgba(255, 255, 255, 0.8);
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
 }
 
 .hero-actions {

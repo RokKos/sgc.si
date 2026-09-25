@@ -57,7 +57,7 @@
 .tickets-wrap h2 {
   margin: 0;
   color: #f3f3f3;
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
   font-size: clamp(2.2rem, 4.2vw, 3.5rem);
   line-height: 0.95;
   font-weight: 500;
@@ -116,7 +116,7 @@
 
 .info-title {
   margin: 0 0 1rem;
-  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
   font-size: 1.35rem;
   color: #f2f4f7;
 }
