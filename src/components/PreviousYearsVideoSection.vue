@@ -1,7 +1,7 @@
 <template>
   <section class="tickets-section" id="tickets" aria-labelledby="tickets-title">
     <div class="container tickets-wrap">
-      <h2 id="tickets-title">TICKETS</h2>
+      <h2 id="tickets-title">Tickets for visitors</h2>
       <p class="tickets-subtitle">
         Secure your place at Slovenia Games Conference 2027.
       </p>
@@ -9,25 +9,27 @@
       <div class="ticket-bubble">
         <div class="bubble-cols">
           <div class="bubble-section">
-            <h3 class="info-title">What to expect?</h3>
+            <h3 class="info-title">Event Highlights:</h3>
             <ul class="info-list">
-              <li><span class="info-icon" aria-hidden="true">🎤</span>At least ten lectures on game development topics divided in two tracks — technical and art.</li>
-              <li><span class="info-icon" aria-hidden="true">🛠️</span>At least two game development workshops</li>
-              <li><span class="info-icon" aria-hidden="true">🗣️</span>One round table with three guests on a game development related topic</li>
-              <li><span class="info-icon" aria-hidden="true">🕹️</span>Space for indie developers to showcase their work</li>
-              <li><span class="info-icon" aria-hidden="true">📣</span>Booth space for sponsor presentations</li>
-              <li><span class="info-icon" aria-hidden="true">📄</span>CV reviews from our sponsors</li>
+              <li><span class="info-icon" aria-hidden="true">🎤</span><span><strong>10+ Expert Lectures:</strong> Split across two dedicated tracks—Technical and Art.</span></li>
+              <li><span class="info-icon" aria-hidden="true">🛠️</span><span><strong>2+ Hands-On Workshops:</strong> Deepen your skills with interactive game dev sessions.</span></li>
+              <li><span class="info-icon" aria-hidden="true">🗣️</span><span><strong>Featured Round Table:</strong> A panel discussion featuring 3 industry guest speakers.</span></li>
+              <li><span class="info-icon" aria-hidden="true">🕹️</span><span><strong>Indie Showcase:</strong> Dedicated space for independent developers to show off their games.</span></li>
+              <li><span class="info-icon" aria-hidden="true">📣</span><span><strong>Sponsor Expo:</strong> Explore booths and connect with event sponsors.</span></li>
+              <li><span class="info-icon" aria-hidden="true">📄</span><span><strong>Portfolio &amp; CV Reviews:</strong> Get direct feedback on your resume from hiring sponsors.</span></li>
+              <li><span class="info-icon" aria-hidden="true">🎉</span><span><strong>Evening Party:</strong> Network, unwind, and celebrate with fellow creators.</span></li>
             </ul>
           </div>
 
           <div class="bubble-divider-v" aria-hidden="true"></div>
 
           <div class="bubble-section">
-            <h3 class="info-title">Ticket includes:</h3>
+            <h3 class="info-title">Your Ticket Includes:</h3>
             <ul class="info-list">
-              <li><span class="info-icon" aria-hidden="true">🎫</span>Full access to the Slovenia Games Conference 2027</li>
-              <li><span class="info-icon" aria-hidden="true">🍽️</span>Full lunch at faculty cafeteria (meat and vegan options)</li>
-              <li><span class="info-icon" aria-hidden="true">☕</span>Coffee break (coffee or tea and croissant)</li>
+              <li><span class="info-icon" aria-hidden="true">🎫</span><span><strong>Full Access:</strong> Entry to all Slovenia Games Conference 2027 tracks, panels, and showcases</span></li>
+              <li><span class="info-icon" aria-hidden="true">🍽️</span><span><strong>Catering:</strong> Complete lunch at the faculty cafeteria (meat and vegan options available)</span></li>
+              <li><span class="info-icon" aria-hidden="true">☕</span><span><strong>Coffee Break:</strong> Fresh coffee or tea accompanied by a croissant</span></li>
+              <li><span class="info-icon" aria-hidden="true">🥳</span><span><strong>Afterparty:</strong> Full admission to the official evening networking party</span></li>
             </ul>
           </div>
         </div>
