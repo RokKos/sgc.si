@@ -52,12 +52,12 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
                       </div>
                       <div class="sponsor-body">
                         <h3 class="sponsor-name">{sponsor.name}</h3>
-                        {group.tier === 'General' && (
-                          <p class="main-note">Main sponsor of Slovenia Games Conference 2027 — without their support this event wouldn’t be possible.</p>
-                        )}
-                        <p class="sponsor-desc">
-                          {sponsor.description || 'Description coming soon.'}
-                        </p>
+                        {(sponsor.description
+                          ? sponsor.description.split(/\n\s*\n/)
+                          : ['Description coming soon.']
+                        ).map((para, i) => (
+                          <p class={`sponsor-desc${group.tier === 'General' && i === 0 ? ' is-highlight' : ''}`}>{para}</p>
+                        ))}
                         {hasLink && <span class="sponsor-link">Visit website →</span>}
                       </div>
                     </CardTag>
@@ -301,7 +301,7 @@ const venueSponsors = sponsors.filter((s) => s.tier === 'Venue');
 
 .sponsor-desc { margin: 0.6rem 0 0; color: rgba(255,255,255,0.72); font-size: 1.02rem; line-height: 1.6; }
 
-.main-note { margin: 0.7rem 0 0; color: #ff8a5c; font-weight: 600; font-size: 1.04rem; line-height: 1.5; }
+.sponsor-desc.is-highlight { color: #ff8a5c; font-weight: 600; }
 
 .sponsor-link {
   display: inline-block;

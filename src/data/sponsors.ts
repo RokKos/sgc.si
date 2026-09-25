@@ -19,8 +19,15 @@ export const sponsors: Sponsor[] = [
     tier: 'General',
     logo: '/SponsorLogos/GuardiarisLogo.png',
     url: 'https://www.guardiaris.com',
-    description:
-      'Guardiaris is a defense technology company that designs and manufactures advanced military training simulators built on proprietary LED technology and a scientific approach to training. With over 18 years on the market, they deliver customizable solutions for small arms, vehicles, anti-armor, and anti-aircraft systems, combining cutting-edge audio-visual technology and biometric analytics to enhance soldier readiness and combat effectiveness.',
+    description: `Guardiaris is the main sponsor of Slovenia Games Conference 2027.
+
+Guardiaris develops end-to-end training simulators for land, air, and sea defence systems, powered by GUARD®, its own proprietary simulation engine. Today, Guardiaris is one of Europe's leading defence technology companies, with solutions deployed across 28+ markets worldwide.
+
+It didn't start there. In 2010, Guardiaris was a game studio, building real-time engines and interactive graphics, including its own game, Prison Break. That work caught the attention of the defence sector, and a single simulator project turned a game studio into a company solving some of the hardest real-time and simulation challenges in the industry.
+
+Today, Guardiaris is a tribe of 190+ engineers, programmers, and hardware specialists, spanning software development, 3D and simulation engineering, hardware integration, and systems design, all built around one core focus: realistic, science-based training that performs when it matters most.
+
+As main sponsor of SGC 2027, Guardiaris is back in the industry where it all began, to meet the developers, engineers, and students who could be building the next generation of real-time technology alongside them.`,
   },
   {
     name: 'UL FRI — Faculty of Computer and Information Science',
