@@ -1,11 +1,23 @@
 <template>
-  <nav class="scroll-nav" :class="{ 'is-visible': isVisible, 'theme-light': theme === 'light' }" aria-label="Section quick navigation">
+  <nav class="scroll-nav" :class="{ 'is-visible': isVisible, 'theme-light': theme === 'light', 'menu-open': menuOpen }" aria-label="Section quick navigation">
     <div class="nav-top">
       <a href="/" class="sga-logo-link">
         <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" width="222" height="60" />
       </a>
     </div>
-    <div class="nav-pills">
+    <button
+      class="nav-toggle"
+      type="button"
+      :aria-expanded="menuOpen"
+      aria-controls="nav-pills-menu"
+      aria-label="Toggle navigation menu"
+      @click="menuOpen = !menuOpen"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-pills" id="nav-pills-menu" @click="menuOpen = false">
       <a :href="`${base}#top`" class="logo-pill" aria-label="Back to top">Home</a>
       <a :href="`${base}#about`" class="nav-pill">About</a>
       <a :href="`${base}#speakers`" class="nav-pill">Speakers</a>
@@ -33,6 +45,7 @@ defineProps({
 });
 
 const isVisible = ref(false);
+const menuOpen = ref(false);
 let onScroll;
 let onResize;
 
@@ -46,7 +59,11 @@ onMounted(() => {
   };
 
   onScroll = () => updateVisibility();
-  onResize = () => updateVisibility();
+  onResize = () => {
+    updateVisibility();
+    // Collapse the mobile menu when we grow back to a desktop width.
+    if (window.innerWidth > 640) menuOpen.value = false;
+  };
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize);
@@ -107,6 +124,52 @@ onBeforeUnmount(() => {
 
 .nav-top {
   flex-shrink: 0;
+}
+
+/* Hamburger toggle — hidden on desktop, shown only in the mobile media query. */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 0 auto;
+  border-radius: 999px;
+  background: #ffffff;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.scroll-nav.theme-light .nav-toggle {
+  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.scroll-nav.theme-light .nav-toggle-bar {
+  background: #202225;
+}
+
+/* Open state: morph the three bars into an X. */
+.scroll-nav.menu-open .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.scroll-nav.menu-open .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.scroll-nav.menu-open .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 .nav-pills {
@@ -196,8 +259,9 @@ onBeforeUnmount(() => {
 
 @media (max-width: 640px) {
   .scroll-nav {
-    flex-direction: column;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: space-between;
     gap: 0.5rem;
     top: 1.25rem;
     left: 1rem;
@@ -210,20 +274,14 @@ onBeforeUnmount(() => {
     transform: none;
   }
 
+  /* Logo stays on the left, hamburger toggle on the right. */
   .nav-top {
-    width: 100%;
     display: flex;
-    justify-content: center;
+    align-items: center;
   }
 
-  .nav-pills {
+  .nav-toggle {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.45rem;
-    width: 100%;
-    margin-left: 0;
-    padding: 0;
   }
 
   .sga-logo {
@@ -231,14 +289,27 @@ onBeforeUnmount(() => {
     height: auto;
   }
 
-  .nav-pill {
-    padding: 0.45rem 0.7rem;
-    font-size: 0.8rem;
+  /* Pills collapse into a dropdown, revealed only when the menu is open. */
+  .nav-pills {
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    flex-basis: 100%;
+    width: 100%;
+    margin-left: 0;
+    padding: 0.25rem 0 0;
+    gap: 0.4rem;
   }
 
+  .scroll-nav.menu-open .nav-pills {
+    display: flex;
+  }
+
+  .nav-pill,
   .logo-pill {
-    padding: 0.45rem 0.7rem;
-    font-size: 0.8rem;
+    justify-content: center;
+    padding: 0.6rem 0.7rem;
+    font-size: 0.9rem;
     margin-left: 0;
   }
 }
