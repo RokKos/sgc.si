@@ -45,4 +45,20 @@ As main sponsor of SGC 2027, Guardiaris is back in the industry where it all beg
     description:
       'Triternion is an independent game studio based in Ljubljana, Slovenia, best known for Mordhau, the acclaimed medieval multiplayer combat game. With a small, dedicated international team pushing the boundaries of what melee combat can feel like in games, Triternion continues to build on its reputation for polish and craftsmanship from right here in Slovenia.',
   },
+  {
+    name: 'Outfit7',
+    tier: 'Gold',
+    logo: '/SponsorLogos/Outfit7-Logo.png',
+    url: 'https://outfit7.com/',
+    description:
+      'Outfit7 is the Slovenian gaming company behind the globally beloved Talking Tom & Friends franchise, one of the most recognizable mobile entertainment brands in the world with over 27 billion downloads. Alongside hit titles like My Talking Angela 2 and Talking Tom Gold Run, the studio creates games and animated content for audiences of all ages, partnering with major brands and expanding across streaming platforms. Built in Slovenia and grown into a worldwide phenomenon, Outfit7 pairs creative ambition with a strong sense of social responsibility.',
+  },
+  {
+    name: 'Razum',
+    tier: 'Gold',
+    logo: '/SponsorLogos/Razum1.jpg',
+    url: 'https://www.razum.si/',
+    description:
+      'Razum is a Ljubljana-based software development studio with two decades of experience building award-winning digital products for leading European companies. The team specializes in mobile applications, AI and data innovation, and enterprise integrations across banking, retail, and telecommunications, with a portfolio that includes some of Slovenia\'s most recognized apps. Razum brings deep engineering craft and a track record of shipping polished, real-world products to the Slovenian tech community.',
+  },
 ];

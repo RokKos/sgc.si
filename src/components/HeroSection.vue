@@ -29,6 +29,14 @@
             alt="Triternion"
           />
         </div>
+        <div class="hero-sponsors-row hero-sponsors-gold">
+          <span class="hero-logo-chip">
+            <img src="/SponsorLogos/Outfit7-Logo.png" alt="Outfit7" />
+          </span>
+          <span class="hero-logo-chip">
+            <img src="/SponsorLogos/Razum1.jpg" alt="Razum" />
+          </span>
+        </div>
       </div>
     </div>
 
@@ -256,6 +264,27 @@ onMounted(() => {
 .hero-logo-triternion {
   height: clamp(1.8rem, 3vw, 2.5rem);
   opacity: 0.9;
+}
+
+/* Gold-tier sponsors use full-colour logos, so they sit on a clean white
+   chip to read as intentional badges against the dark hero. */
+.hero-sponsors-gold {
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+.hero-logo-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 0.5rem 0.9rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.hero-logo-chip img {
+  height: clamp(2.1rem, 3.2vw, 2.9rem);
+  display: block;
 }
 
 .hero-title {
