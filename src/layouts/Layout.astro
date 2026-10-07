@@ -29,5 +29,31 @@ const { title = 'Slovenia Games Conference' } = Astro.props;
   </head>
   <body>
     <slot />
+    <script is:inline>
+      // Deep-links to in-page anchors (e.g. /#indies) can land in the wrong
+      // spot in production: the browser jumps before images/fonts above the
+      // target finish loading, which then shift the layout. Re-scroll to the
+      // hash once everything has loaded so the target respects its
+      // scroll-margin-top and lands correctly.
+      (() => {
+        const scrollToHash = () => {
+          if (!location.hash || location.hash.length < 2) return;
+          let el;
+          try {
+            el = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+          } catch (_) {
+            el = document.getElementById(location.hash.slice(1));
+          }
+          if (el) el.scrollIntoView();
+        };
+        const run = () => {
+          requestAnimationFrame(scrollToHash);
+          // Catch late layout shifts from web fonts / lazy images.
+          setTimeout(scrollToHash, 300);
+        };
+        if (document.readyState === 'complete') run();
+        else window.addEventListener('load', run, { once: true });
+      })();
+    </script>
   </body>
 </html>
