@@ -201,6 +201,9 @@
   background: #1e2223;
   padding: 0 0 5rem;
   color: #eef1f2;
+  /* Offset the anchor jump so the section clears the floating header
+     (which sits ~2rem from the top) instead of landing beneath it. */
+  scroll-margin-top: 7rem;
 }
 
 .exhibitors-wrap {
