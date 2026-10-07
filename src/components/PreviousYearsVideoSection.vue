@@ -44,7 +44,7 @@
     </div>
   </section>
 
-  <section class="exhibitors-section" id="exhibitors" aria-labelledby="exhibitors-title">
+  <section class="exhibitors-section" id="indies" aria-labelledby="exhibitors-title">
     <div class="container exhibitors-wrap">
       <div class="exhibitors-card">
         <p class="exhibitors-eyebrow">Exhibit &amp; Register</p>
