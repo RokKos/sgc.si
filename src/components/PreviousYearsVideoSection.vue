@@ -203,7 +203,7 @@
   color: #eef1f2;
   /* Offset the anchor jump so the section clears the floating header
      (which sits ~2rem from the top) instead of landing beneath it. */
-  scroll-margin-top: 7rem;
+  scroll-margin-top: 10rem;
 }
 
 .exhibitors-wrap {
