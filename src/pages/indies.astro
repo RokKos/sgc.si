@@ -1,0 +1,168 @@
+---
+import Layout from '../layouts/Layout.astro';
+import SectionScrollNav from '../components/SectionScrollNav.vue';
+import Footer from '../components/Footer.astro';
+import { indies } from '../data/indies';
+import { NAV_HOME_BASE } from '../data/site';
+---
+
+<Layout title="Registered Indies - Slovenia Games Conference 2027">
+  <SectionScrollNav client:load base={NAV_HOME_BASE} />
+
+  <main class="indies-page">
+    <section class="indies-hero">
+      <div class="container indies-hero-inner">
+        <p class="eyebrow">Slovenia Games Conference 2027</p>
+        <h1>Registered Indies</h1>
+        <p>
+          Meet the indie developers and studios showcasing their games at the Slovenia Games
+          Conference 2027. Come by their booths, play their games, and say hello.
+        </p>
+      </div>
+    </section>
+
+    <section class="indies-list-section" aria-label="Registered indie developers">
+      <div class="container indies-wrap">
+        {indies.length === 0 ? (
+          <div class="indies-empty">
+            <p>Registered indies will be announced here soon. Check back closer to the event.</p>
+          </div>
+        ) : (
+          <div class="indies-grid">
+            {indies.map((indie) => (
+              <article class="indie-card">
+                <div class="indie-logo-wrap">
+                  <img src={indie.logo} alt={indie.name} class="indie-logo" />
+                </div>
+                <div class="indie-body">
+                  <h2 class="indie-name">{indie.name}</h2>
+                  {(indie.description
+                    ? indie.description.split(/\n\s*\n/)
+                    : ['Description coming soon.']
+                  ).map((para) => (
+                    <p class="indie-desc">{para}</p>
+                  ))}
+                  <div class="indie-links">
+                    {indie.website && (
+                      <a
+                        class="indie-link"
+                        href={indie.website}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >Visit website →</a>
+                    )}
+                    {indie.trailer && (
+                      <a
+                        class="indie-link indie-link-trailer"
+                        href={indie.trailer}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >Watch trailer →</a>
+                    )}
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+.indies-page {
+  position: relative;
+  min-height: 100vh;
+  background-color: #0f1419;
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(255, 79, 18, 0.16), transparent 55%),
+    linear-gradient(180deg, rgba(10, 12, 15, 0.62), rgba(10, 12, 15, 0.88)),
+    url('/coming-soon-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.indies-hero { padding: 8.5rem 0 2.2rem; }
+.indies-hero-inner { width: min(1120px, 94%); }
+.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.55); }
+.indies-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.3rem, 6vw, 4.5rem); line-height: 0.94; letter-spacing: -0.03em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; }
+.indies-hero p { margin: 0.95rem 0 0; max-width: 60ch; color: rgba(255,255,255,0.78); font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.55; }
+
+.indies-list-section { padding: 1rem 0 4.6rem; }
+.indies-wrap { width: min(1120px, 94%); }
+
+.indies-grid { display: grid; gap: 1.5rem; margin-top: 1rem; }
+
+.indies-empty {
+  margin-top: 1rem;
+  border: 2px dashed rgba(255,255,255,0.2);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 2.4rem 2rem;
+  text-align: center;
+}
+.indies-empty p { margin: 0; color: rgba(255,255,255,0.6); font-size: 1.05rem; }
+
+.indie-card {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2.4rem;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 2.6rem;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+}
+
+.indie-logo-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 130px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.6rem;
+}
+
+.indie-logo { max-width: 100%; max-height: 110px; width: auto; height: auto; object-fit: contain; }
+
+.indie-name {
+  margin: 0;
+  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  line-height: 1.1;
+  color: #ffffff;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-weight: 700;
+}
+
+.indie-desc { margin: 0.6rem 0 0; color: rgba(255,255,255,0.72); font-size: 1.02rem; line-height: 1.6; }
+
+.indie-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 1rem; }
+
+.indie-link {
+  display: inline-block;
+  color: #ff8a5c;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 0.98rem;
+}
+.indie-link:hover { text-decoration: underline; }
+.indie-link-trailer { color: #ffffff; }
+
+@media (max-width: 640px) {
+  /* The mobile header wraps onto two rows, so push the hero down below it. */
+  .indies-hero { padding-top: 12rem; }
+
+  .indie-card { grid-template-columns: 1fr; gap: 1.2rem; text-align: center; padding: 1.6rem; }
+  .indie-logo-wrap { min-height: unset; }
+  .indie-links { justify-content: center; gap: 1rem; }
+}
+</style>
