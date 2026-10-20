@@ -3,9 +3,21 @@ import '../styles/global.css';
 
 interface Props {
   title?: string;
+  description?: string;
+  /** Social share image, as a path under /public (e.g. '/og-image.jpg'). */
+  image?: string;
 }
 
-const { title = 'Slovenia Games Conference' } = Astro.props;
+const {
+  title = 'Slovenia Games Conference',
+  description = 'Slovenia Games Conference — the annual conference on game development, design, marketing, and business in Slovenia.',
+  image = '/og-image.jpg',
+} = Astro.props;
+
+// Absolute URLs are required for Open Graph / Twitter previews.
+const siteOrigin = Astro.site ?? new URL('https://sgc.si');
+const canonicalUrl = new URL(Astro.url.pathname, siteOrigin).href;
+const imageUrl = new URL(image, siteOrigin).href;
 ---
 
 <!doctype html>
@@ -13,8 +25,27 @@ const { title = 'Slovenia Games Conference' } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Slovenia Games Conference — the annual conference on game development, design, marketing, and business in Slovenia." />
+    <meta name="description" content={description} />
     <meta name="theme-color" content="#c4502f" />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Open Graph (Facebook, LinkedIn, Discord, …) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Slovenia Games Conference" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Slovenia Games Conference 2027" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/sgcFavicon.png" />
     <link rel="apple-touch-icon" href="/sgcFavicon.png" />
