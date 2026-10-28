@@ -67,6 +67,6 @@ As main sponsor of SGC 2027, Guardiaris is back in the industry where it all beg
     logo: '/SponsorLogos/Bubadu-logo.png',
     url: 'https://www.bubadu.com',
     description:
-      'Kjer domišljija oživi! V Bubadu verjamemo, da je igra najbolj zabaven način odkrivanja sveta. Smo neodvisen slovenski studio, ki ustvarja prikupne, barvite in interaktivne mobilne igre za otroke in družine po vsem svetu. Naša ustvarjalna ekipa združuje igrivost, inovativne ideje in ljubezen do razvoja iger, ki ne prinašajo le zabave, temveč tudi spodbujajo radovednost, ustvarjalnost in učenje.',
+      'Where imagination comes to life! At Bubadu, we believe that play is the most fun way to discover the world. We are an independent Slovenian studio creating charming, colorful, and interactive mobile games for children and families around the globe. Our creative team combines playfulness, innovative ideas, and a love for game development to craft games that not only entertain, but also spark curiosity, creativity, and learning.',
   },
 ];
