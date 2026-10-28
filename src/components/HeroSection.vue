@@ -33,6 +33,9 @@
           <img class="hero-logo-gold" src="/SponsorLogos/Outfit7-Logo.png" alt="Outfit7" />
           <img class="hero-logo-gold" src="/SponsorLogos/Razum-logo.png" alt="Razum" />
         </div>
+        <div class="hero-sponsors-row hero-sponsors-silver">
+          <img class="hero-logo-silver" src="/SponsorLogos/Bubadu-logo-white.png" alt="Bubadu" />
+        </div>
       </div>
     </div>
 
@@ -275,6 +278,18 @@ onMounted(() => {
    to balance visually against the wide Outfit7 wordmark. */
 .hero-logo-gold[alt="Razum"] {
   height: clamp(2.9rem, 4.4vw, 4rem);
+}
+
+/* Silver — Bubadu's mark stacks a bear head over the wordmark, so it needs a
+   touch more height than the wordmark logos to read at a comparable size. */
+.hero-sponsors-silver {
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hero-logo-silver {
+  height: clamp(2.6rem, 4vw, 3.6rem);
+  display: block;
+  opacity: 0.95;
 }
 
 .hero-title {

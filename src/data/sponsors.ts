@@ -61,4 +61,12 @@ As main sponsor of SGC 2027, Guardiaris is back in the industry where it all beg
     description:
       'Razum is a Ljubljana-based software development studio with two decades of experience building award-winning digital products for leading European companies. The team specializes in mobile applications, AI and data innovation, and enterprise integrations across banking, retail, and telecommunications, with a portfolio that includes some of Slovenia\'s most recognized apps. Razum brings deep engineering craft and a track record of shipping polished, real-world products to the Slovenian tech community.',
   },
+  {
+    name: 'Bubadu',
+    tier: 'Silver',
+    logo: '/SponsorLogos/Bubadu-logo.png',
+    url: 'https://www.bubadu.com',
+    description:
+      'Kjer domišljija oživi! V Bubadu verjamemo, da je igra najbolj zabaven način odkrivanja sveta. Smo neodvisen slovenski studio, ki ustvarja prikupne, barvite in interaktivne mobilne igre za otroke in družine po vsem svetu. Naša ustvarjalna ekipa združuje igrivost, inovativne ideje in ljubezen do razvoja iger, ki ne prinašajo le zabave, temveč tudi spodbujajo radovednost, ustvarjalnost in učenje.',
+  },
 ];
