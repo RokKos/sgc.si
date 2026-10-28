@@ -73,6 +73,8 @@
   background: #1e2223;
   padding: 3rem 0 4.5rem;
   color: #eef1f2;
+  /* Offset the anchor jump so the heading clears the floating header. */
+  scroll-margin-top: 7rem;
 }
 
 .tickets-wrap {
