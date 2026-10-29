@@ -24,7 +24,21 @@
       <a :href="`${base}#venue`" class="nav-pill">Venue</a>
       <a href="/sponsors" class="nav-pill">Sponsors</a>
       <a :href="`${base}#tickets`" class="nav-pill nav-pill-cta">Tickets</a>
-      <a :href="`${base}#indies`" class="nav-pill nav-pill-indies">Indies</a>
+      <div class="nav-dropdown" :class="{ open: indiesOpen }" ref="indiesDropdown">
+        <button
+          type="button"
+          class="nav-pill nav-pill-indies nav-dropdown-toggle"
+          :aria-expanded="indiesOpen"
+          aria-haspopup="true"
+          @click.stop="indiesOpen = !indiesOpen"
+        >
+          Indies <span class="nav-caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <a href="/indies" class="nav-dropdown-item" @click="indiesOpen = false">Meet the Indies</a>
+          <a :href="`${base}#indies`" class="nav-dropdown-item" @click="indiesOpen = false">Indie Registration</a>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
@@ -42,14 +56,18 @@ defineProps({
 
 const isVisible = ref(false);
 const menuOpen = ref(false);
+// Indies dropdown (groups "Meet the Indies" and "Indie Registration").
+const indiesOpen = ref(false);
+const indiesDropdown = ref(null);
 let onScroll;
 let onResize;
+let onDocClick;
 
 onMounted(() => {
   const firstSection = document.querySelector('.hero-shell');
-  if (!firstSection) return;
 
   const updateVisibility = () => {
+    if (!firstSection) return;
     const heroBottom = firstSection.getBoundingClientRect().bottom;
     isVisible.value = heroBottom <= 120;
   };
@@ -58,17 +76,25 @@ onMounted(() => {
   onResize = () => {
     updateVisibility();
     // Collapse the mobile menu when we grow back to a desktop width.
-    if (window.innerWidth > 640) menuOpen.value = false;
+    if (window.innerWidth > 860) menuOpen.value = false;
+  };
+  // Close the Indies dropdown when clicking anywhere outside it.
+  onDocClick = (e) => {
+    if (indiesDropdown.value && !indiesDropdown.value.contains(e.target)) {
+      indiesOpen.value = false;
+    }
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', onResize);
+  document.addEventListener('click', onDocClick);
   updateVisibility();
 });
 
 onBeforeUnmount(() => {
   if (onScroll) window.removeEventListener('scroll', onScroll);
   if (onResize) window.removeEventListener('resize', onResize);
+  if (onDocClick) document.removeEventListener('click', onDocClick);
 });
 </script>
 
@@ -244,11 +270,84 @@ onBeforeUnmount(() => {
 .nav-pill-indies { background: #12b5a5; color: #fff; }
 .nav-pill-indies:hover { background: #0e9a8d; }
 
+/* Indies dropdown — groups "Meet the Indies" (the showcase page) and
+   "Indie Registration" (the sign-up section) under one pill so the header
+   doesn't gain another button. */
+.nav-dropdown { position: relative; display: inline-flex; }
+
+.nav-dropdown-toggle {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.nav-caret {
+  font-size: 0.72em;
+  line-height: 1;
+  transition: transform 0.16s ease;
+}
+.nav-dropdown.open .nav-caret,
+.nav-dropdown:hover .nav-caret { transform: rotate(180deg); }
+
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 200px;
+  padding: 0.45rem;
+  border-radius: 14px;
+  background: rgba(18, 22, 28, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  z-index: 90;
+}
+
+/* Invisible bridge so moving the cursor from the pill to the menu across the
+   gap doesn't close it. */
+.nav-dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -0.6rem;
+  left: 0;
+  right: 0;
+  height: 0.6rem;
+}
+
+.nav-dropdown:hover .nav-dropdown-menu,
+.nav-dropdown.open .nav-dropdown-menu { display: flex; }
+
+.nav-dropdown-item {
+  display: block;
+  padding: 0.55rem 0.85rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  line-height: 1;
+  color: #eef1f2;
+  white-space: nowrap;
+  transition: background 0.14s ease;
+}
+.nav-dropdown-item:hover { background: rgba(255, 255, 255, 0.12); }
+
+/* Light-theme pages: dark text on a bright menu. */
+.scroll-nav.theme-light .nav-dropdown-menu {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.scroll-nav.theme-light .nav-dropdown-item { color: #202225; }
+.scroll-nav.theme-light .nav-dropdown-item:hover { background: rgba(0, 0, 0, 0.07); }
+
 @media (max-width: 1280px) {
   .scroll-nav { width: calc(100% - 4rem); left: 2rem; transform: translateX(0) translateY(0); top: 2rem; }
   .scroll-nav.is-visible { transform: translateX(0) translateY(0); }
-  .nav-pills { overflow-x: auto; scrollbar-width: none; }
-  .nav-pills::-webkit-scrollbar { display: none; }
+  /* No horizontal scroll here: an overflow container would clip the Indies
+     dropdown menu. The pills fit down to the hamburger breakpoint (860px). */
 }
 
 @media (max-width: 900px) {
@@ -256,7 +355,7 @@ onBeforeUnmount(() => {
   .nav-pill { padding: 0.52rem 0.88rem; font-size: 0.88rem; }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 860px) {
   .scroll-nav {
     flex-wrap: wrap;
     align-items: center;
@@ -310,6 +409,35 @@ onBeforeUnmount(() => {
     padding: 0.6rem 0.7rem;
     font-size: 0.9rem;
     margin-left: 0;
+  }
+
+  /* In the stacked mobile menu the dropdown expands inline: the Indies pill
+     sits on its own row with its two links shown beneath it. */
+  .nav-dropdown { width: 100%; display: block; }
+  .nav-dropdown-toggle { width: 100%; justify-content: center; }
+  .nav-caret { display: none; }
+  .nav-dropdown-menu {
+    position: static;
+    display: flex;
+    margin-top: 0.4rem;
+    min-width: 0;
+    padding: 0;
+    gap: 0.4rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .nav-dropdown-menu::before { display: none; }
+  .nav-dropdown-item {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 0.6rem 0.7rem;
+    font-size: 0.88rem;
+  }
+  .scroll-nav.theme-light .nav-dropdown-item {
+    background: rgba(0, 0, 0, 0.05);
   }
 }
 </style>

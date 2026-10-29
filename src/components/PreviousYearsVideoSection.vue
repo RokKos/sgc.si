@@ -57,12 +57,15 @@
           Before purchasing tickets, please fill out the registration form.
           Someone from SGC will then reach out to you.
         </p>
-        <a
-          href="https://docs.google.com/forms/d/e/1FAIpQLSfEXcg5rVaIoENJwr-kdw7fjCBxa_j8pXiTyDIJsSvVyDmoww/viewform"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="exhibitors-link"
-        >Register now →</a>
+        <div class="exhibitors-actions">
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfEXcg5rVaIoENJwr-kdw7fjCBxa_j8pXiTyDIJsSvVyDmoww/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="exhibitors-link"
+          >Register now →</a>
+          <a href="/indies" class="exhibitors-link exhibitors-link-secondary">Meet the indies →</a>
+        </div>
       </div>
     </div>
   </section>
@@ -273,6 +276,28 @@
 
 .exhibitors-link:hover {
   background: #e03d00;
+  transform: translateY(-1px);
+}
+
+.exhibitors-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.exhibitors-actions .exhibitors-link { margin: 0; }
+
+/* Secondary action — outline button so it reads as the lower-priority path
+   next to the primary orange "Register now". */
+.exhibitors-link-secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.exhibitors-link-secondary:hover {
+  background: rgba(255, 255, 255, 0.1);
   transform: translateY(-1px);
 }
 
