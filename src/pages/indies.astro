@@ -32,10 +32,13 @@ import { NAV_HOME_BASE } from '../data/site';
             {indies.map((indie) => (
               <article class="indie-card">
                 <div class="indie-logo-wrap">
-                  <img src={indie.logo} alt={indie.name} class="indie-logo" />
+                  <img src={indie.logo} alt={indie.game} class="indie-logo" />
                 </div>
                 <div class="indie-body">
-                  <h2 class="indie-name">{indie.name}</h2>
+                  <p class="indie-eyebrow">
+                    {[indie.studio, indie.country, indie.year ?? '2027'].join(' · ')}
+                  </p>
+                  <h2 class="indie-name">{indie.game}</h2>
                   {(indie.description
                     ? indie.description.split(/\n\s*\n/)
                     : ['Description coming soon.']
@@ -43,21 +46,21 @@ import { NAV_HOME_BASE } from '../data/site';
                     <p class="indie-desc">{para}</p>
                   ))}
                   <div class="indie-links">
-                    {indie.website && (
-                      <a
-                        class="indie-link"
-                        href={indie.website}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >Visit website →</a>
-                    )}
                     {indie.trailer && (
                       <a
-                        class="indie-link indie-link-trailer"
+                        class="indie-link"
                         href={indie.trailer}
                         target="_blank"
                         rel="noopener noreferrer"
-                      >Watch trailer →</a>
+                      >Trailer →</a>
+                    )}
+                    {indie.link && (
+                      <a
+                        class="indie-link"
+                        href={indie.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >Learn more →</a>
                     )}
                   </div>
                 </div>
@@ -110,7 +113,7 @@ import { NAV_HOME_BASE } from '../data/site';
 
 .indie-card {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 340px 1fr;
   gap: 2.4rem;
   align-items: center;
   background: rgba(255, 255, 255, 0.06);
@@ -122,17 +125,25 @@ import { NAV_HOME_BASE } from '../data/site';
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
 
+/* Indies supply landscape key art, so show it as a cover image rather than a
+   small logo on a white chip. */
 .indie-logo-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 130px;
-  background: #ffffff;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
   border-radius: 12px;
-  padding: 1.6rem;
+  background: #0b0e12;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.indie-logo { max-width: 100%; max-height: 110px; width: auto; height: auto; object-fit: contain; }
+.indie-logo { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.indie-eyebrow {
+  margin: 0 0 0.35rem;
+  color: #ff6a3c;
+  font-weight: 700;
+  font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+  line-height: 1.2;
+}
 
 .indie-name {
   margin: 0;
@@ -141,21 +152,21 @@ import { NAV_HOME_BASE } from '../data/site';
   color: #ffffff;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
   font-weight: 700;
+  text-transform: uppercase;
 }
 
-.indie-desc { margin: 0.6rem 0 0; color: rgba(255,255,255,0.72); font-size: 1.02rem; line-height: 1.6; }
+.indie-desc { margin: 0.6rem 0 0; color: rgba(255,255,255,0.78); font-size: 1.02rem; line-height: 1.6; }
 
-.indie-links { display: flex; flex-wrap: wrap; gap: 1.4rem; margin-top: 1rem; }
+.indie-links { display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 1.1rem; }
 
 .indie-link {
   display: inline-block;
-  color: #ff8a5c;
+  color: #ff6a3c;
   font-weight: 700;
   text-decoration: none;
-  font-size: 0.98rem;
+  font-size: 1rem;
 }
 .indie-link:hover { text-decoration: underline; }
-.indie-link-trailer { color: #ffffff; }
 
 @media (max-width: 640px) {
   /* The mobile header wraps onto two rows, so push the hero down below it. */
