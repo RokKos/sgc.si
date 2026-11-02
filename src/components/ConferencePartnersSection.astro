@@ -1,0 +1,65 @@
+---
+// Placeholder partner tiles — swap each for a real partner logo in
+// public/PartnerLogos/ when available.
+const partnerCount = 6;
+const partners = Array.from({ length: partnerCount });
+---
+
+<section class="partners" id="partners" aria-labelledby="partners-title">
+  <div class="container partners-wrap">
+    <h2 id="partners-title">Conference Partners</h2>
+    <div class="partners-grid">
+      {partners.map(() => (
+        <div class="partner-tile" aria-hidden="true">
+          <span>Partner logo</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.partners {
+  background: #ececea;
+  color: #1f2529;
+  padding: 3.8rem 0 4.4rem;
+}
+
+.partners-wrap { width: min(1120px, 92%); text-align: center; }
+
+.partners h2 {
+  margin: 0 0 2.2rem;
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.partners-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.partner-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  background: #f6f5f3;
+  border: 2px dashed #c6c6c2;
+  color: #9a9a95;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 760px) {
+  .partners-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 460px) {
+  .partners-grid { grid-template-columns: 1fr; }
+}
+</style>

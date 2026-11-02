@@ -17,8 +17,19 @@
   font-display: swap;
 }
 
+/* Self-hosted Funnel Display (variable weight axis) — used for headings. */
+@font-face {
+  font-family: "Funnel Display";
+  src: url("/fonts/FunnelDisplay-VariableFont_wght.ttf") format("truetype");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --font-sans: "Funnel Sans", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --font-display: "Funnel Display", "Funnel Sans", "Segoe UI", sans-serif;
+  --ink-blue: #12233b;
   --brand-primary: #c4502f;
   --brand-ink: #1f1b19;
   --brand-sand: #f6efe5;
@@ -46,6 +57,51 @@ body {
   color: var(--brand-ink);
   background: radial-gradient(circle at 0% 0%, #fff8ef, #f6efe5 34%, #f0e3cf 100%);
   overflow-x: hidden;
+  /* Designer spec: body copy at 20px instead of 16px. */
+  font-size: 1.25rem;
+  line-height: 1.55;
+}
+
+/* Headings use Funnel Display; body stays Funnel Sans. */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display) !important;
+}
+
+/* -----------------------------------------------------------------------
+   Sharp corners site-wide to match the geometric SGC logo (no rounded
+   corners). True circles/rings (decorations, dots, glows, badges, avatars)
+   opt out via the class-substring exclusions below, or the .u-round helper.
+   NOTE: the ":where(...)" list and the ":not(...)" chain must stay joined
+   with no whitespace, otherwise a descendant combinator is introduced.
+   ----------------------------------------------------------------------- */
+:where(a, button, input, select, textarea, img, iframe, section, article, aside, div, figure, span, table, header, footer, nav, form, label, ul, li, p, h1, h2, h3, h4, h5, h6):not(.u-round):not([class*="dot"]):not([class*="arc"]):not([class*="decor"]):not([class*="cross"]):not([class*="glow"]):not([class*="ring"]):not([class*="orb"]):not([class*="circle"]):not([class*="badge"]):not([class*="avatar"]):not([class*="noise-dot"]):not([class*="noise-arc"]) {
+  border-radius: 0 !important;
+}
+
+/* -----------------------------------------------------------------------
+   Button hover language (designer spec):
+   filled orange -> white background + orange text (orange outline);
+   white/outline -> fill white + dark-blue text.
+   ----------------------------------------------------------------------- */
+.btn-primary:hover,
+.tickets-link:hover,
+.exhibitors-link:not(.exhibitors-link-secondary):hover,
+.maps-link:hover,
+.notify-btn:hover,
+.signup-submit:hover,
+.nav-pill-cta:hover {
+  background: #ffffff !important;
+  color: #ff4d10 !important;
+  box-shadow: inset 0 0 0 2px #ff4d10 !important;
+  transform: none !important;
+}
+
+.exhibitors-link-secondary:hover,
+.btn-ghost:hover {
+  background: #ffffff !important;
+  color: var(--ink-blue) !important;
+  border-color: #ffffff !important;
+  transform: none !important;
 }
 
 img,

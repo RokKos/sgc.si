@@ -7,31 +7,14 @@
       </p>
 
       <div class="ticket-bubble">
-        <div class="bubble-cols">
-          <div class="bubble-section">
-            <h3 class="info-title">Event Highlights:</h3>
-            <ul class="info-list">
-              <li><span class="info-icon" aria-hidden="true">🎤</span><span><strong>10+ Expert Lectures:</strong> Split across two dedicated tracks—Technical and Art.</span></li>
-              <li><span class="info-icon" aria-hidden="true">🛠️</span><span><strong>2+ Hands-On Workshops:</strong> Deepen your skills with interactive game dev sessions.</span></li>
-              <li><span class="info-icon" aria-hidden="true">🗣️</span><span><strong>Featured Round Table:</strong> A panel discussion featuring 3 industry guest speakers.</span></li>
-              <li><span class="info-icon" aria-hidden="true">🕹️</span><span><strong>Indie Showcase:</strong> Dedicated space for independent developers to show off their games.</span></li>
-              <li><span class="info-icon" aria-hidden="true">📣</span><span><strong>Sponsor Expo:</strong> Explore booths and connect with event sponsors.</span></li>
-              <li><span class="info-icon" aria-hidden="true">📄</span><span><strong>Portfolio &amp; CV Reviews:</strong> Get direct feedback on your resume from hiring sponsors.</span></li>
-              <li><span class="info-icon" aria-hidden="true">🎉</span><span><strong>Evening Party:</strong> Network, unwind, and celebrate with fellow creators.</span></li>
-            </ul>
-          </div>
-
-          <div class="bubble-divider-v" aria-hidden="true"></div>
-
-          <div class="bubble-section">
-            <h3 class="info-title">Your Ticket Includes:</h3>
-            <ul class="info-list">
-              <li><span class="info-icon" aria-hidden="true">🎫</span><span><strong>Full Access:</strong> Entry to all Slovenia Games Conference 2027 tracks, panels, and showcases</span></li>
-              <li><span class="info-icon" aria-hidden="true">🍽️</span><span><strong>Catering:</strong> Complete lunch at the faculty cafeteria (meat and vegan options available)</span></li>
-              <li><span class="info-icon" aria-hidden="true">☕</span><span><strong>Coffee Break:</strong> Fresh coffee or tea accompanied by a croissant</span></li>
-              <li><span class="info-icon" aria-hidden="true">🥳</span><span><strong>Afterparty:</strong> Full admission to the official evening networking party</span></li>
-            </ul>
-          </div>
+        <div class="bubble-section">
+          <h3 class="info-title">Your Ticket Includes:</h3>
+          <ul class="info-list info-list-cols">
+            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Full Access:</strong> Entry to all Slovenia Games Conference 2027 tracks, panels, and showcases</span></li>
+            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Catering:</strong> Complete lunch at the faculty cafeteria (meat and vegan options available)</span></li>
+            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Coffee Break:</strong> Fresh coffee or tea accompanied by a croissant</span></li>
+            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Afterparty:</strong> Full admission to the official evening networking party</span></li>
+          </ul>
         </div>
 
         <a
@@ -181,6 +164,27 @@
   border: 1px solid rgba(255, 77, 16, 0.28);
   font-size: 1.1rem;
   line-height: 1;
+}
+
+/* Sharp orange square marker replaces the old emoji icons. */
+.info-marker {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin-top: 0.4rem;
+  background: #ff4d10;
+}
+
+/* "Your Ticket Includes" is now the full width of the bubble, so lay it out
+   in two columns on wider screens. */
+.info-list-cols {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.7rem 2.4rem;
+}
+
+@media (max-width: 640px) {
+  .info-list-cols { grid-template-columns: 1fr; }
 }
 
 .tickets-link {

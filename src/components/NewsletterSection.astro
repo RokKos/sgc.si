@@ -1,0 +1,107 @@
+---
+// Newsletter signup. To wire up Mailchimp, replace MAILCHIMP_FORM_ACTION with
+// your Mailchimp embedded-form "action" URL and keep the EMAIL field name.
+// (Mailchimp → Audience → Signup forms → Embedded forms → copy the <form action="...">.)
+const MAILCHIMP_FORM_ACTION = 'MAILCHIMP_FORM_ACTION_URL';
+---
+
+<section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+  <div class="container newsletter-wrap">
+    <div class="newsletter-copy">
+      <h2 id="newsletter-title">Newsletter Signup</h2>
+      <p>New speakers, the programme and ticket updates — sent straight to your inbox. Unsubscribe anytime.</p>
+    </div>
+
+    <form
+      class="newsletter-form"
+      action={MAILCHIMP_FORM_ACTION}
+      method="post"
+      target="_blank"
+      novalidate
+    >
+      <input
+        type="email"
+        name="EMAIL"
+        required
+        placeholder="Email address"
+        aria-label="Email address"
+        class="newsletter-input"
+      />
+      <button type="submit" class="newsletter-submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<style>
+.newsletter {
+  background: #ff4d10;
+  color: #fff;
+  padding: 3rem 0;
+}
+
+.newsletter-wrap {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+}
+
+.newsletter-copy h2 {
+  margin: 0;
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.newsletter-copy p {
+  margin: 0.7rem 0 0;
+  max-width: 44ch;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.newsletter-form {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.newsletter-input {
+  flex: 1;
+  min-height: 54px;
+  padding: 0.8rem 1rem;
+  border: 2px solid #fff;
+  background: #fff;
+  color: #1f2529;
+  font: inherit;
+  font-size: 1.05rem;
+}
+
+.newsletter-input::placeholder { color: #7a7f84; }
+.newsletter-input:focus { outline: 2px solid rgba(18, 35, 59, 0.4); }
+
+.newsletter-submit {
+  flex: none;
+  min-height: 54px;
+  padding: 0.8rem 1.8rem;
+  border: 2px solid #12233b;
+  background: #12233b;
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.newsletter-submit:hover {
+  background: #fff;
+  color: #12233b;
+}
+
+@media (max-width: 760px) {
+  .newsletter-wrap { grid-template-columns: 1fr; gap: 1.4rem; }
+  .newsletter-form { flex-direction: column; }
+}
+</style>

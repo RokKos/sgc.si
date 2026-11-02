@@ -1,0 +1,86 @@
+---
+const highlights = [
+  { title: '10+ Expert Lectures', desc: 'Split across two dedicated tracks — Technical and Art.' },
+  { title: '2+ Hands-On Workshops', desc: 'Deepen your skills with interactive game dev sessions.' },
+  { title: 'Featured Round Table', desc: 'A panel discussion featuring 3 industry guest speakers.' },
+  { title: 'Indie Showcase', desc: 'Dedicated space for independent developers to show off their games.' },
+  { title: 'Sponsor Expo', desc: 'Explore booths and connect with event sponsors.' },
+  { title: 'Portfolio & CV Reviews', desc: 'Get direct feedback on your resume from hiring sponsors.' },
+  { title: 'Evening Party', desc: 'Network, unwind, and celebrate with fellow creators.' },
+];
+---
+
+<section class="event-highlights" id="highlights" aria-labelledby="highlights-title">
+  <div class="container eh-wrap">
+    <h2 id="highlights-title">Event Highlights</h2>
+    <ul class="eh-list">
+      {highlights.map((item) => (
+        <li class="eh-item">
+          <p class="eh-text"><strong>{item.title}:</strong> {item.desc}</p>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+.event-highlights {
+  background: #14232f;
+  color: #eef3f6;
+  padding: 3.6rem 0 4.4rem;
+}
+
+.eh-wrap {
+  width: min(1120px, 92%);
+}
+
+.event-highlights h2 {
+  margin: 0 0 2rem;
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.eh-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.1rem 2.4rem;
+}
+
+.eh-item {
+  display: flex;
+  gap: 0.85rem;
+}
+
+/* Sharp orange square marker (no emoji). */
+.eh-item::before {
+  content: "";
+  flex: none;
+  width: 14px;
+  height: 14px;
+  margin-top: 0.42rem;
+  background: #ff4f12;
+}
+
+.eh-text {
+  margin: 0;
+  color: #d7dde2;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.eh-text strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .eh-list {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

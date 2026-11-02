@@ -2,7 +2,7 @@
   <nav class="scroll-nav" :class="{ 'is-visible': isVisible, 'theme-light': theme === 'light', 'menu-open': menuOpen }" aria-label="Section quick navigation">
     <div class="nav-top">
       <a href="/" class="sga-logo-link">
-        <img src="/sga-logo.png" alt="Slovenia Games Association" class="sga-logo" width="222" height="60" />
+        <img src="/sgc-logo.png" alt="Slovenia Games Conference" class="sga-logo" width="300" height="126" />
       </a>
     </div>
     <button
@@ -201,52 +201,44 @@ onBeforeUnmount(() => {
   margin-left: auto;
 }
 
-.nav-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
-  padding: 0.58rem 1rem;
-  border-radius: 999px;
-  background: #f1f1f1;
-  color: #202225;
-  font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1;
-  white-space: nowrap;
-  transition: transform 0.16s ease, background 0.16s ease;
-}
-
-.nav-pill:hover {
-  transform: scale(1.08);
-  background: #ffffff;
-}
-
+/* Section links are plain text so only the Tickets / Indies buttons draw the
+   eye (designer spec). */
+.nav-pill,
 .logo-pill {
-  padding: 0.58rem 1rem;
-  border-radius: 999px;
-  text-decoration: none;
-  background: #f1f1f1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 0.95rem;
+  gap: 0.4rem;
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  color: #f4f6f7;
+  font-weight: 600;
+  font-size: 1rem;
   line-height: 1;
-  color: #202225;
   white-space: nowrap;
-  transition: transform 0.16s ease, background 0.16s ease;
+  transition: color 0.16s ease;
 }
 
+.nav-pill:hover,
 .logo-pill:hover {
-  transform: scale(1.08);
-  background: #ffffff;
+  color: #ff8a5c;
+  background: transparent;
+}
+
+.scroll-nav.theme-light .nav-pill:not(.nav-pill-cta):not(.nav-pill-indies),
+.scroll-nav.theme-light .logo-pill {
+  color: #202225;
+}
+.scroll-nav.theme-light .nav-pill:not(.nav-pill-cta):not(.nav-pill-indies):hover,
+.scroll-nav.theme-light .logo-pill:hover {
+  color: #ff4d10;
 }
 
 .sga-logo {
-  width: min(20vw, 180px);
-  height: auto;
-  aspect-ratio: 222 / 60;
+  height: clamp(34px, 4.6vw, 48px);
+  width: auto;
+  aspect-ratio: 4375 / 1834;
   display: block;
   flex-shrink: 0;
 }
@@ -263,7 +255,12 @@ onBeforeUnmount(() => {
 }
 
 .nav-pill-muted { background: #6a6f77; color: #fff; }
-.badge-new { font-size: 0.6rem; font-weight: 700; line-height: 1; padding: 0.2rem 0.34rem; border-radius: 999px; background: #7e47d3; color: #fff; }
+/* Tickets / Indies are the only buttons in the bar. */
+.nav-pill-cta,
+.nav-pill-indies {
+  padding: 0.56rem 1.1rem;
+  font-weight: 700;
+}
 .nav-pill-cta { background: #ff4d10; color: #fff; }
 .nav-pill-cta:hover { background: #e03d00; }
 /* Indies — distinct teal accent so it reads as a separate action from Tickets. */

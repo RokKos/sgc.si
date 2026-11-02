@@ -1,0 +1,98 @@
+---
+import { sponsors } from '../data/sponsors';
+
+// Main sponsor shown large; the rest form a logo wall below.
+const main = sponsors.find((s) => s.tier === 'General') ?? sponsors[0];
+const rest = sponsors.filter((s) => s !== main);
+---
+
+<section class="home-sponsors" id="sponsors" aria-labelledby="home-sponsors-title">
+  <div class="container hs-wrap">
+    <h2 id="home-sponsors-title">Sponsors</h2>
+
+    {main && (
+      <div class="hs-main">
+        <img src={main.logo} alt={main.name} class="hs-main-logo" />
+      </div>
+    )}
+
+    <div class="hs-grid">
+      {rest.map((s) => (
+        <div class="hs-tile">
+          <img src={s.logo} alt={s.name} class="hs-logo" />
+        </div>
+      ))}
+    </div>
+
+    <a href="/sponsors" class="hs-link">See all sponsors →</a>
+  </div>
+</section>
+
+<style>
+.home-sponsors {
+  background: #f4f3f1;
+  color: #1f2529;
+  padding: 4rem 0 4.6rem;
+}
+
+.hs-wrap { width: min(1120px, 92%); text-align: center; }
+
+.home-sponsors h2 {
+  margin: 0 0 2.4rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+}
+
+.hs-main {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.6rem;
+}
+
+.hs-main-logo {
+  height: clamp(4.5rem, 8vw, 7rem);
+  width: auto;
+  object-fit: contain;
+}
+
+.hs-grid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.hs-tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90px;
+}
+
+.hs-logo {
+  height: clamp(2.4rem, 3.6vw, 3.3rem);
+  width: auto;
+  max-width: 220px;
+  object-fit: contain;
+}
+
+.hs-link {
+  display: inline-block;
+  margin-top: 3rem;
+  padding: 0.8rem 1.8rem;
+  border: 2px solid #ff4d10;
+  background: #ff4d10;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+
+.hs-link:hover {
+  background: #fff;
+  color: #ff4d10;
+}
+</style>

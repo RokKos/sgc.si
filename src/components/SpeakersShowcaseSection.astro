@@ -39,7 +39,9 @@ const placeholders = Array.from({ length: placeholderCount });
       {placeholders.map(() => (
         <div class="speaker-card is-placeholder" aria-hidden="true">
           <div class="speaker-img-wrap placeholder-img">
-            <span class="placeholder-emoji">🎙️</span>
+            <svg class="placeholder-silhouette" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0 2c-5 0-9 2.7-9 6v2h18v-2c0-3.3-4-6-9-6z"/>
+            </svg>
           </div>
           <div class="speaker-info">
             <p class="speaker-name placeholder-text">Coming soon</p>
@@ -230,10 +232,10 @@ const placeholders = Array.from({ length: placeholderCount });
   background: transparent;
 }
 
-.placeholder-emoji {
-  font-size: 3.6rem;
-  opacity: 0.35;
-  filter: grayscale(1);
+.placeholder-silhouette {
+  width: 3.2rem;
+  height: 3.2rem;
+  color: #c4c8cf;
 }
 
 .speaker-card.is-placeholder .speaker-info {
