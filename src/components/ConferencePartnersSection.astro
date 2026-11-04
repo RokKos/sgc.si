@@ -1,65 +1,91 @@
 ---
-// Placeholder partner tiles — swap each for a real partner logo in
-// public/PartnerLogos/ when available.
-const partnerCount = 6;
-const partners = Array.from({ length: partnerCount });
+// Per-logo heights are tuned so the logos read as optically similar in size
+// despite different proportions (wide wordmarks vs tall illustration).
+const partners = [
+  { name: 'Slovenia Games Association', logo: '/PartnerLogos/partner-1.webp', h: 72 },
+  { name: 'Reload Akademija', logo: '/PartnerLogos/partner-2.png', url: 'https://reloadakademija.si', h: 66 },
+  { name: 'Game Dev Days', logo: '/PartnerLogos/partner-gamedevdays.png', url: 'https://gamedevdays.com/', h: 140 },
+  { name: 'Zagreb Games Week', logo: '/PartnerLogos/partner-3.png', url: 'https://zagrebgamesweek.com/en', h: 104 },
+];
 ---
 
 <section class="partners" id="partners" aria-labelledby="partners-title">
   <div class="container partners-wrap">
-    <h2 id="partners-title">Conference Partners</h2>
+    <h2 id="partners-title">Partners</h2>
     <div class="partners-grid">
-      {partners.map(() => (
-        <div class="partner-tile" aria-hidden="true">
-          <span>Partner logo</span>
-        </div>
-      ))}
+      {partners.map((partner) => {
+        const Tag = partner.url ? 'a' : 'div';
+        const linkProps = partner.url
+          ? { href: partner.url, target: '_blank', rel: 'noopener noreferrer', 'aria-label': partner.name }
+          : {};
+        return (
+          <Tag class={`partner-tile${partner.url ? ' is-link' : ''}`} {...linkProps}>
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              class="partner-logo"
+              style={`height:${partner.h}px`}
+            />
+          </Tag>
+        );
+      })}
     </div>
   </div>
 </section>
 
 <style>
 .partners {
-  background: #ececea;
-  color: #1f2529;
-  padding: 3.8rem 0 4.4rem;
+  background: #1c2a3c;
+  color: #ffffff;
+  padding: 4.4rem 0 5rem;
 }
 
-.partners-wrap { width: min(1120px, 92%); text-align: center; }
+.partners-wrap { width: min(1120px, 92%); text-align: left; }
 
 .partners h2 {
-  margin: 0 0 2.2rem;
-  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  margin: 0 0 3rem;
+  color: #ffffff;
+  font-size: clamp(2.4rem, 5vw, 4rem);
   line-height: 1;
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .partners-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  gap: 2rem;
 }
 
 .partner-tile {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 120px;
-  background: #f6f5f3;
-  border: 2px dashed #c6c6c2;
-  color: #9a9a95;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.9rem;
+  min-height: 160px;
 }
 
-@media (max-width: 760px) {
-  .partners-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.partner-tile.is-link {
+  text-decoration: none;
+  transition: opacity 0.16s ease, transform 0.16s ease;
 }
 
-@media (max-width: 460px) {
+.partner-tile.is-link:hover {
+  opacity: 0.82;
+  transform: translateY(-2px);
+}
+
+.partner-logo {
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 860px) {
+  .partners-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6rem; }
+}
+
+@media (max-width: 440px) {
   .partners-grid { grid-template-columns: 1fr; }
 }
 </style>
