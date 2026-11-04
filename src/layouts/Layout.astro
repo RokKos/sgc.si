@@ -4,14 +4,14 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
-  /** Social share image, as a path under /public (e.g. '/og-image.jpg'). */
+  /** Social share image, as a path under /public (e.g. '/og-image.png'). */
   image?: string;
 }
 
 const {
   title = 'Slovenia Games Conference',
   description = 'Slovenia Games Conference — the annual conference on game development, design, marketing, and business in Slovenia.',
-  image = '/og-image.jpg',
+  image = '/og-image.png',
 } = Astro.props;
 
 // Absolute URLs are required for Open Graph / Twitter previews.
