@@ -62,21 +62,33 @@ const rest = sponsors.filter((s) => s !== main);
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: clamp(2rem, 5vw, 4rem);
+  gap: 1.5rem;
 }
 
+/* Every logo gets an identical box; the logo is contained within it (capped by
+   both height and width). Equal footprints make the wall read as even
+   regardless of each logo's proportions. */
 .hs-tile {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 90px;
+  width: clamp(150px, 20vw, 190px);
+  height: 110px;
 }
 
 .hs-logo {
-  height: clamp(2.4rem, 3.6vw, 3.3rem);
+  max-height: 68px;
+  max-width: 82%;
   width: auto;
-  max-width: 220px;
+  height: auto;
   object-fit: contain;
+}
+
+@media (max-width: 620px) {
+  .hs-grid { gap: 1rem; }
+  /* Two even columns; an odd last logo stays centered via justify-content. */
+  .hs-tile { width: 45%; height: 116px; }
+  .hs-logo { max-height: 66px; max-width: 84%; }
 }
 
 .hs-link {
