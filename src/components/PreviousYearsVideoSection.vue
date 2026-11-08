@@ -1,54 +1,75 @@
 <template>
   <section class="tickets-section" id="tickets" aria-labelledby="tickets-title">
     <div class="container tickets-wrap">
-      <h2 id="tickets-title">Tickets for visitors</h2>
-      <p class="tickets-subtitle">
-        Secure your place at Slovenia Games Conference 2027.
-      </p>
+      <h2 id="tickets-title">Tickets</h2>
 
-      <div class="ticket-bubble">
-        <div class="bubble-section">
-          <h3 class="info-title">Your Ticket Includes:</h3>
-          <ul class="info-list info-list-cols">
-            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Full Access:</strong> Entry to all Slovenia Games Conference 2027 tracks, panels, and showcases</span></li>
-            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Catering:</strong> Complete lunch at the faculty cafeteria (meat and vegan options available)</span></li>
-            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Coffee Break:</strong> Fresh coffee or tea accompanied by a croissant</span></li>
-            <li><span class="info-marker" aria-hidden="true"></span><span><strong>Afterparty:</strong> Full admission to the official evening networking party</span></li>
-          </ul>
+      <div class="tickets-grid">
+        <ul class="info-list">
+          <li><span class="info-marker" aria-hidden="true"></span><span><strong>Full Access</strong> — Entry to all Slovenia Games Conference 2027 tracks, panels, and showcases.</span></li>
+          <li><span class="info-marker" aria-hidden="true"></span><span><strong>Catering</strong> — Complete lunch at the faculty cafeteria (meat and vegan options available).</span></li>
+          <li><span class="info-marker" aria-hidden="true"></span><span><strong>Coffee Break</strong> — Fresh coffee or tea accompanied by a croissant to keep you powered through the day.</span></li>
+          <li><span class="info-marker" aria-hidden="true"></span><span><strong>Afterparty</strong> — Full admission to the official evening networking party.</span></li>
+        </ul>
+
+        <div class="tickets-pricing">
+          <div class="price-cards">
+            <div class="price-card">
+              <span class="price-amount">35€</span>
+              <span class="price-label">Regular</span>
+            </div>
+            <div class="price-card">
+              <span class="price-amount">20€</span>
+              <span class="price-label">Student</span>
+            </div>
+          </div>
+          <a
+            href="https://olaii.com/event/11304/slovenia-games-conference-2027/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="tickets-link"
+          >Get tickets →</a>
         </div>
-
-        <a
-          href="https://olaii.com/event/11304/slovenia-games-conference-2027/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="tickets-link"
-        >Get tickets →</a>
       </div>
     </div>
   </section>
 
-  <section class="exhibitors-section" id="indies" aria-labelledby="exhibitors-title">
-    <div class="container exhibitors-wrap">
-      <div class="exhibitors-card">
-        <p class="exhibitors-eyebrow">Exhibit &amp; Register</p>
-        <h2 id="exhibitors-title">Indie Developers &amp; Companies</h2>
-        <p class="exhibitors-subtitle">
-          Are you an indie developer or a company? Register to showcase your games,
-          host a booth, and connect with the community at Slovenia Games Conference 2027.
-        </p>
-        <p class="exhibitors-note">
-          Before purchasing tickets, please fill out the registration form.
-          Someone from SGC will then reach out to you.
-        </p>
-        <div class="exhibitors-actions">
-          <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSfEXcg5rVaIoENJwr-kdw7fjCBxa_j8pXiTyDIJsSvVyDmoww/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="exhibitors-link"
-          >Register now →</a>
-          <a href="/indies" class="exhibitors-link exhibitors-link-secondary">Meet the indies →</a>
+  <section class="indie-dev-section" id="indies" aria-labelledby="indie-dev-title">
+    <div class="container indie-dev-wrap">
+      <h2 id="indie-dev-title">Indie Developers</h2>
+
+      <div class="indie-dev-grid">
+        <div class="indie-dev-col">
+          <h3>Showcase Your Game</h3>
+          <p>
+            Are you working on a game as a studio or a solo dev? Bring your game to
+            SGC 2027 and connect with fellow developers and the broader game
+            development community.
+          </p>
         </div>
+        <div class="indie-dev-col">
+          <h3>Who Can Apply</h3>
+          <p>
+            Independent developers and studios with a playable game — from an early
+            prototype to a released title.
+          </p>
+        </div>
+        <div class="indie-dev-col">
+          <h3>Registration</h3>
+          <p>
+            Registration opens before 20 January 2027. Our team will review your
+            submission and confirm your inclusion if there are free slots.
+          </p>
+        </div>
+      </div>
+
+      <div class="indie-dev-actions">
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfEXcg5rVaIoENJwr-kdw7fjCBxa_j8pXiTyDIJsSvVyDmoww/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="indie-dev-link"
+        >Register now →</a>
+        <a href="/indies" class="indie-dev-link indie-dev-link-secondary">Meet the indies →</a>
       </div>
     </div>
   </section>
@@ -64,25 +85,63 @@
 }
 
 .tickets-wrap {
-  text-align: center;
+  text-align: left;
 }
 
 .tickets-wrap h2 {
-  margin: 0;
+  margin: 0 0 2rem;
   color: #f3f3f3;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
   font-size: clamp(2.2rem, 4.2vw, 3.5rem);
   line-height: 0.95;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.03em;
 }
 
-.tickets-subtitle {
-  margin: 0.75rem auto 0;
-  max-width: 760px;
-  color: #d7dbde;
-  font-size: clamp(1.1rem, 1.7vw, 1.38rem);
-  line-height: 1.25;
+.tickets-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.tickets-pricing {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.price-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.price-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 1.1rem 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.price-amount {
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.price-label {
+  font-size: 0.98rem;
+  color: #aeb6bd;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .tickets-grid { grid-template-columns: 1fr; }
 }
 
 .ticket-bubble {
@@ -188,10 +247,12 @@
 }
 
 .tickets-link {
-  display: block;
-  width: fit-content;
-  margin: 2rem auto 0;
-  padding: 0.8rem 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0.9rem 1.8rem;
   border-radius: 999px;
   background: #ff4d10;
   color: #fff;
@@ -205,104 +266,91 @@
   transform: translateY(-1px);
 }
 
-/* Indie developers & companies registration */
-.exhibitors-section {
-  background: #1e2223;
-  padding: 0 0 5rem;
-  color: #eef1f2;
-  /* Offset the anchor jump so the section clears the floating header
-     (which sits ~2rem from the top) instead of landing beneath it. */
-  scroll-margin-top: 10rem;
+/* Indie developers registration — blue call-to-action band. */
+.indie-dev-section {
+  background: #1e3fae;
+  padding: clamp(3rem, 6vw, 4.6rem) 0;
+  color: #eef2ff;
+  /* Offset the anchor jump so the heading clears the floating header. */
+  scroll-margin-top: 7rem;
 }
 
-.exhibitors-wrap {
-  text-align: center;
+.indie-dev-wrap {
+  text-align: left;
 }
 
-.exhibitors-card {
-  width: 100%;
-  max-width: 1120px;
-  margin: 0 auto;
-  padding: 3rem 2rem 3.25rem;
-  border-radius: 20px;
-  background: linear-gradient(135deg, rgba(255, 77, 16, 0.14), rgba(255, 255, 255, 0.04));
-  border: 1px solid rgba(255, 77, 16, 0.3);
-}
-
-.exhibitors-eyebrow {
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: #ff8a5c;
-}
-
-.exhibitors-card h2 {
-  margin: 0.5rem 0 0;
-  color: #f3f3f3;
+.indie-dev-wrap h2 {
+  margin: 0 0 2.2rem;
+  color: #ffffff;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
-  line-height: 1;
-  font-weight: 500;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 0.98;
+  font-weight: 600;
   letter-spacing: -0.03em;
 }
 
-.exhibitors-subtitle {
-  margin: 1rem auto 0;
-  max-width: 640px;
-  color: #d7dbde;
-  font-size: clamp(1rem, 1.4vw, 1.18rem);
+.indie-dev-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.5rem, 4vw, 3rem);
+}
+
+.indie-dev-col h3 {
+  margin: 0 0 0.6rem;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.indie-dev-col p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 1.02rem;
   line-height: 1.5;
 }
 
-.exhibitors-note {
-  margin: 1.25rem auto 0;
-  max-width: 620px;
-  color: #ff8a5c;
-  font-size: 1rem;
-  font-weight: 600;
-  line-height: 1.5;
+.indie-dev-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2.4rem;
 }
 
-.exhibitors-link {
-  display: block;
-  width: fit-content;
-  margin: 1.5rem auto 0;
-  padding: 0.8rem 1.8rem;
+.indie-dev-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.82rem 1.7rem;
   border-radius: 999px;
   background: #ff4d10;
   color: #fff;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.16s ease, transform 0.16s ease;
+  transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
 }
 
-.exhibitors-link:hover {
-  background: #e03d00;
+.indie-dev-link:hover {
+  background: #ffffff;
+  color: #ff4d10;
+  box-shadow: inset 0 0 0 2px #ffffff;
   transform: translateY(-1px);
 }
 
-.exhibitors-actions {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
-
-.exhibitors-actions .exhibitors-link { margin: 0; }
-
-/* Secondary action — outline button so it reads as the lower-priority path
-   next to the primary orange "Register now". */
-.exhibitors-link-secondary {
+/* Secondary action — outline button on the blue band. */
+.indie-dev-link-secondary {
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
 }
 
-.exhibitors-link-secondary:hover {
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-1px);
+.indie-dev-link-secondary:hover {
+  background: #ffffff;
+  color: #1e3fae;
+  box-shadow: inset 0 0 0 2px #ffffff;
+}
+
+@media (max-width: 860px) {
+  .indie-dev-grid { grid-template-columns: 1fr; gap: 1.6rem; }
 }
 
 @media (max-width: 760px) {

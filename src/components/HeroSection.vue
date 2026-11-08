@@ -5,8 +5,20 @@
     <div class="hero-grid-atmosphere" ref="gridOverlayRef" aria-hidden="true"></div>
 
     <div class="hero-top container" ref="heroTopRef">
-      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference 2027</h1>
-      <p class="hero-date-big" ref="titleRef">20.2.2027</p>
+      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference</h1>
+
+      <div class="hero-meta" ref="titleRef">
+        <span class="hero-date">20 February 2027</span>
+        <span class="hero-meta-dot" aria-hidden="true"></span>
+        <span class="hero-venue">Faculty of Computer and Information Science, Ljubljana</span>
+      </div>
+
+      <a
+        class="hero-cta"
+        href="https://olaii.com/event/11304/slovenia-games-conference-2027/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Get Tickets</a>
 
       <div class="hero-sponsors">
         <p class="hero-sponsors-label">Brought to you by</p>
@@ -16,8 +28,6 @@
             src="/SponsorLogos/guardiarisWhiteLogo.png"
             alt="Guardiaris"
           />
-        </div>
-        <div class="hero-sponsors-row">
           <img
             class="hero-logo-fri"
             src="/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png"
@@ -29,28 +39,15 @@
             alt="Triternion"
           />
         </div>
-        <div class="hero-sponsors-row hero-sponsors-gold">
-          <img class="hero-logo-gold" src="/SponsorLogos/Outfit7-Logo.png" alt="Outfit7" />
-          <img class="hero-logo-gold" src="/SponsorLogos/Razum-logo.png" alt="Razum" />
-        </div>
-        <div class="hero-sponsors-row hero-sponsors-silver">
-          <img class="hero-logo-silver" src="/SponsorLogos/Bubadu-logo-white.png" alt="Bubadu" />
-        </div>
       </div>
     </div>
 
     <div class="hero-marquee" aria-label="Game development moments">
-      <svg class="marquee-curve" viewBox="0 0 1440 220" preserveAspectRatio="none" role="presentation" aria-hidden="true">
-        <path d="M0,0 L0,46 C320,108 1120,108 1440,46 L1440,0 Z"></path>
-      </svg>
       <div class="marquee-track">
         <img v-for="img in marqueeImages" :key="`a-${img}`" :src="img" alt="Game development conference" loading="lazy" />
         <img v-for="img in marqueeImages" :key="`b-${img}`" :src="img" alt="Game development conference" loading="lazy" />
         <img v-for="img in marqueeImages" :key="`c-${img}`" :src="img" alt="Game development conference" loading="lazy" />
       </div>
-      <svg class="marquee-curve-bottom" viewBox="0 0 1440 220" preserveAspectRatio="none" role="presentation" aria-hidden="true">
-        <path d="M0,220 L0,174 C320,112 1120,112 1440,174 L1440,220 Z"></path>
-      </svg>
     </div>
   </section>
 </template>
@@ -126,7 +123,7 @@ onMounted(() => {
   background-repeat: no-repeat;
   position: relative;
   overflow: visible;
-  min-height: 140vh;
+  min-height: 116vh;
   display: flex;
   flex-direction: column;
   padding-top: clamp(6rem, 10vw, 10rem);
@@ -249,20 +246,23 @@ onMounted(() => {
   object-fit: contain;
 }
 
+.hero-sponsors-main {
+  gap: clamp(2.4rem, 6vw, 5rem);
+}
+
 .hero-logo-guardiaris {
-  /* Main sponsor — kept at least 2x the size of every other sponsor logo
-     (largest other is FRI at up to 3.8rem). */
-  height: clamp(6rem, 10vw, 9rem);
+  /* Main sponsor — a touch larger than the supporting logos, but now inline. */
+  height: clamp(3.4rem, 5.5vw, 5rem);
 }
 
 .hero-logo-fri {
-  height: clamp(2.1rem, 3.5vw, 3rem);
-  opacity: 0.9;
+  height: clamp(2rem, 3.2vw, 2.9rem);
+  opacity: 0.92;
 }
 
 .hero-logo-triternion {
-  height: clamp(1.8rem, 3vw, 2.5rem);
-  opacity: 0.9;
+  height: clamp(1.9rem, 3vw, 2.6rem);
+  opacity: 0.92;
 }
 
 .hero-sponsors-gold {
@@ -295,12 +295,67 @@ onMounted(() => {
 .hero-title {
   margin: 0;
   text-transform: uppercase;
-  line-height: 0.86;
-  font-size: clamp(3.2rem, 10.2vw, 8.3rem);
+  line-height: 0.9;
+  font-size: clamp(2.6rem, 7.6vw, 6.1rem);
   letter-spacing: -0.02em;
   font-weight: 400;
   font-family: "Funnel Sans", "Arial Narrow", "Segoe UI", sans-serif;
   color: #ffffff;
+}
+
+.hero-meta {
+  margin: 1.5rem auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.6rem 1rem;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+}
+
+.hero-date {
+  color: #fc4d0f;
+  font-weight: 700;
+  font-size: clamp(1.2rem, 2.4vw, 1.9rem);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.hero-meta-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.5);
+  flex: none;
+}
+
+.hero-venue {
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 600;
+  font-size: clamp(0.98rem, 1.4vw, 1.2rem);
+}
+
+.hero-cta {
+  margin: 1.8rem auto 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 2.1rem;
+  border-radius: 999px;
+  background: #fc4d0f;
+  color: #fff;
+  font-weight: 800;
+  font-size: 1.05rem;
+  text-decoration: none;
+  box-shadow: 0 10px 26px rgba(252, 77, 15, 0.34);
+  transition: background 0.16s ease, transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+.hero-cta:hover {
+  background: #ffffff;
+  color: #fc4d0f;
+  box-shadow: inset 0 0 0 2px #fc4d0f;
+  transform: translateY(-1px);
 }
 
 .hero-copy {
@@ -373,23 +428,7 @@ onMounted(() => {
   padding: 0;
   padding-top: 4rem;
   line-height: 0;
-  clip-path: polygon(
-    0 0, 100% 0, 100% 89%, 92% 85%, 78% 81%, 64% 78%, 50% 76.5%, 36% 78%, 22% 81%, 8% 85%, 0 89%
-  );
 }
-
-.marquee-curve {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 136px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.marquee-curve path { fill: transparent; }
-.marquee-curve-bottom { display: none; }
 
 .marquee-track {
   position: relative;
@@ -424,11 +463,7 @@ onMounted(() => {
   .cta { width: min(280px, 92vw); justify-content: center; }
   .hero-marquee {
     margin-bottom: 0;
-    clip-path: polygon(
-      0 0, 100% 0, 100% 91%, 92% 87%, 78% 83%, 64% 80%, 50% 78.5%, 36% 80%, 22% 83%, 8% 87%, 0 91%
-    );
   }
-  .marquee-curve { height: 102px; }
   .marquee-track img { height: 430px; }
 }
 

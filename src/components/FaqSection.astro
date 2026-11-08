@@ -1,0 +1,151 @@
+---
+// Frequently asked questions, rendered as a two-column list.
+// Edit the copy here as answers are finalised.
+const faqs = [
+  {
+    q: 'When and where is Slovenia Games Conference 2027?',
+    a: 'Saturday, 20 February 2027 at the Faculty of Computer and Information Science (FRI) in Ljubljana, Slovenia.',
+  },
+  {
+    q: 'How can I get to the venue?',
+    a: 'You can reach FRI by public transport, car, bike, or car sharing. By public transport, take bus line 6 and get off at the Živalski vrt (ZOO) stop. Paid parking and bike racks are available near the faculty.',
+  },
+  {
+    q: 'What are the conference opening hours?',
+    a: 'The full conference schedule and exact opening hours will be announced closer to the event.',
+  },
+  {
+    q: 'Can I showcase my indie game?',
+    a: 'Yes! Independent developers and studios can apply to showcase their games in the Indie Showcase. Registration is open before 20 January 2027, and our team will confirm your inclusion by e-mail if there are free slots.',
+  },
+  {
+    q: 'Who is the conference for?',
+    a: 'Game developers, artists, designers, students, publishers, and anyone passionate about games — whether you are a seasoned professional or just getting started.',
+  },
+  {
+    q: 'What does an indie exhibitor get?',
+    a: 'Each accepted exhibitor gets a space to show their game directly to attendees, plus a free pass for participating team members. Spots are limited and confirmed through registration.',
+  },
+  {
+    q: 'Are there student discounts?',
+    a: 'Yes. Students can attend with a discounted 20€ ticket. You may be asked to show a valid student ID at the event.',
+  },
+  {
+    q: 'Are discounted tickets available for indie exhibitors?',
+    a: 'Each exhibiting team receives free passes for participating members. Additional team members can join at the discounted student rate.',
+  },
+  {
+    q: 'Will food and drinks be available?',
+    a: 'Lunch and a coffee break are included with every ticket, with meat and vegan lunch options available.',
+  },
+  {
+    q: 'Is there parking available at the venue?',
+    a: 'There is public parking near the venue, and FRI is easily reached by public transport, bike, or car sharing.',
+  },
+];
+---
+
+<section class="faq" id="faq" aria-labelledby="faq-title">
+  <div class="container faq-wrap">
+    <h2 id="faq-title">Frequently Asked Questions</h2>
+    <div class="faq-grid">
+      {faqs.map((item) => (
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span class="faq-q-text">{item.q}</span>
+            <span class="faq-icon" aria-hidden="true"></span>
+          </summary>
+          <p class="faq-a">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.faq {
+  background: #f7f6f4;
+  color: #1f2529;
+  padding: clamp(3.2rem, 6vw, 5rem) 0;
+  scroll-margin-top: 7rem;
+}
+
+.faq-wrap { width: min(1120px, 92%); }
+
+.faq h2 {
+  margin: 0 0 2.6rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 600;
+  color: #16202b;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.8rem 3rem;
+}
+
+.faq-item {
+  border-top: 1px solid #ddd6cb;
+  /* Keep each closed item the same height so the two columns stay aligned. */
+  align-self: start;
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  padding: 1.05rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-size: 1.12rem;
+  font-weight: 700;
+  color: #16202b;
+  line-height: 1.3;
+  transition: color 0.15s ease;
+}
+
+.faq-q::-webkit-details-marker { display: none; }
+
+.faq-q:hover { color: #ff4d10; }
+
+.faq-q:focus-visible {
+  outline: 2px solid #ff4d10;
+  outline-offset: 3px;
+}
+
+/* Chevron indicator — points down when closed, flips up when open. */
+.faq-icon {
+  flex: none;
+  width: 9px;
+  height: 9px;
+  margin-right: 0.3rem;
+  border-right: 2px solid #8a8f96;
+  border-bottom: 2px solid #8a8f96;
+  transform: translateY(-2px) rotate(45deg);
+  transition: transform 0.2s ease, border-color 0.15s ease;
+}
+
+.faq-q:hover .faq-icon { border-color: #ff4d10; }
+
+.faq-item[open] .faq-icon {
+  transform: translateY(2px) rotate(-135deg);
+}
+
+.faq-a {
+  margin: 0;
+  padding: 0 1.8rem 1.15rem 0;
+  color: #4d555d;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+@media (max-width: 760px) {
+  .faq-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+}
+</style>

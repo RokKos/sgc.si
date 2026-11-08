@@ -2,6 +2,11 @@
 // Per-logo heights are tuned so the logos read as optically similar in size
 // despite different proportions (wide wordmarks vs tall illustration).
 const partners = [
+  // Motovila and CED Slovenia are kept side by side at the front (CED Slovenia
+  // is run by the Motovila Institute). Drop their white logos into
+  // public/PartnerLogos/ as motovila.png and ced-slovenia.png.
+  { name: 'Motovila', logo: '/PartnerLogos/motovila.png', url: 'https://www.motovila.si/', h: 40 },
+  { name: 'CED Slovenia', logo: '/PartnerLogos/ced-slovenia.png', url: 'https://ced-slovenia.eu/', h: 58 },
   { name: 'Slovenia Games Association', logo: '/PartnerLogos/partner-1.webp', h: 72 },
   { name: 'Reload Akademija', logo: '/PartnerLogos/partner-2.png', url: 'https://reloadakademija.si', h: 66 },
   { name: 'Game Dev Days', logo: '/PartnerLogos/partner-gamedevdays.png', url: 'https://gamedevdays.com/', h: 140 },
@@ -32,6 +37,19 @@ const partners = [
     </div>
   </div>
 </section>
+
+<script>
+  // Hide any partner tile whose logo file hasn't been added yet, so a missing
+  // image never shows a broken-image icon.
+  for (const img of document.querySelectorAll<HTMLImageElement>('.partners-grid img')) {
+    const hide = () => {
+      const tile = img.closest<HTMLElement>('.partner-tile');
+      if (tile) tile.style.display = 'none';
+    };
+    if (img.complete && img.naturalWidth === 0) hide();
+    else img.addEventListener('error', hide);
+  }
+</script>
 
 <style>
 .partners {

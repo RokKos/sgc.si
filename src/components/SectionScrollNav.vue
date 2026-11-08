@@ -23,6 +23,7 @@
       <a :href="`${base}#speakers`" class="nav-pill">Speakers</a>
       <a :href="`${base}#venue`" class="nav-pill">Venue</a>
       <a href="/sponsors" class="nav-pill">Sponsors</a>
+      <a :href="`${base}#faq`" class="nav-pill">FAQ</a>
       <a :href="`${base}#tickets`" class="nav-pill nav-pill-cta">Tickets</a>
       <div class="nav-dropdown" :class="{ open: indiesOpen }" ref="indiesDropdown">
         <button

@@ -4,6 +4,18 @@ import { sponsors } from '../data/sponsors';
 // Main sponsor shown large; the rest form a logo wall below.
 const main = sponsors.find((s) => s.tier === 'General') ?? sponsors[0];
 const rest = sponsors.filter((s) => s !== main);
+
+// This section sits on a dark navy background, so use the white/light logo
+// variants where available (falling back to each sponsor's default logo).
+const whiteLogos: Record<string, string> = {
+  'Guardiaris': '/SponsorLogos/guardiarisWhiteLogo.png',
+  'UL FRI — Faculty of Computer and Information Science': '/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png',
+  'Triternion': '/SponsorLogos/triternion-logo-white.png',
+  'Outfit7': '/SponsorLogos/Outfit7-Logo.png',
+  'Razum': '/SponsorLogos/Razum-logo.png',
+  'Bubadu': '/SponsorLogos/Bubadu-logo-white.png',
+};
+const logoFor = (s: (typeof sponsors)[number]) => whiteLogos[s.name] ?? s.logo;
 ---
 
 <section class="home-sponsors" id="sponsors" aria-labelledby="home-sponsors-title">
@@ -12,33 +24,36 @@ const rest = sponsors.filter((s) => s !== main);
 
     {main && (
       <div class="hs-main">
-        <img src={main.logo} alt={main.name} class="hs-main-logo" />
+        <img src={logoFor(main)} alt={main.name} class="hs-main-logo" />
       </div>
     )}
 
     <div class="hs-grid">
       {rest.map((s) => (
         <div class="hs-tile">
-          <img src={s.logo} alt={s.name} class="hs-logo" />
+          <img src={logoFor(s)} alt={s.name} class="hs-logo" />
         </div>
       ))}
     </div>
 
-    <a href="/sponsors" class="hs-link">See all sponsors →</a>
+    <p class="hs-link-row">
+      Want to become a sponsor? <a href="/sponsors" class="hs-link">Get in touch →</a>
+    </p>
   </div>
 </section>
 
 <style>
 .home-sponsors {
-  background: #f4f3f1;
-  color: #1f2529;
-  padding: 4rem 0 4.6rem;
+  background: #12233b;
+  color: #eef3f6;
+  padding: 4.2rem 0 4.8rem;
 }
 
 .hs-wrap { width: min(1120px, 92%); text-align: center; }
 
 .home-sponsors h2 {
-  margin: 0 0 2.4rem;
+  margin: 0 0 2.6rem;
+  color: #ffffff;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
   letter-spacing: -0.02em;
@@ -48,7 +63,7 @@ const rest = sponsors.filter((s) => s !== main);
 .hs-main {
   display: flex;
   justify-content: center;
-  margin-bottom: 2.6rem;
+  margin-bottom: 2.8rem;
 }
 
 .hs-main-logo {
@@ -62,7 +77,7 @@ const rest = sponsors.filter((s) => s !== main);
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 1.5rem 2.5rem;
 }
 
 /* Every logo gets an identical box; the logo is contained within it (capped by
@@ -77,7 +92,7 @@ const rest = sponsors.filter((s) => s !== main);
 }
 
 .hs-logo {
-  max-height: 68px;
+  max-height: 60px;
   max-width: 82%;
   width: auto;
   height: auto;
@@ -88,23 +103,24 @@ const rest = sponsors.filter((s) => s !== main);
   .hs-grid { gap: 1rem; }
   /* Two even columns; an odd last logo stays centered via justify-content. */
   .hs-tile { width: 45%; height: 116px; }
-  .hs-logo { max-height: 66px; max-width: 84%; }
+  .hs-logo { max-height: 58px; max-width: 84%; }
+}
+
+.hs-link-row {
+  margin: 3rem 0 0;
+  color: #aeb9c6;
+  font-size: 1.02rem;
 }
 
 .hs-link {
-  display: inline-block;
-  margin-top: 3rem;
-  padding: 0.8rem 1.8rem;
-  border: 2px solid #ff4d10;
-  background: #ff4d10;
-  color: #fff;
+  color: #ff7a4d;
   font-weight: 700;
   text-decoration: none;
-  transition: background 0.16s ease, color 0.16s ease;
+  white-space: nowrap;
 }
 
 .hs-link:hover {
-  background: #fff;
   color: #ff4d10;
+  text-decoration: underline;
 }
 </style>

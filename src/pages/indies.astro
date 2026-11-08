@@ -4,6 +4,9 @@ import SectionScrollNav from '../components/SectionScrollNav.vue';
 import Footer from '../components/Footer.astro';
 import { indies } from '../data/indies';
 import { NAV_HOME_BASE } from '../data/site';
+
+const registerUrl =
+  'https://docs.google.com/forms/d/e/1FAIpQLSfEXcg5rVaIoENJwr-kdw7fjCBxa_j8pXiTyDIJsSvVyDmoww/viewform';
 ---
 
 <Layout title="Meet the Indies - Slovenia Games Conference 2027">
@@ -18,11 +21,13 @@ import { NAV_HOME_BASE } from '../data/site';
           Meet the indie developers and studios showcasing their games at the Slovenia Games
           Conference 2027. Come by their booths, play their games, and say hello.
         </p>
+        <a class="hero-cta" href={registerUrl} target="_blank" rel="noopener noreferrer">Register your game</a>
       </div>
     </section>
 
-    <section class="indies-list-section" aria-label="Registered indie developers">
-      <div class="container indies-wrap">
+    <section class="games-section" aria-labelledby="games-title">
+      <div class="container games-wrap">
+        <h2 id="games-title" class="games-title">Games at SGC27</h2>
         {indies.length === 0 ? (
           <div class="indies-empty">
             <p>Registered indies will be announced here soon. Check back closer to the event.</p>
@@ -31,14 +36,14 @@ import { NAV_HOME_BASE } from '../data/site';
           <div class="indies-grid">
             {indies.map((indie) => (
               <article class="indie-card">
-                <div class="indie-logo-wrap">
-                  <img src={indie.logo} alt={indie.game} class="indie-logo" />
+                <div class="indie-cover">
+                  <img src={indie.logo} alt={indie.game} class="indie-cover-img" />
                 </div>
                 <div class="indie-body">
                   <p class="indie-eyebrow">
                     {[indie.studio, indie.country, indie.year ?? '2027'].join(' · ')}
                   </p>
-                  <h2 class="indie-name">{indie.game}</h2>
+                  <h3 class="indie-name">{indie.game}</h3>
                   {(indie.description
                     ? indie.description.split(/\n\s*\n/)
                     : ['Description coming soon.']
@@ -48,7 +53,7 @@ import { NAV_HOME_BASE } from '../data/site';
                   <div class="indie-links">
                     {indie.trailer && (
                       <a
-                        class="indie-link"
+                        class="indie-btn"
                         href={indie.trailer}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -56,7 +61,7 @@ import { NAV_HOME_BASE } from '../data/site';
                     )}
                     {indie.link && (
                       <a
-                        class="indie-link"
+                        class="indie-btn indie-btn-ghost"
                         href={indie.link}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -70,110 +75,175 @@ import { NAV_HOME_BASE } from '../data/site';
         )}
       </div>
     </section>
+
+    <section class="indie-cta" aria-labelledby="indie-cta-title">
+      <div class="container indie-cta-inner">
+        <h2 id="indie-cta-title">Are you an indie developer?</h2>
+        <p>
+          Showcase your game at Slovenia Games Conference 2027. Apply to join the Indie
+          Showcase, bring your game to a booth, and connect with the community.
+        </p>
+        <div class="indie-cta-actions">
+          <a class="indie-cta-btn" href={registerUrl} target="_blank" rel="noopener noreferrer">Register now →</a>
+          <a class="indie-cta-btn indie-cta-btn-secondary" href="/#indies">Learn more →</a>
+        </div>
+      </div>
+    </section>
   </main>
 
   <Footer />
 </Layout>
 
 <style>
-.indies-page {
-  position: relative;
-  min-height: 100vh;
-  background-color: #0f1419;
+.indies-page { background: #f2f1ee; }
+
+/* Hero over the city photo. */
+.indies-hero {
+  padding: 9rem 0 3.4rem;
   background-image:
-    radial-gradient(circle at 50% 0%, rgba(255, 79, 18, 0.16), transparent 55%),
-    linear-gradient(180deg, rgba(10, 12, 15, 0.62), rgba(10, 12, 15, 0.88)),
+    linear-gradient(180deg, rgba(10, 12, 15, 0.5), rgba(13, 22, 32, 0.9)),
     url('/coming-soon-bg.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+}
+.indies-hero-inner { width: min(1120px, 94%); }
+.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.6); }
+.indies-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 0.92; letter-spacing: -0.03em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; }
+.indies-hero p { margin: 0.95rem 0 0; max-width: 60ch; color: rgba(255,255,255,0.82); font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.55; }
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: 0.85rem 1.7rem;
+  background: #ff4d10;
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+.hero-cta:hover { background: #fff; color: #ff4d10; box-shadow: inset 0 0 0 2px #ff4d10; transform: translateY(-1px); }
+
+/* Games at SGC27 — light section with white cards. */
+.games-section { background: #f2f1ee; padding: clamp(2.8rem, 5vw, 4.4rem) 0; }
+.games-wrap { width: min(1120px, 94%); }
+
+.games-title {
+  margin: 0 0 1.8rem;
+  font-size: clamp(1.9rem, 4vw, 3rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: #16202b;
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-weight: 700;
 }
 
-.indies-hero { padding: 8.5rem 0 2.2rem; }
-.indies-hero-inner { width: min(1120px, 94%); }
-.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.55); }
-.indies-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.3rem, 6vw, 4.5rem); line-height: 0.94; letter-spacing: -0.03em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; }
-.indies-hero p { margin: 0.95rem 0 0; max-width: 60ch; color: rgba(255,255,255,0.78); font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.55; }
-
-.indies-list-section { padding: 1rem 0 4.6rem; }
-.indies-wrap { width: min(1120px, 94%); }
-
-.indies-grid { display: grid; gap: 1.5rem; margin-top: 1rem; }
-
 .indies-empty {
-  margin-top: 1rem;
-  border: 2px dashed rgba(255,255,255,0.2);
-  border-radius: 16px;
-  background: rgba(255, 255, 255, 0.03);
+  border: 2px dashed #ccc5b8;
+  background: #fff;
   padding: 2.4rem 2rem;
   text-align: center;
 }
-.indies-empty p { margin: 0; color: rgba(255,255,255,0.6); font-size: 1.05rem; }
+.indies-empty p { margin: 0; color: #6a7078; font-size: 1.05rem; }
+
+.indies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+}
 
 .indie-card {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: 2.4rem;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
-  padding: 2.6rem;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
-}
-
-/* Indies supply landscape key art, so show it as a cover image rather than a
-   small logo on a white chip. */
-.indie-logo-wrap {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
   overflow: hidden;
-  aspect-ratio: 16 / 9;
-  border-radius: 12px;
-  background: #0b0e12;
-  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.indie-logo { width: 100%; height: 100%; object-fit: cover; display: block; }
+.indie-cover { overflow: hidden; aspect-ratio: 16 / 9; background: #e8e6e1; }
+.indie-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.indie-body { display: flex; flex-direction: column; padding: 1.4rem 1.5rem 1.6rem; flex: 1; }
 
 .indie-eyebrow {
-  margin: 0 0 0.35rem;
-  color: #ff6a3c;
+  margin: 0 0 0.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #c4502f;
   font-weight: 700;
-  font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+  font-size: 0.82rem;
   line-height: 1.2;
 }
 
 .indie-name {
   margin: 0;
-  font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
   line-height: 1.1;
-  color: #ffffff;
+  color: #16202b;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
   font-weight: 700;
-  text-transform: uppercase;
 }
 
-.indie-desc { margin: 0.6rem 0 0; color: rgba(255,255,255,0.78); font-size: 1.02rem; line-height: 1.6; }
+.indie-desc { margin: 0.6rem 0 0; color: #4d555d; font-size: 0.96rem; line-height: 1.55; }
 
-.indie-links { display: flex; flex-wrap: wrap; gap: 1.8rem; margin-top: 1.1rem; }
+.indie-links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.3rem; padding-top: 0.2rem; }
 
-.indie-link {
-  display: inline-block;
-  color: #ff6a3c;
+.indie-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.6rem 1.2rem;
+  background: #ff4d10;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.16s ease, color 0.16s ease;
+}
+.indie-btn:hover { background: #e03d00; }
+
+.indie-btn-ghost {
+  background: #ffffff;
+  color: #16202b;
+  box-shadow: inset 0 0 0 1px #d4cdc0;
+}
+.indie-btn-ghost:hover { background: #16202b; color: #ffffff; box-shadow: inset 0 0 0 1px #16202b; }
+
+/* Are you an indie developer? — blue closing CTA. */
+.indie-cta { padding: 0 0 5rem; background: #f2f1ee; }
+
+.indie-cta-inner {
+  width: min(1120px, 94%);
+  background: #1e3fae;
+  padding: clamp(2.2rem, 5vw, 3.4rem);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.25);
+}
+
+.indie-cta-inner h2 { margin: 0; font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1; letter-spacing: -0.02em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; font-weight: 700; }
+.indie-cta-inner p { margin: 0.9rem 0 0; max-width: 60ch; color: rgba(255, 255, 255, 0.86); font-size: 1.05rem; line-height: 1.55; }
+
+.indie-cta-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.8rem; }
+
+.indie-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.82rem 1.7rem;
+  background: #ff4d10;
+  color: #fff;
   font-weight: 700;
   text-decoration: none;
-  font-size: 1rem;
+  transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
 }
-.indie-link:hover { text-decoration: underline; }
+.indie-cta-btn:hover { background: #ffffff; color: #ff4d10; box-shadow: inset 0 0 0 2px #ffffff; transform: translateY(-1px); }
+
+.indie-cta-btn-secondary { background: transparent; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55); }
+.indie-cta-btn-secondary:hover { background: #ffffff; color: #1e3fae; box-shadow: inset 0 0 0 2px #ffffff; }
+
+@media (max-width: 760px) {
+  .indies-grid { grid-template-columns: 1fr; }
+}
 
 @media (max-width: 640px) {
-  /* The mobile header wraps onto two rows, so push the hero down below it. */
   .indies-hero { padding-top: 12rem; }
-
-  .indie-card { grid-template-columns: 1fr; gap: 1.2rem; text-align: center; padding: 1.6rem; }
-  .indie-logo-wrap { min-height: unset; }
-  .indie-links { justify-content: center; gap: 1rem; }
 }
 </style>
