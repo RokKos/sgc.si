@@ -1,12 +1,13 @@
 ---
 import { sponsors } from '../data/sponsors';
 
-// Main sponsor shown large; the rest form a logo wall below.
+// Tiered logo wall on dark navy: the main sponsor largest, then a middle tier,
+// then the remaining tier — matching the sponsors layout in the design.
 const main = sponsors.find((s) => s.tier === 'General') ?? sponsors[0];
-const rest = sponsors.filter((s) => s !== main);
+const tier2 = sponsors.filter((s) => s.tier === 'Venue' || s.tier === 'Platinum');
+const tier3 = sponsors.filter((s) => s.tier === 'Gold' || s.tier === 'Silver' || s.tier === 'Bronze');
 
-// This section sits on a dark navy background, so use the white/light logo
-// variants where available (falling back to each sponsor's default logo).
+// On the dark background use the white/light logo variants where available.
 const whiteLogos: Record<string, string> = {
   'Guardiaris': '/SponsorLogos/guardiarisWhiteLogo.png',
   'UL FRI — Faculty of Computer and Information Science': '/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png',
@@ -23,21 +24,30 @@ const logoFor = (s: (typeof sponsors)[number]) => whiteLogos[s.name] ?? s.logo;
     <h2 id="home-sponsors-title">Sponsors</h2>
 
     {main && (
-      <div class="hs-main">
-        <img src={logoFor(main)} alt={main.name} class="hs-main-logo" />
+      <div class="hs-tier hs-tier-main">
+        <img src={logoFor(main)} alt={main.name} class="hs-logo" />
       </div>
     )}
 
-    <div class="hs-grid">
-      {rest.map((s) => (
-        <div class="hs-tile">
+    {tier2.length > 0 && (
+      <div class="hs-tier hs-tier-2">
+        {tier2.map((s) => (
           <img src={logoFor(s)} alt={s.name} class="hs-logo" />
-        </div>
-      ))}
-    </div>
+        ))}
+      </div>
+    )}
+
+    {tier3.length > 0 && (
+      <div class="hs-tier hs-tier-3">
+        {tier3.map((s) => (
+          <img src={logoFor(s)} alt={s.name} class="hs-logo" />
+        ))}
+      </div>
+    )}
 
     <p class="hs-link-row">
-      Want to become a sponsor? <a href="/sponsors" class="hs-link">Get in touch →</a>
+      Want to become a sponsor?
+      <a href="mailto:info@sgc.si?subject=Sponsoring%20Slovenia%20Games%20Conference%202027" class="hs-link">Contact us.</a>
     </p>
   </div>
 </section>
@@ -49,78 +59,82 @@ const logoFor = (s: (typeof sponsors)[number]) => whiteLogos[s.name] ?? s.logo;
   padding: 4.2rem 0 4.8rem;
 }
 
-.hs-wrap { width: min(1120px, 92%); text-align: center; }
+.hs-wrap { width: min(1120px, 92%); }
 
 .home-sponsors h2 {
-  margin: 0 0 2.6rem;
+  margin: 0 0 3rem;
+  text-align: left;
   color: #ffffff;
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 700;
 }
 
-.hs-main {
+/* Each tier is its own centered row; logos are capped by height so the
+   different proportions read at a consistent optical size within a tier. */
+.hs-tier {
   display: flex;
+  align-items: center;
   justify-content: center;
-  margin-bottom: 2.8rem;
-}
-
-.hs-main-logo {
-  height: clamp(4.5rem, 8vw, 7rem);
-  width: auto;
-  object-fit: contain;
-}
-
-.hs-grid {
-  display: flex;
   flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem 2.5rem;
-}
-
-/* Every logo gets an identical box; the logo is contained within it (capped by
-   both height and width). Equal footprints make the wall read as even
-   regardless of each logo's proportions. */
-.hs-tile {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: clamp(150px, 20vw, 190px);
-  height: 110px;
 }
 
 .hs-logo {
-  max-height: 60px;
-  max-width: 82%;
   width: auto;
   height: auto;
   object-fit: contain;
+  display: block;
 }
 
-@media (max-width: 620px) {
-  .hs-grid { gap: 1rem; }
-  /* Two even columns; an odd last logo stays centered via justify-content. */
-  .hs-tile { width: 45%; height: 116px; }
-  .hs-logo { max-height: 58px; max-width: 84%; }
+/* Tier 1 — main sponsor, largest. */
+.hs-tier-main { margin-bottom: clamp(2.4rem, 4vw, 3.4rem); }
+.hs-tier-main .hs-logo {
+  max-height: clamp(5rem, 8.5vw, 7.5rem);
+  max-width: min(520px, 80%);
+}
+
+/* Tier 2 — two across, medium. */
+.hs-tier-2 {
+  gap: clamp(2.5rem, 7vw, 6rem);
+  margin-bottom: clamp(2.4rem, 4vw, 3.4rem);
+}
+.hs-tier-2 .hs-logo {
+  max-height: clamp(3.2rem, 5vw, 4.5rem);
+  max-width: 280px;
+}
+
+/* Tier 3 — three across, smaller. */
+.hs-tier-3 {
+  gap: clamp(2.2rem, 6vw, 5rem);
+}
+.hs-tier-3 .hs-logo {
+  max-height: clamp(2.5rem, 3.8vw, 3.5rem);
+  max-width: 200px;
 }
 
 .hs-link-row {
-  margin: 3rem 0 0;
-  color: #aeb9c6;
-  font-size: 1.02rem;
+  margin: clamp(2.6rem, 5vw, 3.6rem) 0 0;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1.05rem;
 }
 
 .hs-link {
-  color: #ff7a4d;
+  color: #ff4d10;
   font-weight: 700;
   text-decoration: none;
   white-space: nowrap;
 }
 
 .hs-link:hover {
-  color: #ff4d10;
+  color: #ff7a4d;
   text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+  .hs-tier-2 { gap: 2rem 3rem; }
+  .hs-tier-3 { gap: 1.6rem 2.4rem; }
 }
 </style>
