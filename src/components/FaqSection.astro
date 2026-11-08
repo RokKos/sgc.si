@@ -1,46 +1,51 @@
 ---
-// Frequently asked questions, rendered as a two-column list.
-// Edit the copy here as answers are finalised.
-const faqs = [
+// Frequently asked questions. The design groups the general / attendee
+// questions in the left column and the venue + indie questions in the right
+// column, so the two columns are rendered explicitly rather than auto-flowed.
+// Answers stay click-to-open accordions.
+const faqsLeft = [
   {
     q: 'When and where is Slovenia Games Conference 2027?',
     a: 'Saturday, 20 February 2027 at the Faculty of Computer and Information Science (FRI) in Ljubljana, Slovenia.',
   },
   {
-    q: 'How can I get to the venue?',
-    a: 'You can reach FRI by public transport, car, bike, or car sharing. By public transport, take bus line 6 and get off at the Živalski vrt (ZOO) stop. Paid parking and bike racks are available near the faculty.',
-  },
-  {
     q: 'What are the conference opening hours?',
-    a: 'The full conference schedule and exact opening hours will be announced closer to the event.',
-  },
-  {
-    q: 'Can I showcase my indie game?',
-    a: 'Yes! Independent developers and studios can apply to showcase their games in the Indie Showcase. Registration is open before 20 January 2027, and our team will confirm your inclusion by e-mail if there are free slots.',
+    a: 'The conference schedule and exact opening hours will be announced closer to the event.',
   },
   {
     q: 'Who is the conference for?',
-    a: 'Game developers, artists, designers, students, publishers, and anyone passionate about games — whether you are a seasoned professional or just getting started.',
-  },
-  {
-    q: 'What does an indie exhibitor get?',
-    a: 'Each accepted exhibitor gets a space to show their game directly to attendees, plus a free pass for participating team members. Spots are limited and confirmed through registration.',
+    a: 'SGC is open to anyone interested in the games industry, including developers, artists, designers, students, publishers, business professionals, and gaming enthusiasts.',
   },
   {
     q: 'Are there student discounts?',
-    a: 'Yes. Students can attend with a discounted 20€ ticket. You may be asked to show a valid student ID at the event.',
-  },
-  {
-    q: 'Are discounted tickets available for indie exhibitors?',
-    a: 'Each exhibiting team receives free passes for participating members. Additional team members can join at the discounted student rate.',
+    a: 'Yes! Students can purchase discounted tickets for 20€. You may be asked to provide valid student identification at the event.',
   },
   {
     q: 'Will food and drinks be available?',
-    a: 'Lunch and a coffee break are included with every ticket, with meat and vegan lunch options available.',
+    a: 'Lunch and a coffee break are included with every ticket. Lunch includes meat and vegan options.',
   },
   {
     q: 'Is there parking available at the venue?',
-    a: 'There is public parking near the venue, and FRI is easily reached by public transport, bike, or car sharing.',
+    a: 'The FRI parking garage is not open to the general public. However, there is a free public parking lot nearby. Indie exhibitors receive one reserved free parking spot per team in the FRI parking garage.',
+  },
+];
+
+const faqsRight = [
+  {
+    q: 'How can I get to the venue?',
+    a: 'You can reach FRI by public transport, car, bicycle or car-sharing.\nPublic transport: Take bus line 18 and get off at the Živalski vrt – ZOO stop. From there, it’s about a 5-minute walk to the faculty.\nBicycle: BicikeLJ bike-sharing stations are available nearby.\nCar sharing: Avant2Go vehicles and parking spots are also available in the area.',
+  },
+  {
+    q: 'Can I showcase my indie game?',
+    a: 'Yes! Independent developers and studios can apply to showcase their games. We welcome playable projects at all stages of development, from early prototypes to released games. Fill out the Indie Showcase registration form on our website before 20 January 2027. The organisers will review submissions and contact applicants by email.',
+  },
+  {
+    q: 'What does an indie exhibitor get?',
+    a: 'Each exhibitor receives an exhibition desk with two chairs, electricity and Wi-Fi, one free parking spot per team, and promotion through SGC’s website and social media channels. Laptop and monitor rentals can also be requested in advance, subject to availability.',
+  },
+  {
+    q: 'Are discounted tickets available for indie exhibitors?',
+    a: 'Yes. Each exhibitor can receive up to two reduced-price tickets for non-student attendees at 30€ each. Additional non-student attendees must purchase regular tickets. Students are eligible for the 20€ student ticket.',
   },
 ];
 ---
@@ -49,15 +54,28 @@ const faqs = [
   <div class="container faq-wrap">
     <h2 id="faq-title">Frequently Asked Questions</h2>
     <div class="faq-grid">
-      {faqs.map((item) => (
-        <details class="faq-item">
-          <summary class="faq-q">
-            <span class="faq-q-text">{item.q}</span>
-            <span class="faq-icon" aria-hidden="true"></span>
-          </summary>
-          <p class="faq-a">{item.a}</p>
-        </details>
-      ))}
+      <div class="faq-col">
+        {faqsLeft.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-q">
+              <span class="faq-q-text">{item.q}</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <p class="faq-a">{item.a}</p>
+          </details>
+        ))}
+      </div>
+      <div class="faq-col">
+        {faqsRight.map((item) => (
+          <details class="faq-item">
+            <summary class="faq-q">
+              <span class="faq-q-text">{item.q}</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </summary>
+            <p class="faq-a">{item.a}</p>
+          </details>
+        ))}
+      </div>
     </div>
   </div>
 </section>
@@ -77,20 +95,21 @@ const faqs = [
   font-size: clamp(2rem, 4vw, 3rem);
   line-height: 1;
   letter-spacing: -0.02em;
-  font-weight: 600;
+  font-weight: 700;
   color: #16202b;
 }
 
 .faq-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.8rem 3rem;
+  gap: 0 3rem;
+  align-items: start;
 }
+
+.faq-col { display: flex; flex-direction: column; }
 
 .faq-item {
   border-top: 1px solid #ddd6cb;
-  /* Keep each closed item the same height so the two columns stay aligned. */
-  align-self: start;
 }
 
 .faq-q {
@@ -143,9 +162,11 @@ const faqs = [
   color: #4d555d;
   font-size: 1rem;
   line-height: 1.55;
+  /* Preserve the line breaks in multi-line answers (e.g. directions). */
+  white-space: pre-line;
 }
 
 @media (max-width: 760px) {
-  .faq-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+  .faq-grid { grid-template-columns: 1fr; gap: 0; }
 }
 </style>
