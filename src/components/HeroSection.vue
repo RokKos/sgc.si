@@ -279,7 +279,8 @@ onMounted(() => {
 }
 
 .hero-logo-guardiaris {
-  height: clamp(4rem, 6.2vw, 6rem);
+  /* Main sponsor — roughly twice the size of the supporting logos. */
+  height: clamp(5rem, 8vw, 8rem);
 }
 
 /* The remaining sponsors sit together in a row below, all visible. */
