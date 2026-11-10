@@ -167,47 +167,47 @@ const registerUrl =
 .indie-body { display: flex; flex-direction: column; padding: 1.4rem 1.5rem 1.6rem; flex: 1; }
 
 .indie-eyebrow {
-  margin: 0 0 0.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
-  color: #c4502f;
+  margin: 0 0 0.35rem;
+  color: #d9442f;
   font-weight: 700;
-  font-size: 0.82rem;
+  font-size: 0.98rem;
   line-height: 1.2;
 }
 
 .indie-name {
   margin: 0;
-  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
-  line-height: 1.1;
+  font-size: clamp(1.5rem, 2.8vw, 2rem);
+  line-height: 1.08;
   color: #16202b;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
   font-weight: 700;
 }
 
-.indie-desc { margin: 0.6rem 0 0; color: #4d555d; font-size: 0.96rem; line-height: 1.55; }
+.indie-desc { margin: 0.7rem 0 0; color: #4d555d; font-size: 0.98rem; line-height: 1.55; }
 
-.indie-links { display: flex; flex-wrap: wrap; gap: 0.7rem; margin-top: 1.3rem; padding-top: 0.2rem; }
+/* Buttons sit at the bottom so they line up across cards of differing heights. */
+.indie-links { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: auto; padding-top: 1.6rem; }
 
 .indie-btn {
   display: inline-flex;
   align-items: center;
-  padding: 0.6rem 1.2rem;
-  background: #ff4d10;
+  justify-content: center;
+  padding: 0.78rem 1.5rem;
+  background: #d9442f;
   color: #fff;
   font-weight: 700;
-  font-size: 0.95rem;
+  font-size: 1rem;
   text-decoration: none;
-  transition: background 0.16s ease, color 0.16s ease;
+  transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease;
 }
-.indie-btn:hover { background: #e03d00; }
+.indie-btn:hover { background: #c43b28; }
 
 .indie-btn-ghost {
   background: #ffffff;
   color: #16202b;
-  box-shadow: inset 0 0 0 1px #d4cdc0;
+  box-shadow: inset 0 0 0 1.5px #16202b;
 }
-.indie-btn-ghost:hover { background: #16202b; color: #ffffff; box-shadow: inset 0 0 0 1px #16202b; }
+.indie-btn-ghost:hover { background: #16202b; color: #ffffff; box-shadow: inset 0 0 0 1.5px #16202b; }
 
 /* Are you an indie developer? — blue closing CTA. */
 .indie-cta { padding: 0 0 5rem; background: #f2f1ee; }

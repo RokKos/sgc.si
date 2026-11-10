@@ -5,12 +5,13 @@
     <div class="hero-grid-atmosphere" ref="gridOverlayRef" aria-hidden="true"></div>
 
     <div class="hero-top container" ref="heroTopRef">
-      <h1 class="hero-title" ref="headingRef">Slovenia Games<br />Conference</h1>
+      <div class="hero-headline">
+        <h1 class="hero-title" ref="headingRef">Slovenia<br />Games<br />Conference</h1>
 
-      <div class="hero-meta" ref="titleRef">
-        <span class="hero-date">20 February 2027</span>
-        <span class="hero-meta-dot" aria-hidden="true"></span>
-        <span class="hero-venue">Faculty of Computer and Information Science, Ljubljana</span>
+        <div class="hero-meta" ref="titleRef">
+          <span class="hero-date">20 February 2027</span>
+          <span class="hero-venue">Faculty of Computer and<br />Information Science, Ljubljana</span>
+        </div>
       </div>
 
       <a
@@ -22,12 +23,14 @@
 
       <div class="hero-sponsors">
         <p class="hero-sponsors-label">Brought to you by</p>
-        <div class="hero-sponsors-row hero-sponsors-main">
+        <div class="hero-sponsors-row hero-sponsors-top">
           <img
             class="hero-logo-guardiaris"
             src="/SponsorLogos/guardiarisWhiteLogo.png"
             alt="Guardiaris"
           />
+        </div>
+        <div class="hero-sponsors-row hero-sponsors-rest">
           <img
             class="hero-logo-fri"
             src="/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png"
@@ -37,6 +40,21 @@
             class="hero-logo-triternion"
             src="/SponsorLogos/triternion-logo-white.png"
             alt="Triternion"
+          />
+          <img
+            class="hero-logo-rest"
+            src="/SponsorLogos/Outfit7-Logo.png"
+            alt="Outfit7"
+          />
+          <img
+            class="hero-logo-rest"
+            src="/SponsorLogos/Razum-logo.png"
+            alt="Razum"
+          />
+          <img
+            class="hero-logo-rest hero-logo-bubadu"
+            src="/SponsorLogos/Bubadu-logo-white.png"
+            alt="Bubadu"
           />
         </div>
       </div>
@@ -116,10 +134,19 @@ onMounted(() => {
 
 <style scoped>
 .hero-shell {
-  background: #0f1419;
-  background-image: url('/coming-soon-bg.jpg');
+  background-color: #0f1419;
+  /* Even, cool blue-grey wash over the Ljubljana header — the city stays clearly
+     visible while the white title and red date remain legible. */
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(20, 30, 46, 0.58) 0%,
+      rgba(20, 30, 46, 0.52) 55%,
+      rgba(14, 22, 36, 0.68) 100%
+    ),
+    url('/header-ljubljana.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: center 42%;
   background-repeat: no-repeat;
   position: relative;
   overflow: visible;
@@ -187,7 +214,7 @@ onMounted(() => {
 .hero-top {
   position: relative;
   z-index: 2;
-  text-align: center;
+  text-align: left;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -246,23 +273,38 @@ onMounted(() => {
   object-fit: contain;
 }
 
-.hero-sponsors-main {
-  gap: clamp(2.4rem, 6vw, 5rem);
+/* Guardiaris leads on its own row, a bit larger than everyone else. */
+.hero-sponsors-top {
+  margin-bottom: 0.4rem;
 }
 
 .hero-logo-guardiaris {
-  /* Main sponsor — a touch larger than the supporting logos, but now inline. */
-  height: clamp(3.4rem, 5.5vw, 5rem);
+  height: clamp(4rem, 6.2vw, 6rem);
+}
+
+/* The remaining sponsors sit together in a row below, all visible. */
+.hero-sponsors-rest {
+  gap: clamp(1.6rem, 4vw, 3.2rem);
 }
 
 .hero-logo-fri {
-  height: clamp(2rem, 3.2vw, 2.9rem);
+  height: clamp(1.9rem, 2.8vw, 2.6rem);
   opacity: 0.92;
 }
 
 .hero-logo-triternion {
-  height: clamp(1.9rem, 3vw, 2.6rem);
+  height: clamp(1.8rem, 2.6vw, 2.4rem);
   opacity: 0.92;
+}
+
+.hero-logo-rest {
+  height: clamp(1.7rem, 2.5vw, 2.3rem);
+  opacity: 0.92;
+}
+
+/* Bubadu stacks a mark over its wordmark, so it needs a touch more height. */
+.hero-logo-bubadu {
+  height: clamp(2.2rem, 3.2vw, 3rem);
 }
 
 .hero-sponsors-gold {
@@ -292,51 +334,57 @@ onMounted(() => {
   opacity: 0.95;
 }
 
+/* Centre the headline block in the hero; text inside stays left-aligned, so the
+   date lines up under the title's left edge. */
+.hero-headline {
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+
 .hero-title {
   margin: 0;
   text-transform: uppercase;
-  line-height: 0.9;
-  font-size: clamp(2.6rem, 7.6vw, 6.1rem);
+  line-height: 0.88;
+  font-size: clamp(2.9rem, 9vw, 7rem);
   letter-spacing: -0.02em;
-  font-weight: 400;
+  font-weight: 800;
   font-family: "Funnel Sans", "Arial Narrow", "Segoe UI", sans-serif;
   color: #ffffff;
+  /* Keeps the white title legible over the brighter (sky) parts of the photo. */
+  text-shadow: 0 4px 34px rgba(0, 0, 0, 0.5), 0 1px 4px rgba(0, 0, 0, 0.45);
 }
 
 .hero-meta {
-  margin: 1.5rem auto 0;
+  margin: 1.8rem 0 0;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  gap: 0.6rem 1rem;
+  gap: 0.6rem 2.4rem;
   font-family: "Funnel Sans", "Segoe UI", sans-serif;
 }
 
 .hero-date {
   color: #fc4d0f;
-  font-weight: 700;
-  font-size: clamp(1.2rem, 2.4vw, 1.9rem);
-  letter-spacing: 0.01em;
+  font-weight: 800;
+  font-size: clamp(1.4rem, 2.8vw, 2.2rem);
+  letter-spacing: -0.01em;
   white-space: nowrap;
-}
-
-.hero-meta-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.5);
-  flex: none;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
 
 .hero-venue {
-  color: rgba(255, 255, 255, 0.92);
-  font-weight: 600;
-  font-size: clamp(0.98rem, 1.4vw, 1.2rem);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  line-height: 1.2;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.5);
 }
 
 .hero-cta {
-  margin: 1.8rem auto 0;
+  margin: 2.2rem 0 0;
+  align-self: center;
   display: inline-flex;
   align-items: center;
   justify-content: center;

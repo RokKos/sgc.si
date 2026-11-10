@@ -31,10 +31,12 @@ const whiteLogos: Record<string, string> = {
 };
 const logoFor = (s: (typeof sponsors)[number]) => whiteLogos[s.name] ?? s.logo;
 
-const tierLabel = (tier: string, sponsorTier: string) => {
+// Only the main sponsor (Guardiaris) and the venue sponsor (FRI) carry a special
+// tier label under their name; the section heading already names every other tier.
+const tierLabel = (sponsorTier: string) => {
   if (sponsorTier === 'General') return 'Main Sponsor';
   if (sponsorTier === 'Venue') return 'Venue Sponsor';
-  return `${sponsorTier} Sponsor`;
+  return null;
 };
 const tierHeading = (tier: string) => (tier === 'General' ? 'General' : tier);
 ---
@@ -72,7 +74,9 @@ const tierHeading = (tier: string) => (tier === 'General' ? 'General' : tier);
                     <img src={logoFor(sponsor)} alt={sponsor.name} class="sponsor-logo" />
                   </div>
                   <h3 class="sponsor-name">{sponsor.name}</h3>
-                  <p class="sponsor-tier-label">{tierLabel(group.tier, sponsor.tier)}</p>
+                  {tierLabel(sponsor.tier) && (
+                    <p class="sponsor-tier-label">{tierLabel(sponsor.tier)}</p>
+                  )}
                   {(sponsor.description
                     ? sponsor.description.split(/\n\s*\n/)
                     : ['Description coming soon.']
@@ -197,9 +201,10 @@ const tierHeading = (tier: string) => (tier === 'General' ? 'General' : tier);
 
 .sponsor-tier-label {
   margin: 0.4rem 0 0;
-  color: #ff6a3c;
+  color: #e8564a;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
+  line-height: 1.1;
 }
 
 .sponsor-desc { margin: 0.8rem 0 0; color: rgba(255,255,255,0.74); font-size: 1rem; line-height: 1.6; }

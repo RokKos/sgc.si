@@ -103,8 +103,8 @@ const toParagraphs = (text?: string) =>
 /* Each speaker in a navy card panel, photo on the left. */
 .speaker-card {
   display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: clamp(1.8rem, 4vw, 3rem);
+  grid-template-columns: 340px 1fr;
+  gap: clamp(1.8rem, 4vw, 3.4rem);
   align-items: start;
   background: #16283d;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -119,21 +119,21 @@ const toParagraphs = (text?: string) =>
   position: relative;
   z-index: 1;
   width: 100%;
-  aspect-ratio: 3 / 4;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
 }
 
-/* Offset orange frame peeking out to the bottom-left. */
+/* Solid orange square offset behind the photo, peeking out left and bottom. */
 .speaker-photo::after {
   content: "";
   position: absolute;
   z-index: 0;
-  left: -14px;
-  right: 14px;
-  top: 14px;
-  bottom: -14px;
-  border: 2px solid #ff6a3c;
+  left: -9px;
+  bottom: -20px;
+  width: 100%;
+  height: 100%;
+  background: #e8432a;
 }
 
 .speaker-name {
@@ -155,7 +155,7 @@ const toParagraphs = (text?: string) =>
 
 .speaker-company {
   margin: 0.15rem 0 0;
-  color: #ff6a3c;
+  color: #e8564a;
   font-weight: 700;
   font-size: 1.02rem;
 }
@@ -168,18 +168,15 @@ const toParagraphs = (text?: string) =>
 }
 
 .speaker-talk {
-  margin-top: 1.6rem;
-  padding-top: 1.4rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 2rem;
 }
 
 .speaker-talk-label {
   margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.76rem;
-  font-weight: 800;
-  color: #ff6a3c;
+  letter-spacing: 0.01em;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #e8564a;
 }
 
 .speaker-talk-title {
