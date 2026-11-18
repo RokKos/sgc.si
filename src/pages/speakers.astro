@@ -7,6 +7,14 @@ import { NAV_HOME_BASE } from '../data/site';
 
 const toParagraphs = (text?: string) =>
   text ? text.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean) : [];
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
 ---
 
 <Layout title="Meet the Speakers - Slovenia Games Conference 2027">
@@ -30,7 +38,11 @@ const toParagraphs = (text?: string) =>
         {speakers.map((speaker) => (
           <article class="speaker-card" id={speaker.slug}>
             <div class="speaker-photo">
-              <img src={speaker.image} alt={speaker.name} loading="lazy" />
+              {speaker.image ? (
+                <img src={speaker.image} alt={speaker.name} loading="lazy" />
+              ) : (
+                <div class="speaker-photo-placeholder" aria-hidden="true">{initials(speaker.name)}</div>
+              )}
             </div>
             <div class="speaker-content">
               <h2 class="speaker-name">{speaker.name}</h2>
@@ -42,7 +54,7 @@ const toParagraphs = (text?: string) =>
 
               {speaker.talkTitle && (
                 <div class="speaker-talk">
-                  <p class="speaker-talk-label">Talk</p>
+                  <p class="speaker-talk-label">{speaker.sessionType ?? 'Talk'}</p>
                   <h3 class="speaker-talk-title">{speaker.talkTitle}</h3>
                   {toParagraphs(speaker.talkDescription).map((para) => (
                     <p class="speaker-talk-desc">{para}</p>
@@ -122,6 +134,23 @@ const toParagraphs = (text?: string) =>
   aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
+}
+
+/* Initials placeholder for speakers whose photo hasn't been supplied yet. */
+.speaker-photo-placeholder {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1f3550;
+  color: rgba(255, 255, 255, 0.72);
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 6vw, 4rem);
+  letter-spacing: 0.02em;
 }
 
 /* Solid orange square offset behind the photo, peeking out left and bottom. */

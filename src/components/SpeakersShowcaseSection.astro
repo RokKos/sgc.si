@@ -7,6 +7,14 @@ interface Props {
 }
 
 const { clickable = true } = Astro.props;
+
+const initials = (name: string) =>
+  name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((w) => w[0]?.toUpperCase() ?? '')
+    .join('');
 ---
 
 <section class="speakers-showcase" id="speakers" aria-labelledby="speakers-title">
@@ -20,7 +28,11 @@ const { clickable = true } = Astro.props;
         return (
           <CardTag class={`speaker-card${clickable ? '' : ' is-static'}`} {...linkProps}>
             <div class="speaker-img-wrap">
-              <img src={speaker.image} alt={speaker.name} class="speaker-img" />
+              {speaker.image ? (
+                <img src={speaker.image} alt={speaker.name} class="speaker-img" />
+              ) : (
+                <div class="speaker-img-placeholder" aria-hidden="true">{initials(speaker.name)}</div>
+              )}
             </div>
             <div class="speaker-info">
               <p class="speaker-name">{speaker.name}</p>
@@ -109,6 +121,20 @@ const { clickable = true } = Astro.props;
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.speaker-img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1f3550;
+  color: rgba(255, 255, 255, 0.78);
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  letter-spacing: 0.02em;
 }
 
 .speaker-info {
