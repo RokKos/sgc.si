@@ -1,235 +1,80 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionScrollNav from '../components/SectionScrollNav.vue';
-import Footer from '../components/Footer.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import { speakers } from '../data/speakers';
-import { NAV_HOME_BASE } from '../data/site';
 
 const toParagraphs = (text?: string) =>
   text ? text.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean) : [];
-
-const initials = (name: string) =>
-  name
-    .split(/\s+/)
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0]?.toUpperCase() ?? '')
-    .join('');
 ---
 
-<Layout title="Meet the Speakers - Slovenia Games Conference 2027">
-  <SectionScrollNav client:load base={NAV_HOME_BASE} />
+<Layout title="Speakers – Slovenia Games Conference 2027" description="Meet the speakers joining us at Slovenia Games Conference 2027 – their experience, their work, and what they'll be talking about.">
+  <!-- PAGE HERO -->
+  <header id="top" class="page-hero">
+    <img src="/assets/conference-hero.jpg" alt="" class="hero-image" />
+    <div class="hero-overlay"></div>
+    <SiteNav current="speakers" />
+    <div class="content-container page-hero-content">
+      <div class="page-hero-eyebrow">Slovenia Games Conference 2027</div>
+      <h1 class="page-hero-title">Meet the Speakers</h1>
+      <p class="page-hero-lead">Get to know the speakers joining us at Slovenia Games Conference 2027. Find out more about their experience, what they work on, and what they'll be talking about at the conference. More speakers will be announced soon!</p>
+    </div>
+  </header>
 
-  <main class="speakers-page">
-    <section class="speakers-hero">
-      <div class="container speakers-hero-inner">
-        <p class="eyebrow">Slovenia Games Conference 2027</p>
-        <h1>Meet the Speakers</h1>
-        <p>
-          Get to know the speakers joining us at Slovenia Games Conference 2027. Find out more
-          about their experience, what they work on, and what they'll be talking about at the
-          conference. More speakers will be announced soon!
-        </p>
-      </div>
-    </section>
-
-    <section class="speakers-list" aria-label="Speakers">
-      <div class="container speakers-list-wrap">
-        {speakers.map((speaker) => (
-          <article class="speaker-card" id={speaker.slug}>
-            <div class="speaker-photo">
-              {speaker.image ? (
-                <img src={speaker.image} alt={speaker.name} loading="lazy" />
+  <main>
+    <section class="dark-section">
+      <div class="content-container speaker-profile-list">
+        {speakers.map((s) => (
+          <article class="speaker-profile" id={s.slug}>
+            <div class="speaker-photo-frame">
+              {s.image ? (
+                <img class="speaker-photo" src={s.image} alt={s.name} loading="lazy" />
               ) : (
-                <div class="speaker-photo-placeholder" aria-hidden="true">{initials(speaker.name)}</div>
+                <div class="speaker-photo" role="img" aria-label={`Portrait placeholder for ${s.name}`}></div>
               )}
             </div>
-            <div class="speaker-content">
-              <h2 class="speaker-name">{speaker.name}</h2>
-              <p class="speaker-role">{speaker.role}</p>
-              <p class="speaker-company">{speaker.company}</p>
-              {toParagraphs(speaker.bio).map((para) => (
-                <p class="speaker-bio">{para}</p>
-              ))}
-
-              {speaker.talkTitle && (
-                <div class="speaker-talk">
-                  <p class="speaker-talk-label">{speaker.sessionType ?? 'Talk'}</p>
-                  <h3 class="speaker-talk-title">{speaker.talkTitle}</h3>
-                  {toParagraphs(speaker.talkDescription).map((para) => (
-                    <p class="speaker-talk-desc">{para}</p>
-                  ))}
+            <div class="card card-navy">
+              <div class="card-body">
+                <div>
+                  <h2 class="card-title venue-name">{s.name}</h2>
+                  <div class="speaker-role">{s.role}</div>
+                  <div class="card-label">{s.company}</div>
                 </div>
-              )}
+                {toParagraphs(s.bio).map((p) => (
+                  <p class="card-text">{p}</p>
+                ))}
+                {s.talkTitle && (
+                  <div class="card-section">
+                    <div class="card-label">{s.sessionType ?? 'Talk'}</div>
+                    <h3 class="card-subtitle indie-item-title">{s.talkTitle}</h3>
+                    {toParagraphs(s.talkDescription).map((p) => (
+                      <p class="card-text">{p}</p>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
           </article>
         ))}
       </div>
     </section>
+
+    <section id="newsletter" class="newsletter-section">
+      <div class="newsletter-container content-container">
+        <div class="newsletter-copy">
+          <h2 class="section-heading">More Speakers to Be Announced</h2>
+          <p class="newsletter-description">Sign up to hear about new speakers, ticket news and event updates, straight to your inbox.</p>
+        </div>
+        <form class="newsletter-form" action="https://forms.gle/Pu1PB6qJTeaPp1kM7" method="get" target="_blank" rel="noopener noreferrer">
+          <label for="nl-email" class="form-label">Email address</label>
+          <div class="newsletter-form-actions">
+            <input id="nl-email" type="email" placeholder="you@example.com" class="email-field" />
+            <button type="submit" class="btn newsletter-submit">Subscribe</button>
+          </div>
+        </form>
+      </div>
+    </section>
   </main>
 
-  <Footer />
+  <SiteFooter />
 </Layout>
-
-<style>
-.speakers-page { background: #0d1620; }
-
-/* Hero — the city photo reads as a clear image band across the top. */
-.speakers-hero {
-  position: relative;
-  padding: 8.5rem 0 3.6rem;
-  overflow: hidden;
-  isolation: isolate;
-}
-/* Brighten the baked-dark photo so the city is clearly visible like the design. */
-.speakers-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background: url('/coming-soon-bg.jpg') center / cover no-repeat;
-  filter: brightness(1.42) saturate(1.08);
-}
-/* Light legibility wash that only deepens to navy at the very bottom edge. */
-.speakers-hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(
-    180deg,
-    rgba(9, 15, 23, 0.26) 0%,
-    rgba(9, 15, 23, 0.34) 52%,
-    rgba(13, 22, 32, 0.78) 82%,
-    #0d1620 100%
-  );
-}
-.speakers-hero-inner { position: relative; z-index: 1; width: min(1120px, 94%); }
-.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.6); }
-.speakers-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 0.92; letter-spacing: -0.03em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; }
-.speakers-hero p { margin: 0.95rem 0 0; max-width: 60ch; color: rgba(255,255,255,0.82); font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.55; }
-
-.speakers-list { padding: clamp(2.4rem, 5vw, 3.6rem) 0 4.6rem; background: #0d1620; }
-.speakers-list-wrap { width: min(1120px, 94%); display: flex; flex-direction: column; gap: clamp(1.5rem, 3vw, 2.4rem); }
-
-/* Each speaker in a navy card panel, photo on the left. */
-.speaker-card {
-  display: grid;
-  grid-template-columns: 340px 1fr;
-  gap: clamp(1.8rem, 4vw, 3.4rem);
-  align-items: start;
-  background: #16283d;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: clamp(1.8rem, 3vw, 2.6rem);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
-  scroll-margin-top: 110px;
-}
-
-.speaker-photo { position: relative; align-self: start; }
-
-.speaker-photo img {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
-}
-
-/* Initials placeholder for speakers whose photo hasn't been supplied yet. */
-.speaker-photo-placeholder {
-  position: relative;
-  z-index: 1;
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #1f3550;
-  color: rgba(255, 255, 255, 0.72);
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-  font-size: clamp(2.6rem, 6vw, 4rem);
-  letter-spacing: 0.02em;
-}
-
-/* Solid orange square offset behind the photo, peeking out left and bottom. */
-.speaker-photo::after {
-  content: "";
-  position: absolute;
-  z-index: 0;
-  left: -9px;
-  bottom: -20px;
-  width: 100%;
-  height: 100%;
-  background: #e8432a;
-}
-
-.speaker-name {
-  margin: 0;
-  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
-  line-height: 1.02;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-}
-
-.speaker-role {
-  margin: 0.5rem 0 0;
-  color: rgba(255, 255, 255, 0.62);
-  font-weight: 700;
-  font-size: 1.02rem;
-}
-
-.speaker-company {
-  margin: 0.15rem 0 0;
-  color: #e8564a;
-  font-weight: 700;
-  font-size: 1.02rem;
-}
-
-.speaker-bio {
-  margin: 1rem 0 0;
-  color: rgba(255, 255, 255, 0.78);
-  font-size: 1.02rem;
-  line-height: 1.6;
-}
-
-.speaker-talk {
-  margin-top: 2rem;
-}
-
-.speaker-talk-label {
-  margin: 0;
-  letter-spacing: 0.01em;
-  font-size: 1.02rem;
-  font-weight: 700;
-  color: #e8564a;
-}
-
-.speaker-talk-title {
-  margin: 0.4rem 0 0;
-  font-size: clamp(1.3rem, 2.4vw, 1.7rem);
-  line-height: 1.15;
-  color: #ffffff;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-}
-
-.speaker-talk-desc {
-  margin: 0.8rem 0 0;
-  color: rgba(255, 255, 255, 0.76);
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-@media (max-width: 760px) {
-  .speaker-card { grid-template-columns: 1fr; gap: 1.6rem; }
-  .speaker-photo { max-width: 320px; }
-}
-
-@media (max-width: 640px) {
-  .speakers-hero { padding-top: 12rem; }
-}
-</style>

@@ -1,0 +1,33 @@
+---
+// Fixed glass navigation, shared across every page.
+// `current` highlights the active top-level page.
+interface Props {
+  current?: 'speakers' | 'venue' | 'sponsors' | 'team' | 'indies';
+}
+const { current } = Astro.props;
+const ariaCurrent = (key: Props['current']) => (current === key ? 'page' : undefined);
+---
+
+<nav class="site-nav">
+  <a href="/" aria-label="Slovenia Games Conference home">
+    <img src="/assets/slovenia-games-conference-logo.svg" alt="SGC Slovenia Games Conference" class="site-logo" />
+  </a>
+  <button
+    class="nav-toggle"
+    type="button"
+    aria-expanded="false"
+    aria-controls="primary-navigation"
+    aria-label="Open navigation"
+  >
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="primary-navigation">
+    <a class="nav-link" href="/#about">About</a>
+    <a class="nav-link" href="/speakers" aria-current={ariaCurrent('speakers')}>Speakers</a>
+    <a class="nav-link" href="/getting-here" aria-current={ariaCurrent('venue')}>Venue</a>
+    <a class="nav-link" href="/sponsors" aria-current={ariaCurrent('sponsors')}>Sponsors</a>
+    <a class="nav-link" href="/#faq">FAQ</a>
+    <a class="btn-ghost nav-outline-button" href="/indies" aria-current={ariaCurrent('indies')}>Indies</a>
+    <a class="btn nav-primary-button" href="/#tickets">Tickets</a>
+  </div>
+</nav>

@@ -1,266 +1,103 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionScrollNav from '../components/SectionScrollNav.vue';
-import Footer from '../components/Footer.astro';
-import { sponsors, tierOrder } from '../data/sponsors';
-import { NAV_HOME_BASE } from '../data/site';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { sponsors, type SponsorTier } from '../data/sponsors';
 
-// Main sponsor (General) first, then the venue sponsor beside it, then the rest.
-const generalItems = sponsors.filter((s) => s.tier === 'General');
-const venueItems = sponsors.filter((s) => s.tier === 'Venue');
+const arrowSvg = `<svg width="18" height="18" viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-left: 0.4rem;"><path d="M5 12h14"></path><path d="M13 5l7 7-7 7"></path></svg>`;
 
-const groupedTiers = tierOrder
-  .map((tier) => {
-    // Show the venue sponsor alongside the main sponsor under "General".
-    const items =
-      tier === 'General'
-        ? [...generalItems, ...venueItems]
-        : sponsors.filter((s) => s.tier === tier);
-    return { tier, items };
-  })
-  .filter((group) => group.items.length > 0);
+const slugify = (s: string) =>
+  s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 
-// This section is on dark backgrounds, so prefer white/light logo variants.
-const whiteLogos: Record<string, string> = {
-  'Guardiaris': '/SponsorLogos/guardiarisWhiteLogo.png',
-  'UL FRI — Faculty of Computer and Information Science': '/SponsorLogos/UL_FRI_logoHOR-RGB_bela.png',
-  'Triternion': '/SponsorLogos/triternion-logo-white.png',
-  'Outfit7': '/SponsorLogos/Outfit7-Logo.png',
-  'Razum': '/SponsorLogos/Razum-logo.png',
-  'Bubadu': '/SponsorLogos/Bubadu-logo-white.png',
+const toParagraphs = (text?: string) =>
+  text ? text.split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean) : [];
+
+// The cards sit on dark navy/black panels, so use the light logo variants that
+// read on a dark background (keyed by sponsor name; falls back to the data logo).
+const lightLogos: Record<string, string> = {
+  Guardiaris: '/assets/guardiaris-logo.png',
+  'UL FRI — Faculty of Computer and Information Science': '/assets/fri-logo.png',
+  Triternion: '/assets/triternion-logo.png',
+  Outfit7: '/assets/outfit7-logo.png',
+  Razum: '/assets/razum-logo.png',
+  Bubadu: '/assets/bubadu-logo.png',
 };
-const logoFor = (s: (typeof sponsors)[number]) => whiteLogos[s.name] ?? s.logo;
+const displayLogo = (s: { name: string; logo: string }) => lightLogos[s.name] ?? s.logo;
 
-// Only the main sponsor (Guardiaris) and the venue sponsor (FRI) carry a special
-// tier label under their name; the section heading already names every other tier.
-const tierLabel = (sponsorTier: string) => {
-  if (sponsorTier === 'General') return 'Main Sponsor';
-  if (sponsorTier === 'Venue') return 'Venue Sponsor';
-  return null;
-};
-const tierHeading = (tier: string) => (tier === 'General' ? 'General' : tier);
+// A tier-label shown as the card-label (only where it adds meaning).
+const cardLabel = (tier: SponsorTier) =>
+  tier === 'General' ? 'Main Sponsor' : tier === 'Venue' ? 'Venue Sponsor' : undefined;
+
+// Sections, in display order. The top section carries the General + Venue sponsors.
+const sectionDefs: { id: string; heading: string; tiers: SponsorTier[] }[] = [
+  { id: 'general', heading: 'General', tiers: ['General', 'Venue'] },
+  { id: 'platinum', heading: 'Platinum', tiers: ['Platinum'] },
+  { id: 'gold', heading: 'Gold', tiers: ['Gold'] },
+  { id: 'silver', heading: 'Silver', tiers: ['Silver'] },
+  { id: 'bronze', heading: 'Bronze', tiers: ['Bronze'] },
+];
+
+const sections = sectionDefs
+  .map((def) => ({ ...def, items: sponsors.filter((s) => def.tiers.includes(s.tier)) }))
+  .filter((def) => def.items.length > 0);
 ---
 
-<Layout title="Sponsors - Slovenia Games Conference 2027">
-  <SectionScrollNav client:load base={NAV_HOME_BASE} />
+<Layout title="Sponsors – Slovenia Games Conference 2027" description="The partners and sponsors making Slovenia Games Conference 2027 possible.">
+  <!-- PAGE HERO -->
+  <header id="top" class="page-hero">
+    <img src="/assets/conference-hero.jpg" alt="" class="hero-image" />
+    <div class="hero-overlay"></div>
+    <SiteNav current="sponsors" />
+    <div class="content-container page-hero-content">
+      <div class="page-hero-eyebrow">Slovenia Games Conference 2027</div>
+      <h1 class="page-hero-title">Sponsors</h1>
+      <p class="page-hero-lead">The Slovenia Games Conference is made possible by our partners and sponsors. Thank you to everyone supporting the game development community in Slovenia.</p>
+      <a class="btn hero-cta" href="#become-a-sponsor">Become a sponsor</a>
+    </div>
+  </header>
 
-  <main class="sponsors-page">
-    <section class="sponsors-hero">
-      <div class="container sponsors-hero-inner">
-        <p class="eyebrow">Slovenia Games Conference 2027</p>
-        <h1>Sponsors</h1>
-        <p>
-          The Slovenia Games Conference is made possible by our partners and sponsors.
-          Thank you to everyone supporting the game development community in Slovenia.
-        </p>
-        <a class="hero-cta" href="mailto:info@sgc.si?subject=Sponsoring%20Slovenia%20Games%20Conference%202027">Become a sponsor</a>
-      </div>
-    </section>
-
-    {groupedTiers.map((group, i) => (
-      <section class={`tier-section ${i % 2 === 0 ? 'is-navy' : 'is-dark'}`} aria-label={`${group.tier} sponsors`}>
-        <div class="container">
-          <h2 class="tier-title">{tierHeading(group.tier)}</h2>
-          <div class="tier-grid">
-            {group.items.map((sponsor) => {
-              const hasLink = sponsor.url && sponsor.url !== '#';
-              const CardTag = hasLink ? 'a' : 'article';
-              const linkProps = hasLink
-                ? { href: sponsor.url, target: '_blank', rel: 'noopener noreferrer' }
-                : {};
-              return (
-                <CardTag class={`sponsor-card${hasLink ? ' is-link' : ''}`} {...linkProps}>
-                  <div class="sponsor-logo-wrap">
-                    <img src={logoFor(sponsor)} alt={sponsor.name} class="sponsor-logo" />
+  <main>
+    {sections.map((section, i) => {
+      const gray = i % 2 === 1;
+      const cardVariant = gray ? 'card-black' : 'card-navy';
+      return (
+        <section class={`dark-section${gray ? ' section-gray' : ''}`} id={section.id}>
+          <div class="content-container content-stack">
+            <h2 class="section-heading">{section.heading}</h2>
+            <div class="card-grid">
+              {section.items.map((s) => (
+                <article class={`card ${cardVariant}`} id={slugify(s.name)}>
+                  <div class="card-body">
+                    <div class="card-logo"><img src={displayLogo(s)} alt={s.name} loading="lazy" /></div>
+                    <h3 class="card-title venue-name">{s.name}</h3>
+                    {cardLabel(s.tier) && <div class="card-label">{cardLabel(s.tier)}</div>}
+                    <div class="card-text">
+                      {toParagraphs(s.description).map((p) => (<p>{p}</p>))}
+                    </div>
+                    {s.url && (
+                      <div class="card-actions"><a class="btn" href={s.url} target="_blank" rel="noopener noreferrer">Visit website<Fragment set:html={arrowSvg} /></a></div>
+                    )}
                   </div>
-                  <h3 class="sponsor-name">{sponsor.name}</h3>
-                  {tierLabel(sponsor.tier) && (
-                    <p class="sponsor-tier-label">{tierLabel(sponsor.tier)}</p>
-                  )}
-                  {(sponsor.description
-                    ? sponsor.description.split(/\n\s*\n/)
-                    : ['Description coming soon.']
-                  ).map((para) => (
-                    <p class="sponsor-desc">{para}</p>
-                  ))}
-                  {hasLink && <span class="sponsor-link">Visit website →</span>}
-                </CardTag>
-              );
-            })}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
-    ))}
+        </section>
+      );
+    })}
 
-    <section class="become-sponsor" aria-labelledby="become-sponsor-title">
-      <div class="container become-inner">
-        <div class="become-copy">
-          <h2 id="become-sponsor-title">Become a sponsor</h2>
-          <p>
-            Want to reach Slovenia's game developers, studios and students? Partner with
-            Slovenia Games Conference 2027 and support the local games community.
-          </p>
+    <section id="become-a-sponsor" class="newsletter-section">
+      <div class="newsletter-container content-container">
+        <div class="newsletter-copy">
+          <h2 class="section-heading">Become a Sponsor</h2>
+          <p class="newsletter-description">Put your brand in front of Slovenia's game developers, students and studios. Get in touch and we'll walk you through the sponsorship options for Slovenia Games Conference 2027.</p>
         </div>
-        <a class="become-btn" href="mailto:info@sgc.si?subject=Sponsoring%20Slovenia%20Games%20Conference%202027">Get in touch →</a>
+        <div class="sponsor-cta-actions">
+          <a class="btn newsletter-submit" href="mailto:info@sloveniagames.com?subject=Sponsoring%20SGC%202027"><span>Get in touch</span><Fragment set:html={arrowSvg} /></a>
+        </div>
       </div>
     </section>
   </main>
 
-  <Footer />
+  <SiteFooter />
 </Layout>
-
-<style>
-.sponsors-page { background: #0d1620; }
-
-/* Hero over the city photo. */
-.sponsors-hero {
-  padding: 9rem 0 3.4rem;
-  background-image:
-    linear-gradient(180deg, rgba(10, 12, 15, 0.5), rgba(13, 22, 32, 0.92)),
-    url('/coming-soon-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.sponsors-hero-inner { width: min(1120px, 94%); }
-.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.6); }
-.sponsors-hero h1 { margin: 0.45rem 0 0; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 0.92; letter-spacing: -0.03em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; }
-.sponsors-hero p { margin: 0.95rem 0 0; max-width: 60ch; color: rgba(255,255,255,0.82); font-size: clamp(1rem, 1.25vw, 1.14rem); line-height: 1.55; }
-
-.hero-cta {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 1.5rem;
-  padding: 0.85rem 1.7rem;
-  background: #ff4d10;
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
-}
-.hero-cta:hover { background: #fff; color: #ff4d10; box-shadow: inset 0 0 0 2px #ff4d10; transform: translateY(-1px); }
-
-/* Tier sections alternate navy / near-black. */
-.tier-section { padding: clamp(2.6rem, 5vw, 4rem) 0; }
-.tier-section .container { width: min(1120px, 94%); }
-.tier-section.is-navy { background: #12233b; }
-.tier-section.is-dark { background: #0d1620; }
-
-.tier-title {
-  margin: 0 0 1.8rem;
-  font-size: clamp(1.8rem, 3.6vw, 2.8rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  font-weight: 700;
-  color: #ffffff;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-}
-
-.tier-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.6rem;
-  align-items: start;
-}
-
-.sponsor-card {
-  display: flex;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: clamp(1.6rem, 2.4vw, 2.2rem);
-  color: inherit;
-  text-decoration: none;
-}
-
-.sponsor-card.is-link { transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease; }
-.sponsor-card.is-link:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 122, 60, 0.4);
-  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.4);
-}
-
-.sponsor-logo-wrap {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  min-height: 72px;
-  margin-bottom: 1.3rem;
-}
-
-.sponsor-logo { max-width: 72%; max-height: 72px; width: auto; height: auto; object-fit: contain; object-position: left center; }
-
-.sponsor-name {
-  margin: 0;
-  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
-  line-height: 1.08;
-  color: #ffffff;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-}
-
-.sponsor-tier-label {
-  margin: 0.4rem 0 0;
-  color: #e8564a;
-  font-weight: 700;
-  font-size: clamp(1.15rem, 1.7vw, 1.35rem);
-  line-height: 1.1;
-}
-
-.sponsor-desc { margin: 0.8rem 0 0; color: rgba(255,255,255,0.74); font-size: 1rem; line-height: 1.6; }
-
-.sponsor-link {
-  display: inline-flex;
-  align-items: center;
-  align-self: flex-start;
-  margin-top: 1.4rem;
-  padding: 0.72rem 1.4rem;
-  background: #ff4d10;
-  color: #fff;
-  font-weight: 700;
-  font-size: 0.96rem;
-  text-decoration: none;
-  transition: background 0.16s ease;
-}
-.sponsor-card.is-link:hover .sponsor-link { background: #e03d00; }
-
-/* Become a sponsor — closing call to action. */
-.become-sponsor { padding: clamp(2.6rem, 5vw, 4rem) 0 5rem; background: #0d1620; }
-
-.become-inner {
-  width: min(1120px, 94%);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  background: #c4502f;
-  padding: clamp(1.8rem, 4vw, 2.8rem);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
-}
-
-.become-copy { max-width: 60ch; }
-.become-copy h2 { margin: 0; font-size: clamp(1.7rem, 3.2vw, 2.6rem); line-height: 1; letter-spacing: -0.02em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; font-weight: 700; }
-.become-copy p { margin: 0.7rem 0 0; color: rgba(255, 255, 255, 0.92); font-size: 1.05rem; line-height: 1.5; }
-
-.become-btn {
-  flex: none;
-  display: inline-flex;
-  align-items: center;
-  padding: 0.9rem 1.8rem;
-  background: #ffffff;
-  color: #c4502f;
-  font-weight: 800;
-  text-decoration: none;
-  transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
-}
-.become-btn:hover { background: #1f1b19; color: #ffffff; transform: translateY(-1px); }
-
-@media (max-width: 760px) {
-  .tier-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 640px) {
-  .sponsors-hero { padding-top: 12rem; }
-}
-</style>

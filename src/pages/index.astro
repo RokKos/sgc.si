@@ -1,32 +1,291 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import HeroSection from '../components/HeroSection.vue';
-import SectionScrollNav from '../components/SectionScrollNav.vue';
-import NoiseStageSection from '../components/NoiseStageSection.astro';
-import EventHighlightsSection from '../components/EventHighlightsSection.astro';
-import SpeakersShowcaseSection from '../components/SpeakersShowcaseSection.astro';
-import VenueCarouselSection from '../components/VenueCarouselSection.astro';
-import PreviousYearsVideoSection from '../components/PreviousYearsVideoSection.vue';
-import SponsorsSection from '../components/SponsorsSection.astro';
-import FaqSection from '../components/FaqSection.astro';
-import NewsletterSection from '../components/NewsletterSection.astro';
-import ConferencePartnersSection from '../components/ConferencePartnersSection.astro';
-import Footer from '../components/Footer.astro';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { speakers } from '../data/speakers';
+
+const arrowSvg = `<svg width="18" height="18" viewBox="0 0 24 22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align: middle; margin-left: 0.4rem;"><path d="M5 12h14"></path><path d="M13 5l7 7-7 7"></path></svg>`;
+
+const carousel = Array.from({ length: 10 }, (_, i) => `/assets/sgc2019/carousel${i + 1}.jpg`);
 ---
 
 <Layout title="Slovenia Games Conference 2027">
-  <SectionScrollNav client:load />
-  <main>
-    <HeroSection client:load />
-    <NoiseStageSection />
-    <EventHighlightsSection />
-    <SpeakersShowcaseSection />
-    <VenueCarouselSection />
-    <PreviousYearsVideoSection client:load />
-    <SponsorsSection />
-    <FaqSection />
-    <NewsletterSection />
-    <ConferencePartnersSection />
-  </main>
-  <Footer />
+  <!-- HERO -->
+  <header id="top" class="hero">
+    <img src="/assets/conference-hero.jpg" alt="" class="hero-image" />
+    <div class="hero-overlay"></div>
+
+    <SiteNav />
+
+    <div class="hero-content">
+      <div class="hero-inner">
+        <h1 class="hero-title">Slovenia<br />Games<br />Conference</h1>
+        <div class="hero-meta">
+          <span class="event-date">20 February 2027</span>
+          <span class="event-location">Faculty of Computer and<br />Information Science, Ljubljana</span>
+        </div>
+        <a class="btn hero-cta" href="#tickets">Get Tickets</a>
+        <div class="hero-organizers">
+          <div class="eyebrow">Brought to you by</div>
+          <div class="hero-logos">
+            <div class="hero-logos-row">
+              <img src="/assets/guardiaris-logo.png" alt="Guardiaris — Train. The Brain." class="hero-sponsor-primary" />
+              <img src="/assets/fri-logo.png" alt="FRI" class="hero-sponsor-tier" />
+              <img src="/assets/triternion-logo.png" alt="Triternion" class="hero-sponsor-tier" />
+            </div>
+            <div class="hero-logos-row">
+              <img src="/assets/outfit7-logo.png" alt="Outfit7" class="hero-sponsor-community" />
+              <img src="/assets/razum-logo.png" alt="Razum" class="hero-sponsor-razum" />
+              <img src="/assets/bubadu-logo.png" alt="Bubadu" class="hero-sponsor-bubadu" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- EVENT PHOTOS -->
+  <section aria-label="Event photos" class="photo-strip">
+    <div class="photo-strip-viewport">
+      <div class="photo-track">
+        {carousel.map((src) => (
+          <img class="photo-placeholder" src={src} alt="Slovenia Games Conference 2019 event photo" />
+        ))}
+        {carousel.map((src) => (
+          <img aria-hidden="true" class="photo-placeholder" src={src} alt="" />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about-section">
+    <div class="about-container content-container content-stack">
+      <div class="about-intro">
+        <h2 class="section-heading about-heading">Where Game<br />Developers<br /><span class="accent-text">Come Together</span></h2>
+        <p class="about-description">
+          Slovenia Games Conference is a one-day event where industry professionals and enthusiasts
+          celebrate the games industry as a whole. Whether you're a programmer, artist, designer,
+          business person, producer, career seeker, or recruiter — you'll find what you're looking for.
+        </p>
+      </div>
+      <div class="media-stack">
+        <video
+          src="/assets/slovenia-games-conference-highlights.mp4"
+          autoplay muted loop playsinline preload="auto"
+          aria-label="Slovenia Games Conference 2018 highlights"
+          class="highlight-video"></video>
+        <a href="https://youtu.be/JZ9CqWAJoYg" target="_blank" rel="noopener noreferrer" class="media-caption">Watch 2018 Highlights on YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="highlights-section">
+    <div class="highlights-container content-container content-stack">
+      <h2 class="section-heading">Event Highlights</h2>
+      <div class="highlights-grid">
+        <div class="highlight-column">
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">10+ Expert Lectures</div><div class="feature-description">Split across two dedicated tracks—Technical and Art.</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">2+ Hands-On Workshops</div><div class="feature-description">Deepen your skills with interactive game dev sessions.</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Featured Panel Discussion</div><div class="feature-description">A panel discussion featuring 3 industry game developers.</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Indie Showcase</div><div class="feature-description">Dedicated space for independent developers to show off their games.</div></div>
+          </div>
+        </div>
+        <div class="highlight-column">
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Sponsor Expo</div><div class="feature-description">Explore booths and connect with event sponsors.</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Portfolio &amp; CV Reviews</div><div class="feature-description">Get direct feedback on your resume from hiring sponsors.</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Evening Party</div><div class="feature-description">Network, unwind, and celebrate with fellow creators.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section id="speakers" class="light-section">
+    <div class="content-container content-stack">
+      <h2 class="section-heading">Speakers</h2>
+      <div class="speakers-grid">
+        {speakers.map((s) => (
+          <a class="speaker-card" href={`/speakers#${s.slug}`}>
+            {s.image ? (
+              <img class="speaker-photo" src={s.image} alt={s.name} />
+            ) : (
+              <div class="speaker-photo" role="img" aria-label={`Portrait placeholder for ${s.name}`}></div>
+            )}
+            <div>
+              <div class="speaker-name">{s.name}</div>
+              <div class="speaker-role">{s.company}</div>
+            </div>
+          </a>
+        ))}
+        <a class="btn speaker-list-button" href="/speakers">All speakers</a>
+      </div>
+      <div class="speaker-announcement">
+        <div class="announcement-text">More speakers to be announced.</div>
+        <a class="btn" href="#newsletter">Sign up for the newsletter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VENUE -->
+  <section id="venue" class="dark-section">
+    <div class="venue-layout content-container">
+      <div class="venue-details">
+        <h2 class="section-heading">The Venue</h2>
+        <div class="venue-name">Faculty of Computer and Information Science</div>
+        <div class="venue-address">Večna pot 113<br />1000 Ljubljana, Slovenia</div>
+        <div class="venue-date">Saturday, 20 February 2027</div>
+        <div class="venue-actions"><a class="btn venue-button" href="/getting-here">More information</a></div>
+      </div>
+      <img class="venue-photo" src="/assets/fri-venue.jpg" alt="Faculty of Computer and Information Science building" />
+    </div>
+  </section>
+
+  <!-- TICKETS -->
+  <section id="tickets" class="tickets-section">
+    <div class="tickets-layout content-container">
+      <h2 class="section-heading">Tickets</h2>
+      <div class="ticket-details">
+        <div class="ticket-features">
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="ticket-feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Full Access</div><div class="ticket-feature-description">Entry to all Slovenia Games Conference 2027 talks, panels, and showcases.</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="ticket-feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Catering</div><div class="ticket-feature-description">Complete lunch in the faculty cafeteria (meat and vegan options available).</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="ticket-feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Coffee Break</div><div class="ticket-feature-description">Fresh coffee or tea accompanied by a croissant.</div></div>
+          </div>
+          <div class="feature-item"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true" class="ticket-feature-icon"><path d="M4 4l16 16M20 4L4 20"></path></svg>
+            <div><div class="feature-title">Afterparty</div><div class="ticket-feature-description">Full admission to the official evening networking party.</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="ticket-prices">
+        <div class="ticket-price-grid">
+          <div class="ticket-price-card"><div class="ticket-price">35€</div><div class="ticket-type">Regular</div></div>
+          <div class="ticket-price-card"><div class="ticket-price">20€</div><div class="ticket-type">Student</div></div>
+        </div>
+        <p class="ticket-deadline">Tickets must be purchased at least one week before the conference — by <strong>13 February 2027</strong> at the latest.</p>
+        <a class="btn tickets-button" href="https://olaii.com/event/11304/slovenia-games-conference-2027/" target="_blank" rel="noopener noreferrer"><span>Get tickets</span><Fragment set:html={arrowSvg} /></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDIE DEVELOPERS -->
+  <section id="indie" class="indie-section">
+    <div class="content-container content-stack">
+      <h2 class="section-heading">Indie Developers</h2>
+      <div class="indie-grid">
+        <div class="media-stack">
+          <div class="indie-item-title">Showcase Your Game</div>
+          <div>Are you an indie developer or a game studio? Bring your game to SGC 2027 and connect with fellow developers and the wider game development community.</div>
+        </div>
+        <div class="media-stack">
+          <div class="indie-item-title">Who Can Apply</div>
+          <div>Independent developers and studios with playable games, from early prototypes to released titles.</div>
+        </div>
+        <div class="media-stack">
+          <div class="indie-item-title">Registration</div>
+          <div>Register your game before 20 January 2027. Our team will review your submission and contact you with exhibitor and ticket information.</div>
+        </div>
+      </div>
+      <div class="indie-actions">
+        <a class="btn" href="https://docs.google.com/forms/d/e/1FAIpQLSfEXcg5rVaIoENJwr-kdw7fjCBxa_j8pXiTyDIJsSvVyDmoww/viewform" target="_blank" rel="noopener noreferrer">Register now<Fragment set:html={arrowSvg} /></a>
+        <a class="btn-ghost indie-outline-button" href="/indies">Meet the Indies</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section id="sponsors" class="dark-section">
+    <div class="sponsors-container content-container content-stack">
+      <h2 class="section-heading sponsors-heading">Sponsors</h2>
+      <a href="/sponsors#guardiaris" class="sponsor-primary">
+        <img src="/assets/guardiaris-logo.png" alt="Guardiaris — Train. The Brain." class="sponsor-primary-logo" />
+      </a>
+      <div class="sponsor-tier">
+        <a href="/sponsors#fri"><img src="/assets/fri-logo.png" alt="FRI" class="sponsor-tier-logo" /></a>
+        <a href="/sponsors#triternion"><img src="/assets/triternion-logo.png" alt="Triternion" class="sponsor-tier-logo" /></a>
+      </div>
+      <div class="sponsor-community-tier">
+        <a href="/sponsors#outfit7"><img src="/assets/outfit7-logo.png" alt="Outfit7" class="sponsor-community-logo" /></a>
+        <a href="/sponsors#razum"><img src="/assets/razum-logo.png" alt="Razum" class="sponsor-razum-logo" /></a>
+        <a href="/sponsors#bubadu"><img src="/assets/bubadu-logo.png" alt="Bubadu" class="sponsor-bubadu-logo" /></a>
+      </div>
+      <div class="sponsor-contact">Want to become a sponsor? <a href="/sponsors#become-a-sponsor" class="contact-link">Contact us</a></div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="light-section">
+    <div class="content-container content-stack">
+      <h2 class="section-heading">Frequently Asked Questions</h2>
+      <div class="faq-grid">
+        <div>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">When and where is Slovenia Games Conference 2027?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">Saturday, 20 February 2027 at the Faculty of Computer and Information Science (FRI) in Ljubljana, Slovenia.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">What are the conference opening hours?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">The conference schedule and exact opening hours will be announced closer to the event.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">Who is the conference for?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">SGC is open to anyone interested in the games industry, including developers, artists, designers, students, publishers, founders, and gaming enthusiasts.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">Are there student discounts?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">Yes! Students can purchase discounted tickets for 20€. You may be asked to provide valid student identification at the venue.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">What is the ticket deadline?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">Tickets must be purchased at least one week before the conference, so by 13 February 2027 at the latest.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">Will food and drinks be available?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">Lunch and a coffee break are included with every ticket, with meat and vegan options available.</div></details>
+        </div>
+        <div>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">Is there parking available at the venue?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">A limited number of parking spaces behind the barrier at the venue are reserved for the organising team and authorised participants.<br />For other visitors, free parking is available near Ljubljana Zoo, within walking distance of the conference venue. <b>Please note that not all parking spaces in the area are free, so check the parking signs and payment conditions before leaving your car.</b></div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">How can I get to the venue?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">FRI is accessible by public transport, car, bicycle and car-sharing. Bus line 18 stops at Živalski vrt – ZOO, just a 5-minute walk from the venue. Free public parking, BicikeLJ stations and Avant2Go vehicles are also available nearby. For more details, visit the <a class="text-link" href="/getting-here">Venue page</a>.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">Can I showcase my indie game?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">Yes! Independent developers and studios can apply to showcase their games. We welcome playable projects of all stages of development, from early prototypes to released games. Fill out the Indie Showcase registration form on our website before 20 January 2027. The organizers will review submissions and contact applicants by email.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">What does an Indie exhibitor get?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">Each exhibitor receives an exhibition desk with two chairs, electricity and Wi-Fi, one free parking spot at FRI, and promotion through SGC's website and social media channels. Laptop and monitor rentals can also be requested in advance, subject to availability.</div></details>
+          <details class="faq-item"><summary class="faq-question-row"><span class="faq-question">Are there discounted tickets available for Indie exhibitors?</span><svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="3" stroke-linecap="square" aria-hidden="true"><path d="M12 3v18M3 12h18"></path></svg></summary><div class="faq-answer">Yes. Each exhibitor can receive up to two reduced-price tickets for non-student attendees at 30€ each. Additional non-student attendees must purchase regular tickets. Students are eligible for the 20€ student ticket.</div></details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER -->
+  <section id="newsletter" class="newsletter-section">
+    <div class="newsletter-container content-container">
+      <div class="newsletter-copy">
+        <h2 class="section-heading">Newsletter Signup</h2>
+        <p class="newsletter-description">Stay up to date with speaker announcements, ticket news and event updates, delivered straight to your inbox.</p>
+      </div>
+      <form class="newsletter-form" action="https://forms.gle/Pu1PB6qJTeaPp1kM7" method="get" target="_blank" rel="noopener noreferrer">
+        <label for="nl-email" class="form-label">Email address</label>
+        <div class="newsletter-form-actions">
+          <input id="nl-email" type="email" placeholder="you@example.com" class="email-field" />
+          <button type="submit" class="btn newsletter-submit">Subscribe</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- PARTNERS -->
+  <section class="partners-section">
+    <div class="partners-container content-container content-stack">
+      <h2 class="section-heading sponsors-heading">Partners</h2>
+      <div class="partners-logos">
+        <a href="https://www.motovila.si/" target="_blank" rel="noopener noreferrer"><img src="/assets/motovila-logo.png" alt="Motovila" class="partner-logo partner-logo-motovila" /></a>
+        <a href="https://www.cedslovenia.eu/" target="_blank" rel="noopener noreferrer"><img src="/assets/ced-slovenia-logo.png" alt="CED Slovenia" class="partner-logo partner-logo-ced" /></a>
+        <a href="https://reload.si/" target="_blank" rel="noopener noreferrer"><img src="/assets/reload-akademija-logo.png" alt="Reload Akademija" class="partner-logo partner-logo-reload" /></a>
+        <a href="https://gamedevdays.com/" target="_blank" rel="noopener noreferrer"><img src="/assets/game-dev-days-logo.png" alt="Game Dev Days" class="partner-logo partner-logo-gdd" /></a>
+        <a href="https://zagrebgamesweek.com/" target="_blank" rel="noopener noreferrer"><img src="/assets/zagreb-games-week-logo.png" alt="Zagreb Games Week" class="partner-logo partner-logo-zagreb-games-week" /></a>
+        <a href="https://www.spielfabrique.eu/" target="_blank" rel="noopener noreferrer"><img src="/assets/spielfabrique-logo.png" alt="Spielfabrique" class="partner-logo partner-logo-spielfabrique" /></a>
+      </div>
+    </div>
+  </section>
+
+  <SiteFooter />
 </Layout>

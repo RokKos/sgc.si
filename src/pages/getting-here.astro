@@ -1,400 +1,142 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import SectionScrollNav from '../components/SectionScrollNav.vue';
-import Footer from '../components/Footer.astro';
-import { NAV_HOME_BASE } from '../data/site';
-
-const venueMapSrc =
-  'https://www.google.com/maps?q=Fakulteta%20za%20ra%C4%8Dunalni%C5%A1tvo%20in%20informatiko%2C%20Ve%C4%8Dna%20pot%20113%2C%20Ljubljana&z=16&output=embed';
-const directionsUrl =
-  'https://www.google.com/maps/dir/?api=1&destination=Fakulteta+za+ra%C4%8Dunalni%C5%A1tvo+in+informatiko%2C+Ve%C4%8Dna+pot+113%2C+1000+Ljubljana';
+import SiteNav from '../components/SiteNav.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 ---
 
-<Layout title="Visit SGC27 - Slovenia Games Conference 2027">
-  <SectionScrollNav client:load base={NAV_HOME_BASE} />
+<Layout title="Visit SGC27 – Slovenia Games Conference 2027" description="How to get to Slovenia Games Conference 2027 in Ljubljana by public transport, plane, train, bus or car.">
+  <!-- PAGE HERO -->
+  <header id="top" class="page-hero">
+    <img src="/assets/fri-venue.jpg" alt="" class="hero-image" />
+    <div class="hero-overlay"></div>
+    <SiteNav current="venue" />
+    <div class="content-container page-hero-content">
+      <div class="page-hero-eyebrow">Slovenia Games Conference 2027</div>
+      <h1 class="page-hero-title">Visit SGC27</h1>
+      <p class="page-hero-lead">Whether you are travelling to Ljubljana by car, plane, train or bus, here is everything you need to know to get to the Slovenia Games Conference 2027.</p>
+    </div>
+  </header>
 
-  <main class="travel-page">
-    <section class="travel-hero">
-      <div class="container travel-inner">
-        <p class="eyebrow">Slovenia Games Conference 2027</p>
-        <h1>Visit SGC27</h1>
-        <p class="lead">
-          Whether you are travelling to Ljubljana by car, plane, train or bus, here is
-          everything you need to know to reach the Slovenia Games Conference 2027.
-        </p>
+  <main>
+    <!-- VENUE -->
+    <section id="venue" class="dark-section">
+      <div class="venue-layout content-container">
+        <div class="venue-details">
+          <h2 class="section-heading">The Venue</h2>
+          <div class="venue-name">FRI - Faculty of Computer and Information Science</div>
+          <div class="venue-address">Večna pot 113<br />1000 Ljubljana, Slovenia</div>
+          <div class="venue-date">Saturday, 20 February 2027</div>
+          <div class="venue-actions"><a class="btn venue-button" href="https://www.google.com/maps/search/?api=1&query=Faculty+of+Computer+and+Information+Science+Ve%C4%8Dna+pot+113+Ljubljana" target="_blank" rel="noopener noreferrer">Open in Google Maps →</a></div>
+        </div>
+        <div class="venue-photo map-placeholder" role="img" aria-label="Map of the venue">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1958.6290135438066!2d14.467346644404197!3d46.050082609427136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477ad2ad3f7a8389%3A0x547f8800f76a47ff!2sFakulteta%20za%20ra%C4%8Dunalni%C5%A1tvo%20in%20informatiko%2C%20Ve%C4%8Dna%20pot%20113%2C%201000%20Ljubljana!5e0!3m2!1ssl!2ssi!4v1794408087464!5m2!1ssl!2ssi"
+            width="600" height="450" style="border:0;" allowfullscreen loading="lazy"
+            referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
       </div>
     </section>
 
-    <section class="venue-feature" aria-labelledby="venue-feature-title">
-      <div class="container">
-        <h2 id="venue-feature-title" class="venue-feature-title">The Venue</h2>
-        <div class="venue-feature-grid">
-          <div class="venue-feature-info">
-            <h3>FRI – Faculty of Computer and Information Science</h3>
-            <p class="venue-addr">Večna pot 113<br />1000 Ljubljana, Slovenia</p>
-            <p class="venue-date">Saturday, 20 February 2027</p>
-            <a class="venue-maps-btn" href={directionsUrl} target="_blank" rel="noopener noreferrer">
-              Open in Google Maps →
-            </a>
-          </div>
-          <div class="venue-feature-map">
-            <iframe
-              class="travel-map"
-              src={venueMapSrc}
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Map showing the Faculty of Computer and Information Science venue"
-            ></iframe>
+    <!-- GETTING HERE -->
+    <section id="getting-here" class="light-section">
+      <div class="content-container content-stack">
+        <div>
+          <h2 class="section-heading">Getting here</h2>
+          <p class="section-lead">The venue is located close to Ljubljana Zoo and is easily accessible by public transport from the city centre.</p>
+        </div>
+        <div class="card-grid">
+          <article class="card card-light" id="public-transport">
+            <div class="card-body">
+              <h3 class="card-title venue-name">Public transport</h3>
+              <p>The easiest way to reach the venue from central Ljubljana is bus 18.</p>
+              <p>From the city centre:</p>
+              <ol>
+                <li>Take <strong>LPP bus 18</strong> in the direction of Center Stožice.</li>
+                <li>Get off at the <strong>Živalski vrt – ZOO</strong> stop — this is your stop for the venue.</li>
+                <li>Walk approximately 6 minutes along Večna pot to the Faculty of Computer and Information Science.</li>
+              </ol>
+              <p>You can also take <strong>bus 14</strong> and get off at <strong>Viško polje</strong>, which is approximately an 8-minute walk from the venue.</p>
+              <p>For the latest routes and timetables, we recommend checking <a class="text-link" href="https://www.lpp.si/en" target="_blank" rel="noopener noreferrer">Ljubljana's public transport journey planner</a> before travelling.</p>
+              <h4 class="card-subtitle indie-item-title">Getting around Ljubljana</h4>
+              <p>Ljubljana's city buses are operated by Ljubljanski potniški promet (LPP). <strong>A single city-zone journey costs 1.50€ and allows transfers within 90 minutes when using an Urbana card.</strong> Payment by <strong>bank card</strong> is also possible, although transfers are not free when paying directly by bank card.</p>
+              <p>For the most convenient route from your location, you can use <a class="text-link" href="https://www.google.com/maps" target="_blank" rel="noopener noreferrer">Google Maps</a> or any other app you use for navigation!</p>
+            </div>
+          </article>
+
+          <article class="card card-light" id="by-plane">
+            <div class="card-body">
+              <h3 class="card-title venue-name">By plane</h3>
+              <p>If you are flying to Slovenia, you will arrive at <strong>Ljubljana Jože Pučnik Airport (LJU)</strong>, approximately 26 km from Ljubljana.</p>
+              <p><strong>Option 1: Airport shuttle</strong></p>
+              <p>Several shuttle services operate between Ljubljana Airport and Ljubljana, including:</p>
+              <ul><li>GoOpti</li><li>Nomago</li><li>MNJ Shuttle</li><li>Markun Shuttle</li><li>ZUP prevozi</li></ul>
+              <p>Advance booking is recommended.</p>
+              <p><strong>Option 2: Public bus</strong></p>
+              <p>A regular public bus connects Ljubljana Airport with Ljubljana Central Bus and Railway Station. Once you arrive at the central station, you can continue to the conference venue by LPP bus 18.</p>
+              <p><strong>Option 3: Taxi</strong></p>
+              <p>Taxis are available directly at Ljubljana Airport. From the airport, the journey to Ljubljana takes approximately 20 minutes by road, depending on traffic.</p>
+            </div>
+          </article>
+
+          <article class="card card-light" id="by-train">
+            <div class="card-body">
+              <h3 class="card-title venue-name">By train</h3>
+              <p>Ljubljana's main railway station is located in the city centre, next to the main bus station.</p>
+              <p>From the railway station:</p>
+              <ol>
+                <li>Walk to the nearby LPP bus stop.</li>
+                <li>Take <strong>bus 18</strong> in the direction of Center Stožice.</li>
+                <li>Get off at <strong>Živalski vrt – ZOO</strong>.</li>
+                <li>Walk approximately 6 minutes to the Faculty.</li>
+              </ol>
+              <p>Alternatively, <strong>bus 14</strong> can take you towards <strong>Viško polje</strong>, from where the venue is approximately an 8-minute walk.</p>
+            </div>
+          </article>
+
+          <article class="card card-light" id="by-bus">
+            <div class="card-body">
+              <h3 class="card-title venue-name">By long-distance bus</h3>
+              <p>Ljubljana's main bus station is located next to the railway station in the city centre.</p>
+              <p>From the bus station, follow the same route:</p>
+              <p>Ljubljana Bus Station → LPP bus 18 → Živalski vrt – ZOO → 6-minute walk → Faculty of Computer and Information Science.</p>
+              <p>Ljubljana has direct international bus connections with many European cities, making it easily accessible from neighbouring countries and beyond.</p>
+            </div>
+          </article>
+
+          <div class="parking-directions-grid">
+            <article class="card card-light" id="by-car">
+              <div class="card-body">
+                <h3 class="card-title venue-name">By car</h3>
+                <p>A limited number of parking spaces are available behind the barrier at the venue for members of the organising team and authorised participants.</p>
+                <p>For other visitors, free parking is available near Ljubljana Zoo, within walking distance of the conference venue. <strong>Please note that not all parking spaces in the area are free, so check the parking signs and payment conditions before leaving your car.</strong></p>
+                <p>Please note that parking availability may be limited, so public transport is recommended where possible.</p>
+              </div>
+            </article>
+
+            <div class="venue-photo map-placeholder parking-map" role="img" aria-label="Map of parking near the venue">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d582.2815656546617!2d14.47094735189013!3d46.052200065342596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477ad3a31e88890d%3A0x6f5cb4fb72a0cb2e!2zUGFya2lyacWhxI1l!5e0!3m2!1ssl!2ssi!4v1794408141317!5m2!1ssl!2ssi"
+                width="700" height="460" style="border:0;" allowfullscreen loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="getting-here" aria-labelledby="getting-here-title">
-      <div class="container">
-        <h2 id="getting-here-title" class="getting-here-title">Getting here</h2>
-        <p class="getting-here-lead">
-          The venue is close to Ljubljana Zoo and is easily reached by public transport from the
-          city centre.
-        </p>
-
-        <div class="travel-grid">
-          <article class="travel-block">
-            <h3>Public transport</h3>
-            <p>The easiest way to reach the venue from central Ljubljana is <strong>bus 18</strong>.</p>
-            <p>From the city centre:</p>
-            <ol>
-              <li>Take <strong>LPP bus 18</strong> in the direction of Center Stožice.</li>
-              <li>Get off at the <strong>Živalski vrt – ZOO</strong> stop — this is your stop for the venue.</li>
-              <li>Walk approximately 6 minutes along Večna pot to the Faculty of Computer and Information Science.</li>
-            </ol>
-            <p>
-              You can also take <strong>bus 14</strong> and get off at <strong>Viško polje</strong>,
-              which is approximately an 8-minute walk from the venue.
-            </p>
-            <p>
-              For the latest routes and timetables, we recommend checking
-              <a href="https://www.lpp.si/en" target="_blank" rel="noopener noreferrer">Ljubljana's public transport journey planner</a>
-              before travelling.
-            </p>
-
-            <h4 class="travel-subheading">Getting around Ljubljana</h4>
-            <p>
-              Ljubljana's city buses are operated by Ljubljanski potniški promet (LPP).
-              <strong>A single city-zone journey costs 1.50€</strong> and allows transfers within
-              90 minutes when using an <strong>Urbana card</strong>. Payment by <strong>bank card</strong>
-              is also possible, although transfers are not free that way.
-            </p>
-            <p>
-              For the most convenient route from your location, you can use
-              <a href={directionsUrl} target="_blank" rel="noopener noreferrer">Google Maps</a>
-              or any other app you use for navigation!
-            </p>
-          </article>
-
-          <article class="travel-block">
-            <h3>By plane</h3>
-            <p>
-              If you are flying to Slovenia, you will arrive at
-              <strong>Ljubljana Jože Pučnik Airport (LJU)</strong>, approximately 26 km from Ljubljana.
-            </p>
-            <p class="travel-subhead">Option 1: Airport shuttle</p>
-            <p>Several shuttle services operate between Ljubljana Airport and Ljubljana, including:</p>
-            <ul>
-              <li>GoOpti</li>
-              <li>Nomago</li>
-              <li>MNJ Shuttle</li>
-              <li>Markun Shuttle</li>
-              <li>ZUP prevozi</li>
-            </ul>
-            <p>Advance booking is recommended.</p>
-            <p class="travel-subhead">Option 2: Public bus</p>
-            <p>
-              A regular public bus connects Ljubljana Airport with Ljubljana Central Bus and
-              Railway Station. Once you arrive at the central station, you can continue to the
-              conference venue by LPP bus 18.
-            </p>
-            <p class="travel-subhead">Option 3: Taxi</p>
-            <p>
-              Taxis are available directly at Ljubljana Airport. From the airport, the journey to
-              Ljubljana takes approximately 20 minutes by road, depending on traffic.
-            </p>
-          </article>
-
-          <article class="travel-block">
-            <h3>By train</h3>
-            <p>Ljubljana's main railway station is located in the city centre, next to the main bus station.</p>
-            <p>From the railway station:</p>
-            <ol>
-              <li>Walk to the nearby LPP bus stop.</li>
-              <li>Take <strong>bus 18</strong> in the direction of Center Stožice.</li>
-              <li>Get off at <strong>Živalski vrt – ZOO</strong>.</li>
-              <li>Walk approximately 6 minutes to the Faculty.</li>
-            </ol>
-            <p>
-              Alternatively, <strong>bus 14</strong> can take you towards Viško polje, from where
-              the venue is approximately an 8-minute walk.
-            </p>
-          </article>
-
-          <article class="travel-block">
-            <h3>By long-distance bus</h3>
-            <p>Ljubljana's main bus station is located next to the railway station in the city centre.</p>
-            <p>From the bus station, follow the same route:</p>
-            <p class="travel-route">
-              Ljubljana Bus Station → LPP bus 18 → Živalski vrt – ZOO → 6-minute walk → Faculty
-              of Computer and Information Science.
-            </p>
-            <p>
-              Ljubljana has direct international bus connections with many European cities, making
-              it easily accessible from neighbouring countries and beyond.
-            </p>
-          </article>
-
-          <article class="travel-block">
-            <h3>By car</h3>
-            <p>
-              A limited number of parking spaces are available behind the barrier at the venue for
-              members of the organising team and authorised participants.
-            </p>
-            <p>
-              For other visitors, free parking is available near Ljubljana Zoo, within walking
-              distance of the conference venue. <strong>Please note that not all parking spaces in
-              the area are free, so check the parking signs and payment conditions before leaving
-              your car.</strong>
-            </p>
-            <p>
-              Please note that parking availability may be limited, so public transport is
-              recommended where possible.
-            </p>
-          </article>
-
-          <article class="travel-block travel-map-card" aria-label="Venue location on Google Maps">
-            <iframe
-              class="travel-grid-map"
-              src={venueMapSrc}
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Map showing the Faculty of Computer and Information Science venue"
-            ></iframe>
-          </article>
+    <!-- SEE YOU -->
+    <section class="newsletter-section visit-newsletter">
+      <div class="content-container">
+        <h2 class="section-heading visit-newsletter-heading">See you at SGC 2027!</h2>
+        <div class="newsletter-container">
+          <div class="newsletter-copy">
+            <p class="newsletter-description">Whether you're joining us from Slovenia or travelling to Ljubljana from elsewhere in Europe, we're looking forward to welcoming you to the Slovenia Games Conference 2027.</p>
+          </div>
+          <p class="newsletter-copy announcement-text">If you have any questions about travelling to the venue or your visit to Ljubljana, feel free to <a class="text-link" href="mailto:info@sloveniagames.com">contact us</a>.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="visit-cta" aria-labelledby="visit-cta-title">
-      <div class="container visit-cta-inner">
-        <h2 id="visit-cta-title">See you at SGC 2027?</h2>
-        <p>
-          Whether you're joining us from Slovenia or travelling from elsewhere in Europe, we're
-          looking forward to welcoming you to the Slovenia Games Conference 2027.
-        </p>
-        <a
-          class="visit-cta-btn"
-          href="https://olaii.com/event/11304/slovenia-games-conference-2027/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Get your ticket →</a>
       </div>
     </section>
   </main>
 
-  <Footer />
+  <SiteFooter />
 </Layout>
-
-<style>
-.travel-page { background: #f2f1ee; }
-
-/* Hero over the city photo. */
-.travel-hero {
-  padding: 9rem 0 3.4rem;
-  background-image:
-    linear-gradient(180deg, rgba(10, 12, 15, 0.5), rgba(13, 22, 32, 0.9)),
-    url('/coming-soon-bg.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-.travel-inner { width: min(1120px, 94%); }
-.eyebrow { margin: 0; text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.78rem; font-weight: 700; color: rgba(255,255,255,0.6); }
-.travel-hero h1 { margin: 0.5rem 0 0; font-size: clamp(2.6rem, 7vw, 5rem); line-height: 0.94; letter-spacing: -0.03em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; }
-.lead { margin: 1rem 0 0; max-width: 60ch; color: rgba(255,255,255,0.84); font-size: clamp(1.02rem, 1.4vw, 1.18rem); line-height: 1.6; }
-
-/* The Venue — solid navy section with the map. */
-.venue-feature { background: #12233b; padding: clamp(2.8rem, 5vw, 4.4rem) 0; }
-.venue-feature .container { width: min(1120px, 94%); }
-
-.venue-feature-title {
-  margin: 0 0 1.8rem;
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: #ffffff;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-}
-
-.venue-feature-grid {
-  display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: clamp(1.5rem, 4vw, 2.6rem);
-  align-items: center;
-}
-
-.venue-feature-info h3 {
-  margin: 0;
-  font-size: clamp(1.4rem, 2.6vw, 2rem);
-  line-height: 1.12;
-  color: #ffffff;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-}
-
-.venue-addr { margin: 1rem 0 0; color: rgba(255,255,255,0.82); line-height: 1.5; }
-.venue-date { margin: 1rem 0 0; color: #ff6a3c; font-weight: 700; font-size: 1.1rem; }
-
-.venue-maps-btn {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 1.5rem;
-  padding: 0.82rem 1.6rem;
-  background: #ff4d10;
-  color: #fff;
-  font-weight: 700;
-  text-decoration: none;
-  transition: background 0.16s ease, color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
-}
-.venue-maps-btn:hover { background: #ffffff; color: #ff4d10; box-shadow: inset 0 0 0 2px #ff4d10; transform: translateY(-1px); }
-
-.venue-feature-map {
-  overflow: hidden;
-  background: #0b111b;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  line-height: 0;
-}
-.travel-map { width: 100%; height: 360px; border: 0; display: block; }
-
-/* Getting here — light section with white cards. */
-.getting-here { background: #f2f1ee; padding: clamp(2.8rem, 5vw, 4.4rem) 0 1rem; }
-.getting-here .container { width: min(1120px, 94%); }
-
-.getting-here-title {
-  margin: 0 0 0.8rem;
-  font-size: clamp(1.9rem, 4vw, 3rem);
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: #16202b;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-}
-.getting-here-lead { margin: 0 0 1.8rem; max-width: 70ch; color: #4d555d; font-size: 1.05rem; line-height: 1.55; }
-
-.travel-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.5rem;
-  align-items: start;
-}
-
-.travel-block {
-  background: #ffffff;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
-  padding: 1.6rem 1.7rem 1.8rem;
-}
-
-.travel-block h3 {
-  margin: 0 0 0.6rem;
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-  color: #16202b;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-.travel-block p { margin: 0.7rem 0 0; color: #4d555d; font-size: 1rem; line-height: 1.6; }
-.travel-block p strong { color: #16202b; font-weight: 700; }
-
-.travel-block ol {
-  margin: 0.7rem 0 0;
-  padding-left: 1.3rem;
-  color: #4d555d;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-.travel-block li { margin-top: 0.35rem; }
-.travel-block li::marker { color: #c4502f; font-weight: 700; }
-
-.travel-subhead { font-weight: 700; color: #16202b !important; margin-top: 1rem !important; }
-
-/* "Getting around Ljubljana" secondary heading inside the Public transport card. */
-.travel-subheading {
-  margin: 1.8rem 0 0;
-  font-size: clamp(1.15rem, 1.9vw, 1.4rem);
-  color: #16202b;
-  font-family: "Funnel Sans", "Segoe UI", sans-serif;
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-.travel-block ul {
-  margin: 0.7rem 0 0;
-  padding-left: 1.3rem;
-  color: #4d555d;
-  font-size: 1rem;
-  line-height: 1.6;
-  list-style: disc;
-}
-.travel-block ul li::marker { color: #9aa1a8; font-weight: 400; }
-
-/* Google map occupies the final grid cell as a tall box. */
-.travel-map-card { padding: 0; overflow: hidden; background: #0b0b0b; }
-.travel-grid-map { display: block; width: 100%; height: 100%; min-height: 420px; border: 0; }
-
-.travel-route {
-  margin-top: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: #f4f0ea;
-  border-left: 3px solid #c4502f;
-  color: #2f3740 !important;
-  font-weight: 600;
-}
-
-.travel-block a { color: #c4502f; font-weight: 700; text-decoration: none; }
-.travel-block a:hover { text-decoration: underline; }
-
-/* See you at SGC 2027? — closing call to action. */
-.visit-cta { background: #f2f1ee; padding: clamp(2.6rem, 5vw, 4rem) 0 5rem; }
-.visit-cta .container { width: min(1120px, 94%); }
-
-.visit-cta-inner {
-  background: #c4502f;
-  padding: clamp(2rem, 5vw, 3.2rem);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.2);
-}
-
-.visit-cta-inner h2 { margin: 0; font-size: clamp(1.8rem, 3.6vw, 2.8rem); line-height: 1; letter-spacing: -0.02em; color: #ffffff; font-family: "Funnel Sans", "Segoe UI", sans-serif; font-weight: 700; }
-.visit-cta-inner p { margin: 0.9rem 0 0; max-width: 62ch; color: rgba(255, 255, 255, 0.92); font-size: 1.06rem; line-height: 1.55; }
-
-.visit-cta-btn {
-  display: inline-flex;
-  align-items: center;
-  margin-top: 1.7rem;
-  padding: 0.9rem 1.8rem;
-  background: #ffffff;
-  color: #c4502f;
-  font-weight: 800;
-  text-decoration: none;
-  transition: background 0.16s ease, color 0.16s ease, transform 0.16s ease;
-}
-.visit-cta-btn:hover { background: #1f1b19; color: #ffffff; transform: translateY(-1px); }
-
-@media (max-width: 860px) {
-  .venue-feature-grid { grid-template-columns: 1fr; }
-  .travel-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 640px) {
-  .travel-hero { padding-top: 12rem; }
-  .travel-map { height: 280px; }
-}
-</style>
