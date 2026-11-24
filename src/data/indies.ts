@@ -7,8 +7,8 @@ export interface Indie {
   country: string;
   /** Year, shown in the eyebrow line. Defaults to '2027' when omitted. */
   year?: string;
-  /** Path under /public, e.g. '/IndieLogos/mygame.png'. */
-  logo: string;
+  /** Path under /public, e.g. '/IndieLogos/mygame.png'. Omit to show a title placeholder. */
+  logo?: string;
   description: string;
   /** Optional trailer link (YouTube, Vimeo, etc.) — shown as "Trailer →". */
   trailer?: string;
@@ -81,5 +81,35 @@ export const indies: Indie[] = [
       'An incremental management game about manipulating the market to get filthy rich. Buy low, sell high, chain absurd combos and earn divine blessings from stock market gods. Will you play it safe or risk everything?',
     trailer: 'https://www.youtube.com/watch?v=LJVmsc1i6hI',
     link: 'https://store.steampowered.com/app/4637090/God_of_Stocks/',
+  },
+  {
+    game: 'Game is Full of Bugs',
+    studio: 'Alchemy Sheep',
+    country: 'Slovenia',
+    logo: '/IndieLogos/game-is-full-of-bugs.webp',
+    description:
+      'Build your magazine, stack ridiculous effects, and break the game. Game is Full of Bugs is a magazine-building roguelite where every run is about discovering just how absurd your build can become.',
+    trailer: 'https://www.youtube.com/watch?v=DAKbndgpj-Q',
+    link: 'https://store.steampowered.com/app/2868030/Game_is_Full_of_Bugs/',
+  },
+  {
+    game: 'Covert Koalas: Phasco',
+    studio: 'GameGlis',
+    country: 'Croatia',
+    logo: '/IndieLogos/covert-koalas-phasco.jpg',
+    description:
+      'A completely hand-drawn game about finding koalas. A hidden-object adventure with original music where each level part colors as you complete it. Story adventure to follow and many other features, like difficulty modes and randomized koala positions.',
+    trailer: 'https://www.youtube.com/watch?v=qkqluIhDntQ',
+    link: 'https://store.steampowered.com/app/4307320/Covert_Koalas_Phasco/',
+  },
+  {
+    game: 'Menace Shrimp',
+    studio: 'LABEL THIS',
+    country: 'Slovenia',
+    logo: '/IndieLogos/menace-shrimp.jpg',
+    description:
+      'Menace Shrimp is an action roguelike brawler where you play as a feisty mantis shrimp fighting its way through a series of aquariums to earn its freedom and return to the ocean. Punch, spear, and blast your way through enemies, collect pearls, and experiment with upgrades to shape your fighting style. Each aquarium brings new challenges, surprises, and plenty of things to smash.',
+    trailer: 'https://www.youtube.com/watch?v=l_loVtUBaV0',
+    link: 'https://labelthis.studio/games/menace-shrimp/',
   },
 ];

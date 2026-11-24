@@ -37,7 +37,11 @@ const registerUrl =
             {indies.map((indie) => (
               <article class="indie-card">
                 <div class="indie-cover">
-                  <img src={indie.logo} alt={indie.game} class="indie-cover-img" />
+                  {indie.logo ? (
+                    <img src={indie.logo} alt={indie.game} class="indie-cover-img" />
+                  ) : (
+                    <div class="indie-cover-placeholder" aria-hidden="true">{indie.game}</div>
+                  )}
                 </div>
                 <div class="indie-body">
                   <p class="indie-eyebrow">
@@ -163,6 +167,24 @@ const registerUrl =
 
 .indie-cover { overflow: hidden; aspect-ratio: 16 / 9; background: #e8e6e1; }
 .indie-cover-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+/* Title placeholder shown until the real logo artwork is supplied. */
+.indie-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 1.2rem 1.4rem;
+  background: #16283d;
+  color: rgba(255, 255, 255, 0.82);
+  font-family: "Funnel Sans", "Segoe UI", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.3rem, 2.6vw, 1.9rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
 
 .indie-body { display: flex; flex-direction: column; padding: 1.4rem 1.5rem 1.6rem; flex: 1; }
 
