@@ -42,7 +42,7 @@
   --indie-blue: #234d9a;
   --secondary-rgb: 26, 36, 57;
   --hero-overlay: rgba(var(--secondary-rgb), 0.8);
-  --nav-glass: rgba(var(--secondary-rgb), 0.75);
+  --nav-glass: rgb(var(--secondary-rgb));
   --subtle-border: rgba(251, 253, 254, 0.2);
   --content-width: 1248px;
   --page-gutter: 20px;
@@ -212,8 +212,6 @@ details>summary:hover .faq-question {
   padding: 10px max(calc((100vw - var(--content-width)) / 2 + var(--page-gutter)),
       var(--page-gutter));
   background: var(--nav-glass);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
 }
 
 .site-logo {
